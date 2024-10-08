@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Gethos CRM</title>
+    <title>Crie sua conta no CRM Gethos</title>
     {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
 <style>
     * {
@@ -73,7 +73,7 @@
         cursor: pointer;
     }
     
-    input[type="email"], input[type="password"] {
+    input[type="email"], input[type="password"], input[type="text"] {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
@@ -138,32 +138,32 @@
 </style>
 </head>
 <body>
+    
     <div class="login-container">
         <div class="image-container">
             <img src="your-image.jpg" alt="Background Image">
         </div>
         <div class="login-form-container">
-            <h2>Bem-vindo ao Gethos CRM</h2>
-            {% comment %} <p>Sign in with social account or enter your details</p>
-            <div class="social-login">
-                <button class="social-btn google">G</button>
-                <button class="social-btn facebook">F</button>
-                <button class="social-btn apple">A</button>
-            </div> {% endcomment %}
+            <h2>Crie sua conta para aumentar suas vendas com o CRM Gethos</h2>
             <form action="#">
                 <div class="input-group">
-                    <label for="email">Insira seu e-mail</label>
+                    <label for="email">Informe seu nome completo</label>
+                    <input type="text" id="name" placeholder="Seu Nome Completo Aqui">
+                </div>
+                <div class="input-group">
+                    <label for="email">Informe seu melhor e-mail</label>
                     <input type="email" id="email" placeholder="exemplo@gmail.com">
                 </div>
                 <div class="input-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" placeholder="senha de acesso">
-                    {% comment %} <span class="show-password">👁</span> {% endcomment %}
+                    <input type="password" id="password" placeholder="Crie uma senha">
+                    <input type="password" id="confirmPassword" placeholder="Confirme sua senha">
                 </div>
-                <a href="#" class="forgot-password">Esqueceu a senha? Solicite uma nova senha</a>
-                <button type="submit" class="btn-signin">Acessar</button>
+                <button type="submit" class="btn-signin">Criar meu acesso</button>
             </form>
-            <p>Ainda não tem uma conta? Fale com a equipe Gethos e crie a sua agora mesmo!<br><a href="#">Criar meu acesso ao CRM Gethos</a></p>
+            <p>Nosso CRM Gethos foi desenvolvido para te ajudar vender mais e deixar o seu cliente mais próximo de você.</p>
+            
+            <p>Já possui uma conta? <a href="#">Fazer Login CRM Gethos</a></p>
         </div>
     </div>
 </body>

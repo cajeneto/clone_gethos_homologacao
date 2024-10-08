@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Central</title>
+    {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+<style>
+
+ 
+
+  *{
+    margin: 0;
+    padding: 0;
+    
+  }
+
+
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      
+    }
+    
+    .navbar-left,
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    .search-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      margin: 0 20px;
+    }
+    
+    .search-box input {
+      border: none;
+      outline: none;
+    }
+    
+    .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+    
+    .profile-menu {
+      display: flex;
+      align-items: center;
+    }
+    
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    /* Card container */
+    .cards-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      padding-top: 40px;
+      justify-content: space-between;
+      
+    }
+    
+    .card {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+      background-color: #ecf0ff
+    }
+    
+    .card-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      font-size: 14px;
+      color: #888;
+    }
+    
+    .card-amount {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+    
+    .card-change {
+      font-size: 14px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    
+    .positive {
+      color: #4caf50;
+      background-color: #e8f5e9;
+    }
+    
+    .negative {
+      color: #f44336;
+      background-color: #ffebee;
+    }
+    
+    .timeframe {
+      font-size: 12px;
+      color: #888;
+    }
+    
+    .card-chart img {
+      width: 80px;
+      height: auto;
+    }
+
+    /* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+.dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 1;
+}
+
+/* Dropdown content links */
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s ease;
+}
+
+/* Hover styles for dropdown content */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown content when hovering */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+    {% comment %} estilização da tabela contatos {% endcomment %}
+
+    /* Table container */
+.table-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Table styles */
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Table header */
+.contacts-table th {
+  background-color: #ecf0ff;
+  padding: 12px;
+  text-align: center;
+  border-bottom: 3px solid #ddd;
+}
+
+/* Table rows */
+.contacts-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+/* Hover effect on rows */
+.contacts-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Action buttons */
+.action-btn {
+  background-color: #e0e0e0;
+  border: none;
+  color: #333;
+  padding: 6px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.container-div {
+  position: relative;
+  height: auto; /* Pode ajustar conforme necessário */
+  width: 100%; /* Faz a div ocupar a largura completa */
+  display: flex;
+  justify-content: flex-end; /* Alinha o botão à direita */
+  align-items: center; /* Centraliza verticalmente */
+  right: 20px;
+  }
+
+.adc-contato {
+  background-color: #2ecc71;
+  border: none;
+  color: #333;
+  padding: 6px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  margin-bottom: 20px;
+
+}
+
+.action-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.adc-contato:hover {
+  background-color: #d0d0d0;
+}
+
+.view-btn {
+  background-color: #6c7ae0;
+  color: #fff;
+}
+
+.edit-btn {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Adjust button sizes */
+.contacts-table td button {
+  min-width: 60px;
+  text-align: center;
+}
+
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .contacts-table {
+    font-size: 12px;
+  }
+  
+  .action-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  
+
+
+
+}
+
+
+</style>
+</head>
+
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-left">
+          <button class="menu-btn">
+            <i class="material-symbols-outlined">Menu</i>
+          </button>
+          <form class="search-box">
+            <input type="text" placeholder="Pesquise aqui..." />
+            <button class="search-btn">
+              <i class="material-symbols-outlined">Pesquisar</i>
+            </button>
+          </form>
+        </div>
+        <div class="navbar-right">
+          {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Cadastros</i></button> {% endcomment %}
+          <div class="dropdown">
+            <button class="icon-btn dropdown-btn">
+              <i class="material-symbols-outlined">Cadastros</i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Cadastrar Contatos</a>
+              <a href="#">Mensagem Whatsapp</a>
+              <a href="#">Mensagens SMS's</a>
+              <a href="#">Campanhas de Captação Leads</a>
+            </div>
+          </div>
+          {% comment %} Cadastros/ [Cadastrar Contatos, Mensagem Whatsapp, Mensagens SMS's, Campanhas de Captação Leads  {% endcomment %}
+
+          {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Processos</i></button> {% endcomment %}
+          <div class="dropdown">
+            <button class="icon-btn dropdown-btn">
+              <i class="material-symbols-outlined">Processos</i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Enviar Mensagem Whatsapp</a>
+              <a href="#">Enviar Mensagens SMS's</a>
+              <a href="#">Mensagens SMS's</a>
+              <a href="#">Iniciar Campanha de Captação Leads</a>
+            </div>
+          </div>
+          {% comment %} Processos/ [Enviar Mensagem Whatsapp, Enviar Mensagens SMS's, Iniciar Campanha de Captação Leads  {% endcomment %}
+          {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Notificações</i></button> {% endcomment %}
+          <div class="dropdown">
+            <button class="icon-btn dropdown-btn">
+              <i class="material-symbols-outlined">Notificações</i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Mensagens Whatsapp Enviadas</a>
+              <a href="#">Mensagens SMS's Enviadas</a>
+              <a href="#">Mensagens SMS's</a>
+              <a href="#">Resultado Campanha de Captação Leads</a>
+            </div>
+          </div>
+        
+          <div class="dropdown">
+            <button class="icon-btn dropdown-btn">
+              <i class="material-symbols-outlined">Relatórios</i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Relatório Mensagens Whatsapp Enviadas</a>
+              <a href="#">Relatório Mensagens SMS's Enviadas</a>
+              <a href="#">Relatório Campanha de Captação Leads</a>
+            </div>
+          </div>
+          
+          
+          <div class="dropdown">
+            <button class="icon-btn dropdown-btn">
+              <i class="material-symbols-outlined">Perfil</i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Dados Usuário</a>
+              <a href="#">Alterar Foto</a>
+              <a href="#">Encerrar Sessão</a>
+              <a href="#">Configurações</a>
+            </div>
+          </div>
+
+          <div class="profile-menu">
+            <img src="#" alt="Profile" class="profile-img" />
+            <span class="profile-name">Hostílio Neto</span>
+          </div>
+         
+        </div>
+      </div>
+      
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-content">
+            <p class="card-title">Teste</p>
+            <h3 class="card-amount">R$</h3>
+            <p class="card-change positive">+10%</p>
+            <span class="timeframe">7 Dias</span>
+          </div>
+          <div class="card-chart">
+            <img src="images/chart1.png" alt="Chart 1" />
+          </div>
+        </div>
+      
+        <div class="card">
+          <div class="card-content">
+            <p class="card-title">Teste</p>
+            <h3 class="card-amount">Teste</h3>
+            <p class="card-change negative">-15%</p>
+            <span class="timeframe">Last 30 days</span>
+          </div>
+          <div class="card-chart">
+            <img src="images/chart2.png" alt="Chart 2" />
+          </div>
+        </div>
+      
+        <div class="card">
+          <div class="card-content">
+            <p class="card-title">Teste</p>
+            <h3 class="card-amount">Teste</h3>
+            <p class="card-change positive">+25%</p>
+            <span class="timeframe">Teste</span>
+          </div>
+          <div class="card-chart">
+            <img src="images/chart3.png" alt="Chart 3" />
+          </div>
+        </div>
+      
+        <div class="card">
+          <div class="card-content">
+            <p class="card-title">Teste</p>
+            <h3 class="card-amount">$teste</h3>
+            <p class="card-change positive">+30%</p>
+            <span class="timeframe">teste 12 meses</span>
+          </div>
+          <div class="card-chart">
+            <img src="images/chart4.png" alt="Chart 4" />
+          </div>
+        </div>
+      </div>
+      {% comment %} Início tabela de contatos {% endcomment %}
+      <div class="table-container">
+        <div class="container-div">
+          <button class="adc-contato">Criar Novo Contato</button>
+        </div>
+        <table class="contacts-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>E-mail Usuário</th>
+              <th>Telefone</th>
+              <th>Último Contato</th>
+              <th>Empresa</th>
+              <th>Score</th>
+              <th>Status</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>usuario1@exemplo.com</td>
+              <td>+5511987654321</td>
+              <td>10/10/2023</td>
+              <td>Empresa XYZ</td>
+              <td>85</td>
+              <td>Ativo</td>
+              <td>
+                <button class="action-btn view-btn">Ver</button>
+                <button class="action-btn edit-btn">Editar</button>
+                <button class="action-btn delete-btn">Excluir</button>
+              </td>
+            </tr>
+            <!-- Adicione mais linhas conforme necessário -->
+          </tbody>
+        </table>
+      </div>
+      
+      
+</body>
+</html>
+
