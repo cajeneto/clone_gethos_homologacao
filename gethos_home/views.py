@@ -34,20 +34,4 @@ def login_admin(request):
 
 
 
-# configuração de url para tela de cadastro de contatos
-def register_contacts_user(request):
-    return HttpResponse('tela de cadastros de contatos do usuário')
-
-
-
-
-# configuração de url para tela de cadastro de tipo de mensagens
-def register_menssage_user(request):
-    return HttpResponse('tela de cadastro de tipos de mensagens para ser enviadas para o usuário')
-
-
-
-# configuração de url para tela de status de envio de mensagens
-def console_status_menssage_user(request):
-    return HttpResponse('tela de verificar status de envio das mensagens enviadas.')
 
