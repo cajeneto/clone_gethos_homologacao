@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -140,7 +141,7 @@
 <body>
     <div class="login-container">
         <div class="image-container">
-            <img src="your-image.jpg" alt="Background Image">
+            <img src="{% static 'static/img/gethosImg-login.png' %}" alt="Background Image">
         </div>
         <div class="login-form-container">
             <h2>Bem-vindo ao Gethos CRM</h2>
@@ -163,7 +164,7 @@
                 <a href="#" class="forgot-password">Esqueceu a senha? Solicite uma nova senha</a>
                 <button type="submit" class="btn-signin">Acessar</button>
             </form>
-            <p>Ainda não tem uma conta? Fale com a equipe Gethos e crie a sua agora mesmo!<br><a href="#">Criar meu acesso ao CRM Gethos</a></p>
+            <p>Ainda não tem uma conta? Fale com a equipe Gethos e crie a sua agora mesmo!<br><a href="https://wa.me/5582991326715">Criar meu acesso ao CRM Gethos</a></p>
         </div>
     </div>
 </body>
