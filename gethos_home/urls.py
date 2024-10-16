@@ -8,19 +8,17 @@ from gethos_home.views import (
     home,
     create_account,
     dashboard_auth,
+    logout_view,
     login_admin,
-    login_user,
     
 )
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("login_user/", login_user, name="login_user"),
+    path("", home, name="home"), #trata do login do usuário
+    path("painelCentralUser/", dashboard_auth, name="dashboard_auth"), #trata do painel após autenticação do login do usuário.
     path("login_admin/", login_admin, name="login_admin"),
-    path("", home, name="home"),
     path("criarContaGethos", create_account, name="create_account"),
-    path("painelCentralUser/", dashboard_auth, name="dashboard_auth"),
+    path("logoutUser/", logout_view, name="logout_view"), #trata do logout do usuário
 ]
-
-    # path("webhook/", webhook_listener, name="webhook_listener"),

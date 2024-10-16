@@ -145,27 +145,34 @@
         </div>
         <div class="login-form-container">
             <h2>Bem-vindo ao Gethos CRM</h2>
-            {% comment %} <p>Sign in with social account or enter your details</p>
-            <div class="social-login">
-                <button class="social-btn google">G</button>
-                <button class="social-btn facebook">F</button>
-                <button class="social-btn apple">A</button>
-            </div> {% endcomment %}
-            <form action="#">
+            <form method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
                 <div class="input-group">
                     <label for="email">Insira seu e-mail</label>
-                    <input type="email" id="email" placeholder="exemplo@gmail.com">
+                    <input type="email" id="email" name="email" placeholder="exemplo@gmail.com" required> <!-- Adicionei name="email" -->
                 </div>
                 <div class="input-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" placeholder="senha de acesso">
-                    {% comment %} <span class="show-password">👁</span> {% endcomment %}
+                    <input type="password" id="password" name="password" placeholder="senha de acesso" required> <!-- Adicionei name="password" -->
                 </div>
                 <a href="#" class="forgot-password">Esqueceu a senha? Solicite uma nova senha</a>
                 <button type="submit" class="btn-signin">Acessar</button>
             </form>
-            <p>Ainda não tem uma conta? Fale com a equipe Gethos e crie a sua agora mesmo!<br><a href="https://wa.me/5582991326715">Criar meu acesso ao CRM Gethos</a></p>
+            <p>Ainda não tem uma conta? Fale com a equipe Gethos e crie a sua agora mesmo!<br>
+                <a href="https://wa.me/5582991326715">Criar meu acesso ao CRM Gethos</a>
+                <!-- Exibe mensagens de erro ou sucesso -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+            </p>
         </div>
     </div>
+
+    
 </body>
+
 </html>
