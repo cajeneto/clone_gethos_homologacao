@@ -61,6 +61,31 @@ def dashboard_auth(request):
     else:
         form = ContatoForm()  # Cria um formulário vazio para ser exibido
 
+
+
+    # início de configuração da views dashboard_auth para receber a função de selecionar contatos na lista de contatos.
+
+     # Obtém a lista de IDs dos contatos selecionados no formulário
+        selected_contact_ids = request.POST.getlist('selected_contacts')
+
+        if selected_contact_ids:
+            # Filtra os contatos selecionados pelo ID
+            selected_contacts = Contato.objects.filter(id__in=selected_contact_ids)
+
+            # Aqui você pode realizar a ação desejada com os contatos selecionados
+            # Por exemplo, você pode exibir uma mensagem de confirmação
+            messages.success(request, f"{selected_contacts.count()} contatos selecionados.")
+
+            # Exemplo: pode redirecionar para uma página de ação
+            return redirect('dashboard_auth')  # Mantenha na mesma página, ou redirecione para outra
+        
+        else:
+            # Caso nenhum contato tenha sido selecionado
+            messages.error(request, "Nenhum contato foi selecionado.")
+
+
+            
+
     contatos = Contato.objects.all()
     return render(request, 'dashboard_auth.html', {
         'form': form,

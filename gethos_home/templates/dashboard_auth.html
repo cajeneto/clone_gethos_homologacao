@@ -6,413 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Central</title>
-    {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
-<style>
+    <link rel="stylesheet" href="{% static 'gethos_home/css/dashboard_auth.css' %}">
 
- 
-
-  *{
-    margin: 0;
-    padding: 0;
-    
-    
-  }
-
-
-    /* Navbar styles */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      
-    }
-    
-    .navbar-left,
-    .navbar-right {
-      display: flex;
-      align-items: center;
-    }
-    
-    
-    .search-box input {
-      border: none;
-      outline: none;
-    }
-    
-    .search-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    
-    .icon-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-left: 15px;
-    }
-    
-    .profile-menu {
-      display: flex;
-      align-items: center;
-    }
-    
-    .profile-img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-    
-    /* Card container */
-    .cards-container {
-      display: flex;
-      gap: 20px;
-      padding: 20px;
-      padding-top: 40px;
-      justify-content: space-between;
-      
-    }
-    
-    .card {
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      width: 250px;
-      background-color: #ecf0ff
-    }
-    
-    .card-content {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .card-title {
-      font-size: 14px;
-      color: #888;
-    }
-    
-    .card-amount {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 5px 0;
-    }
-    
-    .card-change {
-      font-size: 14px;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    
-    .positive {
-      color: #4caf50;
-      background-color: #e8f5e9;
-    }
-    
-    .negative {
-      color: #f44336;
-      background-color: #ffebee;
-    }
-    
-    .timeframe {
-      font-size: 12px;
-      color: #888;
-    }
-    
-    .card-chart img {
-      width: 80px;
-      height: auto;
-    }
-
-    /* Dropdown container */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown button */
-.dropdown-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  min-width: 200px;
-  z-index: 1;
-}
-
-/* Dropdown content links */
-.dropdown-content a {
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 14px;
-  color: #333;
-  border-bottom: 1px solid #f0f0f0;
-  transition: background 0.3s ease;
-}
-
-/* Hover styles for dropdown content */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-}
-
-/* Show the dropdown content when hovering */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-   /*  {% comment %} estilização da tabela contatos {% endcomment %} */
-
-    /* Table container */
-.table-container {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-/* Table styles */
-.contacts-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-  color: #333;
-  border-radius: 8px;
-  overflow: hidden;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-/* Table header */
-.contacts-table th {
-  background-color: #ecf0ff;
-  padding: 12px;
-  text-align: center;
-  border-bottom: 3px solid #ddd;
-}
-
-/* Table rows */
-.contacts-table td {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  text-align: center;
-}
-
-/* Hover effect on rows */
-.contacts-table tbody tr:hover {
-  background-color: #f5f5f5;
-}
-
-/* Action buttons */
-.action-btn {
-  background-color: #e0e0e0;
-  border: none;
-  color: #333;
-  padding: 6px 12px;
-  margin-right: 5px;
-  cursor: pointer;
-  font-size: 13px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.container-div {
-  position: relative;
-  height: auto; /* Pode ajustar conforme necessário */
-  width: 100%; /* Faz a div ocupar a largura completa */
-  display: flex;
-  justify-content: flex-end; /* Alinha o botão à direita */
-  align-items: center; /* Centraliza verticalmente */
-  right: 20px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-
-.list-contacts-title{
-  font-size: 20px;
-  right: 25rem;
-  display: flex;
-  position: relative;
-  padding: 1rem;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.adc-contato {
-  background-color: #605dff;
-  border: none;
-  color: #ffffff;
-  padding: 8px 14px;
-  margin-right: 5px;
-  cursor: pointer;
-  font-size: 13px;
-  border-radius: 4px;
-  transition: 0.3s ease;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.action-btn:hover {
-  background-color: #d0d0d0;
-}
-
-.adc-contato:hover {
-  background-color: #3e3cc0;
-  color: #fff;
-  
-}
-
-.view-btn {
-  background-color: #4d5ac0;
-  color: #fff;
-}
-
-.edit-btn {
-  background-color: #2ecc71;
-  color: #fff;
-}
-
-.delete-btn {
-  background-color: #e74c3c;
-  color: #fff;
-}
-
-/* Adjust button sizes */
-.contacts-table td button {
-  min-width: 60px;
-  text-align: center;
-}
-
-/* estilização do modal */
-
-
-
-/* Estilos gerais do modal */
-.modal {
-    display: none; /* Escondido por padrão */
-    position: fixed; /* Fixa o modal na tela */
-    z-index: 1; /* Garante que o modal esteja acima de outros elementos */
-    left: 0;
-    top: -4rem;
-    width: 100%; /* Largura completa da tela */
-    height: auto; /* Altura completa da tela */
-    overflow: auto; /* Permite rolagem se o conteúdo for grande */
-    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro e transparente */
-}
-
-/* Conteúdo do modal */
-.modal-content {
-    background-color: #fff; /* Fundo branco para o conteúdo */
-    margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 40%; /* Largura do modal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
-    border-radius: 10px; /* Cantos arredondados */
-}
-
-/* Estilos do botão de fechar */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Estilos para o formulário */
-form label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-form input:focus, form select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Estilo do botão Criar */
-.create-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.create-btn:hover {
-    background-color: #0056b3;
-}
-
-  
-
-
-
-
-
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .contacts-table {
-    font-size: 12px;
-  }
-  
-  .action-btn {
-    padding: 4px 8px;
-    font-size: 12px;
-  }
-
-
-
-
-
-
-
-
-
-}
-
-
-</style>
 </head>
 
 
@@ -509,39 +104,60 @@ form input:focus, form select:focus {
 
 
 </div>
-<table class="contacts-table">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-      <th>Telefone</th>
-      <th>E-mail</th>
-      <th>Empresa</th>
-      <th>Score</th>
-      <th>Status</th>
-      <th>Ação</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for contato in listContacts %}
-    <tr>
-        <td>{{ contato.id }}</td>
-        <td>{{ contato.nome }}</td>
-        <td>{{ contato.telefone }}</td>
-        <td>{{ contato.email }}</td>
-        <td>{{ contato.empresa }}</td>
-        <td>{{ contato.status }}</td>
-        <td>{{ contato.score }}</td>
-        <td>
-            <button href="#" class="action-btn view-btn">Ver</button>
-            <button href="#" class="action-btn edit-btn">Editar</button>
-            <button href="#" class="action-btn delete-btn">Excluir</button>
-        </td>
-    </tr>
-    {% endfor %}
-</tbody>
-        </table>
+
+<div class="page-wrapper">
+  <div class="main-content">
+      <!-- Tabela de Contatos -->
+      <form method="POST" action="{% url 'dashboard_auth' %}">
+          {% csrf_token %}
+          <table class="contacts-table">
+              <thead>
+                  <tr>
+                      <th><input type="checkbox" id="select-all"></th> <!-- Checkbox para selecionar todos -->
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Telefone</th>
+                      <th>E-mail</th>
+                      <th>Empresa</th>
+                      <th>Score</th>
+                      <th>Status</th>
+                      <th>Ação</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for contato in listContacts %}
+                  <tr>
+                      <td><input type="checkbox" name="selected_contacts" value="{{ contato.id }}" class="contact-checkbox"></td> <!-- Checkbox individual -->
+                      <td>{{ contato.id }}</td>
+                      <td>{{ contato.nome }}</td>
+                      <td>{{ contato.telefone }}</td>
+                      <td>{{ contato.email }}</td>
+                      <td>{{ contato.empresa }}</td>
+                      <td>{{ contato.status }}</td>
+                      <td>{{ contato.score }}</td>
+                      <td>
+                          <button href="#" class="action-btn view-btn">Ver</button>
+                          <button href="#" class="action-btn edit-btn">Editar</button>
+                          <button href="#" class="action-btn delete-btn">Excluir</button>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+          <button type="submit" class="submit-btn">Realizar Ação</button> <!-- Botão para enviar contatos selecionados -->
+      </form>
+      
+      <!-- Sidebar retrátil -->
+      <div id="sidebox" class="sidebox">
+        <h3>Ações para Contatos Selecionados</h3>
+        <p id="selected-count">Nenhum contato selecionado</p> <!-- Exibe a quantidade de contatos selecionados -->
+        <button class="sidebox-btn">Excluir</button>
+        <button class="sidebox-btn">Enviar E-mail</button>
+        <button class="sidebox-btn">Exportar Contatos</button>
       </div>
+  </div>
+    
+</div>
       
       
 </body>
@@ -572,6 +188,43 @@ window.onclick = function(event) {
   }
 }
 
+
+{% comment %} script para realizar ação com os contatos selecionados. {% endcomment %}
+// Script para selecionar ou desmarcar todos os checkboxes
+document.getElementById('select-all').addEventListener('click', function(event) {
+  let checkboxes = document.querySelectorAll('input[name="selected_contacts"]');
+  checkboxes.forEach(checkbox => checkbox.checked = event.target.checked);
+  toggleSidebox(); // Chama a função para verificar se a sidebar deve aparecer
+});
+
+// Script para monitorar a seleção dos checkboxes individuais
+const contactCheckboxes = document.querySelectorAll('.contact-checkbox');
+contactCheckboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', toggleSidebox);
+});
+
+// Função que exibe ou esconde a sidebar com base na seleção de checkboxes
+function toggleSidebox() {
+  let selectedCount = Array.from(contactCheckboxes).filter(checkbox => checkbox.checked).length;
+  let sidebox = document.getElementById('sidebox');
+  let selectedCountElement = document.getElementById('selected-count');
+  
+  if (selectedCount > 0) {
+      sidebox.classList.add('sidebox-active');
+
+      // Atualiza o texto da quantidade de contatos selecionados
+      if (selectedCount === 1) {
+          selectedCountElement.textContent = "1 contato selecionado";
+      } else if (selectedCount === contactCheckboxes.length) {
+          selectedCountElement.textContent = "Todos os contatos selecionados";
+      } else {
+          selectedCountElement.textContent = `${selectedCount} contatos selecionados`;
+      }
+  } else {
+      sidebox.classList.remove('sidebox-active');
+      selectedCountElement.textContent = "Nenhum contato selecionado";
+  }
+}
 
 </script>
 </html>
