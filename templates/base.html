@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="{% static 'cadastros/css/cadastro-contato.css' %}"> {% endcomment %}
+    {% block extra_css %}
+    {% endblock %}
+</head>
+<body>
+    <!-- Menu Header -->
+    <header>
+        {% include 'menu_header.html' %}  <!-- Incluindo o menu_header aqui -->
+        
+    </header>
+
+    <!-- Main content (cada página pode substituir isso) -->
+    <main>
+        {% block content %}
+        <!-- O conteúdo específico de cada página será renderizado aqui -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer (opcional) -->
+  {% comment %}   <footer>
+        <p>© 2024 Meu Projeto</p>
+    </footer> {% endcomment %}
+</body>
+</html>

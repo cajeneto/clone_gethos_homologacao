@@ -6,186 +6,13 @@ from django.views.decorators.csrf import csrf_exempt
 import requests
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout
+from django.contrib.auth.decorators import login_required
+
+from .models import Contato
+from .forms import ContatoForm
 
 
 
-# from django.
-
-# Create your views here.
-
-
-
-contatos = [
-
-{
-    "id": 1,
-    'nomeContato': 'Hostílio de França',
-    'email': 'netocajeh@gmail.com',
-    'telefone': '5582991326715',
-    'empresa': 'Gethos Tecnologia',
-    'statusContato': 'Ativo',
-    'score': 100,
-
-
-},
-
-{
-    "id": 2,
-    'nomeContato': 'Valmiram Oliveira',
-    'email': 'valmiram@sefaz.gov.br',
-    'telefone': '55829',
-    'empresa': 'Sefaz',
-    'statusContato': 'Ativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-{
-    "id": 3,
-    'nomeContato': 'Miguel Nicolelis',
-    'email': 'miguel@nasa.com',
-    'telefone': '55829',
-    'empresa': 'NASA TECNOLOGIA',
-    'statusContato': 'Inativo',
-    'score': 100,
-
-
-},
-
-
-]
 
 
 
@@ -218,17 +45,30 @@ def create_account(request):
     return render(request, 'create_account.html')
 
 
-
+# @login_required
+#  TRATA DE ADICIONAR O USUÁRIO NA LISTA DE CONTATOS
+# Função para tratar a adição de novos contatos e exibir a lista de contatos
 def dashboard_auth(request):
-        
-    return render(request, 'dashboard_auth.html', context= {
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            print("Formulário válido, salvando contato...")
+            form.save()  # Salva o contato
+            return redirect('dashboard_auth')  # Redireciona para a mesma página após salvar
+        else:
+            print("Formulário inválido!")
+            print(form.errors)  # Exibe os erros de validação
+    else:
+        form = ContatoForm()  # Cria um formulário vazio para ser exibido
+
+    contatos = Contato.objects.all()
+    return render(request, 'dashboard_auth.html', {
+        'form': form,
         'listContacts': contatos,
     })
 
 
-
-
-
+@login_required
 # configuração de view para logout de usuário
 def logout_view(request):
     logout(request)

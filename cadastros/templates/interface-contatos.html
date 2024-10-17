@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block extra_css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'cadastros/css/interface-contatos.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="contact-header">
+        <div class="profile-section">
+            <div class="profile-pic">JO</div>
+            <div class="contact-info">
+                <h2>JOAO LUCAS CLIENTE TESTE</h2>
+                <p>
+                    <span class="contact-phone">📞 +55 82 98510-1551</span>
+                    <span class="contact-email">✉ joaolucasteste@eail.com</span>
+                </p>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="btn-schedule">Agendar atividade</button>
+            <button class="btn-actions">Ações ▼</button>
+        </div>
+    </div>
+
+    <div class="contact-nav">
+        <div class="nav-item">
+            <span>0</span> Atividades planejadas
+        </div>
+        <div class="nav-item">
+            <span>0</span> Atividades realizadas
+        </div>
+        <div class="nav-item">Histórico de ações realizadas</div>
+        <div class="nav-item">Dados do contato</div>
+    </div>
+
+    <div class="content-section">
+        <!-- Conteúdo da página aqui -->
+    </div>
+    {% endblock %}
+
+

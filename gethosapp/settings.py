@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "gethos_home",
+    "cadastros",
 ]
 
 MIDDLEWARE = [
@@ -40,10 +42,10 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            BASE_DIR / "gethos_home" / "templates",
+            # BASE_DIR / "gethos_home" / "templates",
             BASE_DIR / "templates",
         ],
-        "APP_DIRS": True,
+        "APP_DIRS": True,  
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -112,7 +114,7 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # URL para redirecionar após o login
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'dashboard.auth'
 
 # URL para redirecionar ao fazer logout
 LOGOUT_REDIRECT_URL = 'home'
