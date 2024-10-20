@@ -13,17 +13,6 @@ from .forms import ContatoForm
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 def home(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -93,7 +82,7 @@ def dashboard_auth(request):
     })
 
 
-@login_required
+
 # configuração de view para logout de usuário
 def logout_view(request):
     logout(request)

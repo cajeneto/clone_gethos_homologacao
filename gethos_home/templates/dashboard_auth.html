@@ -56,10 +56,11 @@
           </div>
         </div>
       </div>
+
+
       {% comment %} Início tabela de contatos {% endcomment %}
-      <div class="table-container">
-        <!-- <div class="container-div-p">
-        </div> -->
+<div class="table-container">
+
         <div class="container-div">
           <p class="list-contacts-title"><strong>LISTA DE CONTATOS</strong></p>
           <button class="adc-contato">Criar Novo Contato</button>
@@ -68,45 +69,48 @@
         <!-- Button to open the modal -->
 
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-<div class="modal-content">
-  <span class="close">&times;</span>
-  <h2>Adicionar Novo Contato</h2>
-  
-  <!-- Formulário configurado corretamente -->
-  <form method="POST" action="{% url 'dashboard_auth' %}">
-      {% csrf_token %}  <!-- Adiciona proteção CSRF necessária no Django -->
-      
-      <label for="name">Nome</label>
-      <input type="text" id="name" name="nome" placeholder="E.g. Olivia" required>
-      
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="E.g. olivia@gmail.com" required>
-      
-      <label for="phone">Telefone</label>
-      <input type="tel" id="phone" name="telefone" placeholder="E.g. 5582991326715" required>
-
-      <label for="empresa">Empresa</label>
-      <input type="emp" id="empresa" name="empresa" placeholder="Empresa">
-      
-      <label for="status">Status</label>
-      <select id="status" name="status" required>
-          <option value="Ativo">Ativo</option>
-          <option value="Inativo">Inativo</option>
-      </select>
-      
-      <button type="submit" class="create-btn">Criar</button>
-  </form>
-</div>
 
 
-</div>
+        <!-- The Modal -->
+      <div id="myModal" class="modal">
 
-<div class="page-wrapper">
-  <div class="main-content">
+          <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Adicionar Novo Contato</h2>
+          
+          <!-- Formulário configurado corretamente -->
+          <form method="POST" action="{% url 'dashboard_auth' %}">
+              {% csrf_token %}  <!-- Adiciona proteção CSRF necessária no Django -->
+              
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="nome" placeholder="E.g. Olivia" required>
+              
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="E.g. olivia@gmail.com" required>
+              
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" name="telefone" placeholder="E.g. 5582991326715" required>
+
+              <label for="empresa">Empresa</label>
+              <input type="emp" id="empresa" name="empresa" placeholder="Empresa">
+              
+              <label for="status">Status</label>
+              <select id="status" name="status" required>
+                  <option value="Ativo">Ativo</option>
+                  <option value="Inativo">Inativo</option>
+              </select>
+              
+              <button type="submit" class="create-btn">Criar</button>
+          </form>
+        </div>
+      </div>
+
+
+
+  <div class="page-wrapper">
+    <div class="main-content">
+     
       <!-- Tabela de Contatos -->
       <form method="POST" action="{% url 'dashboard_auth' %}">
           {% csrf_token %}
@@ -144,18 +148,19 @@
                   {% endfor %}
               </tbody>
           </table>
-          <button type="submit" class="submit-btn">Realizar Ação</button> <!-- Botão para enviar contatos selecionados -->
+          {% comment %} <button type="submit" class="submit-btn">Realizar Ação</button> <!-- Botão para enviar contatos selecionados --> {% endcomment %}
       </form>
-      
-      <!-- Sidebar retrátil -->
-      <div id="sidebox" class="sidebox">
+       <!-- Sidebar retrátil -->
+       <div id="sidebox" class="sidebox">
         <h3>Ações para Contatos Selecionados</h3>
         <p id="selected-count">Nenhum contato selecionado</p> <!-- Exibe a quantidade de contatos selecionados -->
+        <button class="sidebox-btn">Enviar Whatsapp</button>
         <button class="sidebox-btn">Excluir</button>
-        <button class="sidebox-btn">Enviar E-mail</button>
         <button class="sidebox-btn">Exportar Contatos</button>
       </div>
-  </div>
+      
+      
+  
     
 </div>
       
@@ -210,7 +215,10 @@ function toggleSidebox() {
   let selectedCountElement = document.getElementById('selected-count');
   
   if (selectedCount > 0) {
-      sidebox.classList.add('sidebox-active');
+    sidebox.style.display = "block"; // Faz o sidebox aparecer
+    setTimeout(() => {
+        sidebox.classList.add('sidebox-active'); // Aplica a transição após exibir
+    }, 10); // Pequeno atraso para permitir que a transição seja aplicada
 
       // Atualiza o texto da quantidade de contatos selecionados
       if (selectedCount === 1) {
@@ -221,8 +229,12 @@ function toggleSidebox() {
           selectedCountElement.textContent = `${selectedCount} contatos selecionados`;
       }
   } else {
-      sidebox.classList.remove('sidebox-active');
-      selectedCountElement.textContent = "Nenhum contato selecionado";
+     // Oculta o sidebox com a transição
+     sidebox.classList.remove('sidebox-active');
+     setTimeout(() => {
+         sidebox.style.display = "none"; // Esconde o sidebox após a transição
+     }, 300); // Aguarda a transição (0.3s) antes de esconder
+    selectedCountElement.textContent = "Nenhum contato selecionado";
   }
 }
 

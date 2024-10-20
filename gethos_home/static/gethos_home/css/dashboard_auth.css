@@ -171,7 +171,9 @@
 
     /* Table container */
 .table-container {
+  position: relative;
   padding: 20px;
+  margin: 5px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -179,6 +181,8 @@
   border-collapse: collapse;
   border: 1px solid #ccc;
   box-shadow: 1px 1px 2px rgb(106, 106, 106);
+  overflow-y: auto;
+  height: 70vh;
 }
 
 /* Table styles */
@@ -306,7 +310,7 @@
     position: fixed; /* Fixa o modal na tela */
     z-index: 1; /* Garante que o modal esteja acima de outros elementos */
     left: 0;
-    top: -4rem;
+    top: 0;
     width: 100%; /* Largura completa da tela */
     height: auto; /* Altura completa da tela */
     overflow: auto; /* Permite rolagem se o conteúdo for grande */
@@ -322,6 +326,8 @@
     width: 40%; /* Largura do modal */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
     border-radius: 10px; /* Cantos arredondados */
+    top: -20vh;
+    position: relative;
 }
 
 /* Estilos do botão de fechar */
@@ -330,6 +336,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    color: red;
 }
 
 .close:hover,
@@ -429,14 +436,16 @@ form input:focus, form select:focus {
     background-color: #ecf0ff;
     padding: 20px;
     box-shadow: -4px 0px 5px rgba(0, 0, 0, 0.1);
-    display: none; /* Inicialmente escondida */
+    display: none;
     position: absolute;
-    right: 0;
-    top: 10%;
+    right: -400px;
+    top: 0;
     height: 100%;
-    
+    transition: right 0.3s ease-in-out; /* Suavidade na abertura */
+    z-index: 1000;
     
 }
+
 
 /* Estilo dos botões da sidebar */
 .sidebox-btn {
@@ -457,9 +466,10 @@ form input:focus, form select:focus {
 
 /* Exibe a sidebar quando ativa */
 .sidebox-active {
-    display: block;
+    right: 0;
+    height: 120vh;
 }
-
+  
 /* Botão de envio na tabela */
 .submit-btn {
     margin-top: 20px;

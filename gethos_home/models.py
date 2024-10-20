@@ -11,6 +11,7 @@ class Contato(models.Model):
     telefone = models.CharField(max_length=15)
     empresa = models.CharField(max_length=100, null=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Ativo')
+    data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.nome
