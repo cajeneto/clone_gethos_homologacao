@@ -10,6 +10,7 @@ from gethos_home.views import (
     dashboard_auth,
     logout_view,
     login_admin,
+    importar_contatos
     
 )
 
@@ -21,4 +22,5 @@ urlpatterns = [
     path("login_admin/", login_admin, name="login_admin"),
     path("criarContaGethos", create_account, name="create_account"),
     path("logoutUser/", logout_view, name="logout_view"), #trata do logout do usuário
+    path('importar-contatos/', importar_contatos, name='importar_contatos'),
 ]

@@ -1,58 +1,108 @@
-.btn-ver-editar {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    text-align: center;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-ver-editar:hover {
-    background-color: #45a049;
-}
-
-.container-detalhes {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+/* Geral */
+body {
+    font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    padding: 0;
 }
 
+/* Container Principal */
+.container-detalhes {
+    background-color: #ffffff;
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Título */
 h1 {
-    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333333;
 }
 
+/* Estilização do Formulário */
 form {
     margin-bottom: 20px;
 }
 
-.btn-salvar {
-    background-color: #4CAF50;
-    color: white;
+form p {
+    margin: 10px 0;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #333333;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus {
+    border-color: #4d5ac0;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Botões */
+button {
+    display: inline-block;
     padding: 10px 20px;
-    border: none;
+    font-size: 1rem;
     border-radius: 5px;
+    border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-salvar {
+    background-color: #28a745;
+    color: #ffffff;
+    margin-right: 10px;
 }
 
 .btn-salvar:hover {
-    background-color: #45a049;
+    background-color: #218838;
 }
 
 .btn-voltar {
-    background-color: #4d5ac0;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
+    background-color: #6c757d;
+    color: #ffffff;
 }
 
 .btn-voltar:hover {
-    background-color: #3c489b;
+    background-color: #5a6268;
 }
+
+/* Estilo de Erro */
+input:invalid, select:invalid, textarea:invalid {
+    border-color: #dc3545;
+}
+
+/* Espaçamento e alinhamento */
+.container-detalhes form {
+    text-align: left;
+}
+
+.container-detalhes form button {
+    margin-top: 10px;
+}
+

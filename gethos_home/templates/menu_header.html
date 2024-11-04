@@ -1,191 +1,13 @@
-<style>
-    *{
-      margin: 0;
-      padding: 0;
-      
-    }
-  
-  
-      /* Navbar styles */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        background-color: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        
-      }
-      
-      .navbar-left,
-      .navbar-right {
-        display: flex;
-        align-items: center;
-      }
-
-      
-      .search-box {
-        display: flex;
-        align-items: center;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        padding: 8px;
-        margin: 0 20px;
-      }
-      
-      .search-box input {
-        border: none;
-        outline: none;
-      }
-      
-      .search-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-      }
-      
-      .icon-btn {
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-left: 15px;
-      }
-      
-      .profile-menu {
-        display: flex;
-        align-items: center;
-      }
-      
-      .profile-img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        margin-right: 8px;
-      }
-      
-      /* Card container */
-      .cards-container {
-        display: flex;
-        gap: 20px;
-        padding: 20px;
-        padding-top: 40px;
-        justify-content: space-between;
-        
-      }
-      
-      .card {
-        background-color: white;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        width: 250px;
-        background-color: #ecf0ff
-      }
-      
-      .card-content {
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .card-title {
-        font-size: 14px;
-        color: #888;
-      }
-      
-      .card-amount {
-        font-size: 24px;
-        font-weight: bold;
-        margin: 5px 0;
-      }
-      
-      .card-change {
-        font-size: 14px;
-        padding: 2px 6px;
-        border-radius: 4px;
-      }
-      
-      .positive {
-        color: #4caf50;
-        background-color: #e8f5e9;
-      }
-      
-      .negative {
-        color: #f44336;
-        background-color: #ffebee;
-      }
-      
-      .timeframe {
-        font-size: 12px;
-        color: #888;
-      }
-      
-      .card-chart img {
-        width: 80px;
-        height: auto;
-      }
-  
-      /* Dropdown container */
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  /* Dropdown button */
-  .dropdown-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Dropdown content (hidden by default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    min-width: 200px;
-    z-index: 1;
-  }
-  
-  /* Dropdown content links */
-  .dropdown-content a {
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    color: #333;
-    border-bottom: 1px solid #f0f0f0;
-    transition: background 0.3s ease;
-  }
-  
-  /* Hover styles for dropdown content */
-  .dropdown-content a:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Show the dropdown content when hovering */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-</style>
-
-
-
-
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'gethos_home/css/menu_header.css' %}">
+</head>
 
 <div class="navbar">
     <div class="navbar-left">
-      <button class="menu-btn">
-        <i class="material-symbols-outlined">Menu</i>
-      </button>
+      <div class="menu-btn">
+        <p class="titulo-empresa" class="material-symbols-outlined">GETHOS CRM</p>
+      </div>
       <form class="search-box">
         <input type="text" placeholder="Pesquise aqui..." />
         <button class="search-btn">
@@ -195,6 +17,11 @@
     </div>
     <div class="navbar-right">
       {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Cadastros</i></button> {% endcomment %}
+      <button class="icon-btn dropdown-btn">
+        <i class="material-symbols-outlined">
+          <a href="{% url 'dashboard_auth' %}">Lista de Contatos</a>
+        </i>
+      </button>
       <div class="dropdown">
         <button class="icon-btn dropdown-btn">
           <i class="material-symbols-outlined">Cadastros</i>
@@ -202,8 +29,8 @@
         <div class="dropdown-content">
           <a href="{% url 'adicionar_contato' %}">Cadastrar Contatos</a>
           <a href="{% url 'lista_mensagens_cadastradas' %}">Cadastrar Mensagens</a>
-          <a href="#">Mensagens SMS's</a>
-          <a href="#">Campanhas de Captação Leads</a>
+          {% comment %} <a href="#">Mensagens SMS's</a> {% endcomment %}
+          <a href="{% url 'listar_campanhas'%}">Campanhas de Captação Leads</a>
         </div>
       </div>
       {% comment %} Cadastros/ [Cadastrar Contatos, Mensagem Whatsapp, Mensagens SMS's, Campanhas de Captação Leads  {% endcomment %}
@@ -214,8 +41,8 @@
           <i class="material-symbols-outlined">Processos</i>
         </button>
         <div class="dropdown-content">
-          <a href="#">Enviar Mensagem Whatsapp</a>
-          <a href="#">Enviar Mensagens SMS's</a>
+          <a href="{% url 'fluxo_captacao' %}">Fluxo de Captação</a>
+          <a href="{% url 'enviar_mensagem' %}">Enviar Mensagens</a>
           <a href="#">Iniciar Campanha de Captação Leads</a>
           <a href="#">Captação</a>
         </div>
@@ -227,9 +54,9 @@
           <i class="material-symbols-outlined">Notificações</i>
         </button>
         <div class="dropdown-content">
-          <a href="#">Mensagens Whatsapp Enviadas</a>
-          <a href="#">Mensagens SMS's Enviadas</a>
-          <a href="#">Mensagens SMS's</a>
+          <a href="#">Mensagens Enviadas</a>
+          {% comment %} <a href="#">Mensagens SMS's Enviadas</a> {% endcomment %}
+          {% comment %} <a href="#">Mensagens SMS's</a> {% endcomment %}
           <a href="#">Resultado Campanha de Captação Leads</a>
         </div>
       </div>
@@ -239,8 +66,8 @@
           <i class="material-symbols-outlined">Relatórios</i>
         </button>
         <div class="dropdown-content">
-          <a href="#">Relatório Mensagens Whatsapp Enviadas</a>
-          <a href="#">Relatório Mensagens SMS's Enviadas</a>
+          <a href="#">Relatório Mensagens Enviadas</a>
+          {% comment %} <a href="#">Relatório Mensagens SMS's Enviadas</a> {% endcomment %}
           <a href="#">Relatório Campanha de Captação Leads</a>
         </div>
       </div>

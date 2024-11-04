@@ -7,7 +7,9 @@ import requests
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
-
+import pandas as pd
+from django.contrib import messages
+from .forms import UploadExcelForm
 from .models import Contato
 from .forms import ContatoForm
 
@@ -95,5 +97,38 @@ def login_admin(request):
     return HttpResponse('teste login administrador')
  
 
+
+def importar_contatos(request):
+    if request.method == 'POST':
+        form = UploadExcelForm(request.POST, request.FILES)
+        if form.is_valid():
+            arquivo_excel = request.FILES['arquivo_excel']
+            
+            try:
+                # Ler o arquivo Excel usando Pandas
+                df = pd.read_excel(arquivo_excel, engine='openpyxl')
+                
+                # Verificar se as colunas corretas estão presentes
+                if all(col in df.columns for col in ['nome', 'email', 'telefone']):
+                    # Iterar sobre as linhas do DataFrame e criar objetos de Contato
+                    for _, row in df.iterrows():
+                        Contato.objects.create(
+                            nome=row['nome'],
+                            email=row['email'],
+                            telefone=row['telefone'],
+                            empresa=row.get('empresa', ''),  # Coluna opcional
+                            status=row.get('status', 'Ativo')  # Coluna opcional
+                        )
+                    messages.success(request, 'Contatos importados com sucesso!')
+                    return redirect('dashboard_auth')  # Redireciona para onde você desejar
+                else:
+                    messages.error(request, 'Arquivo Excel não contém as colunas corretas.')
+            except Exception as e:
+                messages.error(request, f'Erro ao processar o arquivo: {e}')
+                
+    else:
+        form = UploadExcelForm()
+
+    return render(request, 'dashboard_auth.html', {'form': form})
 
 

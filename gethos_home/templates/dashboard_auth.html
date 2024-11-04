@@ -64,10 +64,20 @@
         <div class="container-div">
           <p class="list-contacts-title"><strong>LISTA DE CONTATOS</strong></p>
           <button class="adc-contato">Criar Novo Contato</button>
+          <!-- Botão que mostrará o formulário de importação -->
+          <button id="btn-importar" class="botao-importar">Importar Contatos</button>
         </div>
 
-        <!-- Button to open the modal -->
-
+        <div class="container-principal">
+          <!-- Formulário de upload inicialmente oculto -->
+          <div id="form-importar" style="display:none;">
+              <h2>Importar Contatos</h2>
+              <form method="POST" action="{% url 'importar_contatos' %}">
+                  {% csrf_token %}
+                  <button type="submit" class="btn-upload">Enviar Arquivo</button>
+              </form>
+          </div>
+      </div>
 
 
 
@@ -123,8 +133,8 @@
                       <th>Telefone</th>
                       <th>E-mail</th>
                       <th>Empresa</th>
-                      <th>Score</th>
                       <th>Status</th>
+                      <th>Criado em:</th>
                       <th>Ação</th>
                   </tr>
               </thead>
@@ -237,6 +247,16 @@ function toggleSidebox() {
     selectedCountElement.textContent = "Nenhum contato selecionado";
   }
 }
+
+document.getElementById('btn-importar').addEventListener('click', function() {
+  var form = document.getElementById('form-importar');
+  // Alterna entre exibir e ocultar o formulário
+  if (form.style.display === 'none') {
+      form.style.display = 'block';
+  } else {
+      form.style.display = 'none';
+  }
+});
 
 </script>
 </html>

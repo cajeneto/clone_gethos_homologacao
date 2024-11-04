@@ -1,5 +1,6 @@
 from django import forms
 from .models import ModeloMensagem
+from .models import Campanha
 
 class ModeloMensagemForm(forms.ModelForm):
     class Meta:
@@ -10,3 +11,12 @@ class ModeloMensagemForm(forms.ModelForm):
             'tipo_mensagem': forms.Select(attrs={'class': 'select-opcao'}),
             'conteudo_mensagem': forms.Textarea(attrs={'class': 'textarea-mensagem'}),
         }
+
+
+
+
+class CampanhaForm(forms.ModelForm):
+    class Meta:
+        model = Campanha
+        fields = ['nome', 'status', 'mensagem']    
+

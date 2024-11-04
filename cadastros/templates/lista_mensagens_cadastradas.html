@@ -39,7 +39,9 @@
                     <td>{{ mensagem.conteudo_mensagem }}</td>
                     <td>{{ mensagem.data_criacao|date:"d/m/Y H:i" }}</td>
                     <td class="actions-msg">
-                        <button href={% url 'detalhe_mensagem_cadastrada' mensagem.id %} class="action-btn view-btn">Ver</button>
+                        <a href="{% url 'detalhe_mensagem_cadastrada' mensagem.id %}">
+                            <button class="action-btn view-btn">Ver</button>
+                        </a>
                         <button href="#" class="action-btn edit-btn">Editar</button>
                         <button href="#" class="action-btn delete-btn">Excluir</button>
                     </td>

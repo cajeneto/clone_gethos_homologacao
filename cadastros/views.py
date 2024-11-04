@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, redirect
 from .forms import ModeloMensagemForm, ModeloMensagem
+from .models import Campanha
+from .forms import CampanhaForm
+from django.contrib import messages
 
 
 
@@ -17,7 +20,7 @@ def cadastro_mensagens(request):
         form = ModeloMensagemForm(request.POST)
         if form.is_valid():
             form.save()  # Salva o formulário se os dados forem válidos
-            return redirect('cadastro_mensagens')  # Redireciona após o sucesso
+            return redirect('lista_mensagens_cadastradas')  # Redireciona após o sucesso
     else:
         form = ModeloMensagemForm()
 
@@ -36,8 +39,42 @@ def detalhe_mensagem_cadastrada(request, id):
         form = ModeloMensagemForm(request.POST, instance=mensagem)  # Carrega o formulário com os dados da mensagem
         if form.is_valid():
             form.save()  # Salva as alterações
-            return redirect('lista_mensagens')  # Redireciona para a lista de mensagens após salvar
+            return redirect('lista_mensagens_cadastradas')  # Redireciona para a lista de mensagens após salvar
     else:
         form = ModeloMensagemForm(instance=mensagem)  # Preenche o formulário com os dados da mensagem
 
     return render(request, 'detalhe_mensagem_cadastrada.html', {'form': form, 'mensagem': mensagem})
+
+
+
+
+
+def nova_campanha(request):
+    if request.method == 'POST':
+        responsavel = request.POST.get('responsavel')
+        titulo = request.POST.get('titulo')
+        mensagem_id = request.POST.get('mensagem')
+        data_envio = request.POST.get('data')
+        hora_envio = request.POST.get('hora')
+
+        if responsavel and titulo and mensagem_id and data_envio and hora_envio:
+            mensagem = ModeloMensagem.objects.get(id=mensagem_id)
+            Campanha.objects.create(
+                responsavel=responsavel,
+                titulo=titulo,
+                mensagem=mensagem,
+                data_envio=data_envio,
+                hora_envio=hora_envio
+            )
+            return redirect('listar_campanhas')
+    else:
+        mensagens = ModeloMensagem.objects.all()
+    
+    return render(request, 'nova_campanha.html', {'mensagens': mensagens})
+
+
+def listar_campanhas(request):
+    campanhas = Campanha.objects.all()
+    return render(request, 'listar_campanhas.html', {'campanhas': campanhas})
+
+
