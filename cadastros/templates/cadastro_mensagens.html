@@ -12,7 +12,7 @@
     <div class="container-principal">
         <form method="POST" action="{% url 'cadastro_mensagens' %}" class="formulario-modelo-mensagem">
             {% csrf_token %}  <!-- Proteção CSRF -->
-            {% comment %} coment {% endcomment %}
+            {% comment %}  {% endcomment %}
             <div class="cabecalho">
                 <p class="titulo">Modelo de Mensagem</p>
                 <p class="subtitulo">
