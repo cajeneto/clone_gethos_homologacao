@@ -1,0 +1,126 @@
+/* Fonte geral da página */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Estilização do cabeçalho do contato */
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    background-color: #009688;
+    color: white;
+    font-weight: 700;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.contact-info h2 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.contact-phone, .contact-email {
+    display: block;
+    margin-right: 15px;
+}
+
+.contact-info a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+/* Botões de ações no cabeçalho */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-schedule, .btn-actions {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-schedule {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-schedule:hover {
+    background-color: #0056b3;
+}
+
+.btn-actions {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+.btn-actions:hover {
+    background-color: #f1f1f1;
+}
+
+/* Navegação abaixo do cabeçalho */
+.contact-nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.nav-item {
+    text-align: center;
+    font-size: 14px;
+}
+
+.nav-item span {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Conteúdo da seção principal */
+.content-section {
+    padding: 20px;
+    background-color: white;
+    min-height: 400px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f5f5f5;
+    font-size: 14px;
+    color: #666;
+}

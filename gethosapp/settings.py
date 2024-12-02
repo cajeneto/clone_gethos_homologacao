@@ -1,4 +1,7 @@
 from pathlib import Path
+import os
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -8,9 +11,39 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-mv1tfce_$46b(po8ij_$69y4)!paib(3o-ato+)9oo-2(x9u)a"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
 
-ALLOWED_HOSTS = []
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True' #variáveis de ambientes
+
+# ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOST', '').split(',')
+
+ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'www.gethostecnologia.com.br', 'localhost', '127.0.0.1']
+
+
+
+
+
+
+
+
+#ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'localhost', '127.0.0.1']
+
+
+# inserido CSRF confiável data 26/11/2024
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://gethostecnologia.com.br',
+    'http://gethostecnologia.com.br',
+]
+
+
+
+
+
+
+
 
 
 # Application definition
@@ -24,7 +57,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "gethos_home",
     "cadastros",
-    "processos"
+    "processos",
+    "notificacoes",
+    "perfil",
+    "relatorios",
+    "integration_api_zwa",
+
 ]
 
 MIDDLEWARE = [
@@ -66,8 +104,12 @@ WSGI_APPLICATION = "gethosapp.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "gethosapp",
+	"USER": "gethosappuser",
+	"PASSWORD": "gethosappsenha",
+	"HOST": "127.0.0.1",
+	"PORT": "5432",
     }
 }
 
@@ -96,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Sao_Paulo"
 
 USE_I18N = True
 
@@ -106,8 +148,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+STATIC_ROOT = BASE_DIR / "static/"
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
+
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/webapps/gethosapp/projetoGethos/media/'
+
+
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -119,3 +171,8 @@ LOGIN_REDIRECT_URL = 'dashboard.auth'
 
 # URL para redirecionar ao fazer logout
 LOGOUT_REDIRECT_URL = 'home'
+
+
+
+
+

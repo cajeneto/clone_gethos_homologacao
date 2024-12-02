@@ -97,10 +97,10 @@
               <input type="text" id="name" name="nome" placeholder="E.g. Olivia" required>
               
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="E.g. olivia@gmail.com" required>
+              <input type="email" id="email" name="email" placeholder="olivia@gmail.com" required>
               
               <label for="phone">Telefone</label>
-              <input type="tel" id="phone" name="telefone" placeholder="E.g. 5582991326715" required>
+              <input type="tel" id="phone" name="telefone" placeholder="5582991326715" required>
 
               <label for="empresa">Empresa</label>
               <input type="emp" id="empresa" name="empresa" placeholder="Empresa">
@@ -148,7 +148,7 @@
                       <td>{{ contato.email }}</td>
                       <td>{{ contato.empresa }}</td>
                       <td>{{ contato.status }}</td>
-                      <td>{{ contato.score }}</td>
+                      <td>{{ contato.data_criacao|date:"d/m/Y H:i"}}</td>
                       <td>
                           <button href="#" class="action-btn view-btn">Ver</button>
                           <button href="#" class="action-btn edit-btn">Editar</button>

@@ -14,7 +14,6 @@ from .models import Contato
 from .forms import ContatoForm
 
 
-
 def home(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -36,7 +35,7 @@ def create_account(request):
     return render(request, 'create_account.html')
 
 
-# @login_required
+
 #  TRATA DE ADICIONAR O USUÁRIO NA LISTA DE CONTATOS
 # Função para tratar a adição de novos contatos e exibir a lista de contatos
 def dashboard_auth(request):
@@ -77,7 +76,7 @@ def dashboard_auth(request):
 
             
 
-    contatos = Contato.objects.all()
+    contatos = Contato.objects.all().order_by('-data_criacao')
     return render(request, 'dashboard_auth.html', {
         'form': form,
         'listContacts': contatos,

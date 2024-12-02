@@ -1,0 +1,139 @@
+/* Estilo geral para a página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2em;
+    color: #4d5ac0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #e9f5ff;
+}
+
+table td {
+    color: #555;
+}
+
+/* Estilo dos botões */
+button, .btn-criar-nova, .btn-voltar {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.btn-criar-nova, .btn-voltar {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.btn-criar-nova {
+    background-color: #4d5ac0;
+}
+
+.btn-voltar {
+    background-color: #6c757d;
+}
+
+button:hover, .btn-criar-nova:hover, .btn-voltar:hover {
+    background-color: #3a4a91;
+}
+
+.btn-salvar {
+    background-color: #28a745;
+    color: #fff;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.btn-salvar:hover {
+    background-color: #218838;
+}
+
+.btn-voltar:hover {
+    background-color: #5a6268;
+}
+
+/* Estilo do formulário */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+form input[type="text"],
+form textarea,
+form select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form .btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
