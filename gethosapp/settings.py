@@ -15,7 +15,11 @@ SECRET_KEY = "django-insecure-mv1tfce_$46b(po8ij_$69y4)!paib(3o-ato+)9oo-2(x9u)a
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
+<<<<<<< HEAD
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True' #variáveis de ambientes
+=======
+DEBUG = True #variáveis de ambientes
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOST', '').split(',')
 
@@ -41,11 +45,14 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,6 +62,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+<<<<<<< HEAD
+=======
+    "rest_framework",
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     "gethos_home",
     "cadastros",
     "processos",
@@ -81,7 +92,11 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
+<<<<<<< HEAD
             # BASE_DIR / "gethos_home" / "templates",
+=======
+            BASE_DIR / "gethos_home" / "templates",
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
             BASE_DIR / "templates",
         ],
         "APP_DIRS": True,  
@@ -106,7 +121,11 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "gethosapp",
+<<<<<<< HEAD
 	"USER": "gethosappuser",
+=======
+	"USER": "postgres",
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 	"PASSWORD": "gethosappsenha",
 	"HOST": "127.0.0.1",
 	"PORT": "5432",
@@ -114,6 +133,21 @@ DATABASES = {
 }
 
 
+<<<<<<< HEAD
+=======
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+
+
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -148,6 +182,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+<<<<<<< HEAD
 STATIC_ROOT = BASE_DIR / "static/"
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
@@ -156,6 +191,20 @@ STATICFILES_DIRS = [BASE_DIR / "staticfiles"]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/webapps/gethosapp/projetoGethos/media/'
+=======
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+#STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
+
+#MEDIA_URL = '/staticfiles/'
+#MEDIA_ROOT = '/webapps/gethosapp/projetoGethos/media/'
+#MEDIA_ROOT = 'staticfiles/'
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 
 
@@ -173,6 +222,26 @@ LOGIN_REDIRECT_URL = 'dashboard.auth'
 LOGOUT_REDIRECT_URL = 'home'
 
 
+<<<<<<< HEAD
+=======
+# Timezone
+CELERY_TIMEZONE = 'UTC'
+
+# Aceitar apenas formatos JSON
+CELERY_BROKER_URL = "redis://localhost:6379/0"  # Redis precisa estar rodando
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+
+
+# Backend opcional para armazenar os resultados das tarefas
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+
+
+
+SIMPLESVET_EMAIL= "netocajeh@gmail.com"
+SIMPLESVET_PASSWORD= "Neto03@@"
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 
 

@@ -1,6 +1,14 @@
 from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
+<<<<<<< HEAD
+=======
+from django.urls import path
+from .views import enviar_mensagem_whatsapp  # Certifique-se de importar a view
+
+# from .views import ContatoListCreate, ContatoDetail
+
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 
 #  importando da views do app
@@ -10,7 +18,18 @@ from gethos_home.views import (
     dashboard_auth,
     logout_view,
     login_admin,
+<<<<<<< HEAD
     importar_contatos
+=======
+    importar_contatos,
+    salvar_dados_no_banco,
+    enviar_mensagem_whatsapp,
+    ContatoListCreate,
+    ContatoDetail,
+    CampanhaListCreateView,
+   
+    
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     
 )
 
@@ -23,4 +42,13 @@ urlpatterns = [
     path("criarContaGethos", create_account, name="create_account"),
     path("logoutUser/", logout_view, name="logout_view"), #trata do logout do usuário
     path('importar-contatos/', importar_contatos, name='importar_contatos'),
+<<<<<<< HEAD
+=======
+    path("salvar_dados/", salvar_dados_no_banco, name="salvar_dados"),
+    path('enviar-mensagem-whatsapp/', enviar_mensagem_whatsapp, name='enviar_mensagem_whatsapp'),
+    path('api/contatos/', ContatoListCreate.as_view(), name='contato-list'),
+    path('api/contatos/<int:pk>/', ContatoDetail.as_view(), name='contato-detail'),
+    path('api/campanhas/', CampanhaListCreateView.as_view(), name='campanha-list-create'),
+    # path("webhooks/", views.webhook_receiver, name='webhook_receiver'),
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 ]

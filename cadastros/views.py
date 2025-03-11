@@ -4,11 +4,36 @@ from .forms import ModeloMensagemForm, ModeloMensagem
 from .models import Campanha
 from .forms import CampanhaForm
 from django.contrib import messages
+<<<<<<< HEAD
+=======
+from gethos_home.models import Contato
+from gethos_home.forms import ContatoForm
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 
 
 def adicionar_contato(request):
+<<<<<<< HEAD
     return render(request, 'cadastro-contato.html')
+=======
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            print("Formulário válido, salvando contato...")
+            form.save()  # Salva o contato
+            return redirect('dashboard_auth')  # Redireciona para a mesma página após salvar
+        else:
+            print("Formulário inválido!")
+            print(form.errors)  # Exibe os erros de validação
+    else:
+        form = ContatoForm()  # Cria um formulário vazio para ser exibido
+    contatos = Contato.objects.all().order_by('-data_criacao')
+
+    return render(request, 'cadastro-contato.html', {
+        'contato': contatos,
+        'form': form,
+        })
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 
 def visualizar_contato(request):

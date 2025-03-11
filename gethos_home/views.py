@@ -8,10 +8,29 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
 import pandas as pd
+<<<<<<< HEAD
 from django.contrib import messages
 from .forms import UploadExcelForm
 from .models import Contato
 from .forms import ContatoForm
+=======
+from .forms import UploadExcelForm
+from .models import Contato, Veterinario, MensagemWhatsApp
+from .forms import ContatoForm
+from .webScrapingVet import buscar_dados, salvar_dados_no_banco
+from .api import enviar_mensagem_api
+import asyncio
+from .services import salvar_contato
+from django.utils.timezone import now
+# from .tasks import   # Chamaremos essa função depois
+import datetime
+from rest_framework import generics
+from .models import Contato
+from .models import Campanha
+from .serializers import ContatoSerializer, CampanhaSerializer
+from processos.tasks import enviar_campanha
+
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 
 def home(request):
@@ -36,6 +55,15 @@ def create_account(request):
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 #  TRATA DE ADICIONAR O USUÁRIO NA LISTA DE CONTATOS
 # Função para tratar a adição de novos contatos e exibir a lista de contatos
 def dashboard_auth(request):
@@ -52,7 +80,10 @@ def dashboard_auth(request):
         form = ContatoForm()  # Cria um formulário vazio para ser exibido
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     # início de configuração da views dashboard_auth para receber a função de selecionar contatos na lista de contatos.
 
      # Obtém a lista de IDs dos contatos selecionados no formulário
@@ -74,12 +105,24 @@ def dashboard_auth(request):
             messages.error(request, "Nenhum contato foi selecionado.")
 
 
+<<<<<<< HEAD
             
 
     contatos = Contato.objects.all().order_by('-data_criacao')
     return render(request, 'dashboard_auth.html', {
         'form': form,
         'listContacts': contatos,
+=======
+    contatos = Contato.objects.all().order_by('-data_criacao')  
+    veterinarios = Veterinario.objects.all()  # Adicione esta linha para definir a variável
+
+    print("Contatos encontrados:", contatos)  # Debug para ver os contatos no console
+
+    return render(request, 'dashboard_auth.html', {
+        'form': form,
+        'listContacts': contatos,
+        'veterinarios': veterinarios,
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     })
 
 
@@ -90,7 +133,10 @@ def logout_view(request):
     return redirect('home')  # Redireciona para a página de login (ou qualquer outra página) após o logout
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 # configuração de url para login de administrador
 def login_admin(request):
     return HttpResponse('teste login administrador')
@@ -98,6 +144,7 @@ def login_admin(request):
 
 
 def importar_contatos(request):
+<<<<<<< HEAD
     if request.method == 'POST':
         form = UploadExcelForm(request.POST, request.FILES)
         if form.is_valid():
@@ -131,3 +178,104 @@ def importar_contatos(request):
     return render(request, 'dashboard_auth.html', {'form': form})
 
 
+=======
+    if request.method == "POST":
+        try:
+            # Chama a função do web scraping
+            resultado = executar_webscraping(request)
+            return JsonResponse({"status": "sucesso", "mensagem": "Importação concluída com sucesso!", "dados": resultado})
+        except Exception as e:
+            return JsonResponse({"status": "erro", "mensagem": f"Erro ao importar: {str(e)}"})
+    return JsonResponse({"status": "falha", "mensagem": "Método inválido."})
+
+
+
+# FUNÇÃO PARA REALIZAR LOGIN NO SIMPLES VET
+
+def executar_webscraping(request):
+    if request.method == "POST":
+        agendamentos = buscar_dados()
+
+        # Salva cada agendamento no banco de dados
+        for agendamento in agendamentos:
+            salvar_dados_no_banco(agendamento)  # Função já implementada no webScraping.py
+
+        return JsonResponse({"agendamentos": agendamentos})
+    return JsonResponse({"erro": "Método não permitido."}, status=405)
+
+
+
+
+
+
+
+
+
+@csrf_exempt
+def salvar_dados_no_banco(request):
+     if request.method == "POST":
+        dados = json.loads(request.body)
+        contato = salvar_contato(dados)
+        return JsonResponse({"message": f"Contato {contato.nome} salvo com sucesso!"}, status=201)
+
+
+
+
+
+
+
+
+def enviar_mensagem_whatsapp(request):
+    
+    if request.method == 'POST':
+        contato_id = request.POST.get('contato')
+        mensagem = request.POST.get('mensagem')
+        data_envio = request.POST.get('data_envio')
+
+        contato = Contato.objects.get(id=contato_id)
+
+        if data_envio:
+            data_envio = datetime.datetime.strptime(data_envio, "%Y-%m-%dT%H:%M")
+        else:
+            data_envio = now()
+
+        mensagem_whatsapp = MensagemWhatsApp.objects.create(
+            contato=contato,
+            mensagem=mensagem,
+            data_envio=data_envio,
+        )
+
+        if data_envio <= now():
+            # CHAMAR A FUNÇÃO DIRETAMENTE (sem Celery)
+            resultado = enviar_mensagem_api(mensagem_whatsapp.id)
+            print("Resultado do envio:", resultado)
+
+        return redirect('dashboard_auth')
+
+    return redirect('dashboard_auth')
+
+
+
+
+
+
+
+
+class ContatoListCreate(generics.ListCreateAPIView):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoSerializer
+
+class ContatoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoSerializer
+
+
+class CampanhaListCreateView(generics.ListCreateAPIView):
+    queryset = Campanha.objects.all()
+    serializer_class = CampanhaSerializer
+
+    def perform_create(self, serializer):
+        # Salva a campanha e dispara o envio
+        campanha = serializer.save()
+        enviar_campanha.delay(campanha.id, intervalo=10)  # Intervalo padrão de 10s
+>>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)

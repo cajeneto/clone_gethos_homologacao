@@ -1,0 +1,57 @@
+
+
+<!-- Tabela de Contatos -->
+<div class="container-div">
+    <p class="list-contacts-title"><strong>LISTA DE CONTATOS</strong></p>
+  </div>
+<div class="table-container">
+    <table class="contacts-table">
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="select-all"></th> <!-- Checkbox para selecionar todos -->
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Nome Pet</th>
+                <th>Veterinário Responsável</th>
+                <th>Data Atendimento</th>
+                <th>Hora Atendimento</th>
+                <th>Tipo do Atendimento</th>
+                <th>Data do Envio Mensagens</th>
+                <th>Empresa</th>
+                <th>Status</th>
+                <th>Criado em:</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contato in contato %}
+            <tr>
+                <td><input type="checkbox" name="selected_contacts" value="{{ contato.id }}" class="contact-checkbox"></td> <!-- Checkbox individual -->
+                <td>{{ contato.id }}</td>
+                <td>{{ contato.nome }}</td>
+                <td>{{ contato.telefone_formatado }}</td>
+                <td>{{ contato.nomeAnimal }}</td>
+                <td>{{ contato.nomeVet }}</td>
+                <td>{{ contato.dataConsulta|date:"d/m/Y" }}</td>
+                <td>{{ contato.horaConsulta|time:"H:i" }}</td>
+                <td>{{ contato.tipoAtendimento }}</td>
+                <td>{{ contato.dataAcao|date:"d/m/Y" }}</td>
+                <td>{{ contato.empresa }}</td>
+                <td>{{ contato.status }}</td>
+                <td>{{ contato.data_criacao|date:"d/m/Y H:i"}}</td>
+                <td>
+                    <div class="btn-grupo">
+                        <button href="#" class="action-btn view-btn" id="btn-acion">Ver</button>
+                        <button href="#" class="action-btn edit-btn" id="btn-acion">Editar</button>
+                        <button href="#" class="action-btn delete-btn" id="btn-acion">Excluir</button>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    {% comment %} <button type="submit" class="submit-btn">Realizar Ação</button> <!-- Botão para enviar contatos selecionados --> {% endcomment %}
+    
+ 

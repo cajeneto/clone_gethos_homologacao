@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios de Campanhas</title>
+    <link rel="stylesheet" href="{% static 'processos/css/relatorios.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+    <div class="container">
+        <h1>Relatórios de Campanhas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome da Campanha</th>
+                    <th>Total de Contatos</th>
+                    <th>Mensagens Enviadas</th>
+                    <th>Mensagens Falhas</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in relatorio %}
+                    <tr>
+                        <td>{{ item.nome }}</td>
+                        <td>{{ item.total_contatos }}</td>
+                        <td>{{ item.mensagens_enviadas }}</td>
+                        <td>{{ item.mensagens_falhas }}</td>
+                        <td>{{ item.status }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">Nenhuma campanha encontrada.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
