@@ -1,15 +1,9 @@
 {% load static %}
-<<<<<<< HEAD
-=======
-
-<!-- taskmanager/templates/taskmanager/board.html -->
->>>>>>> backup-local
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Fluxo de Captação</title>
     <link rel="stylesheet" href="{% static 'processos/css/fluxo_captacao.css' %}">
 
@@ -27,26 +21,10 @@
                 <div class="cardBoard" data-task-id="{{ etapa.id }}">
                     <h3>{{ etapa.titulo }}</h3>
                     <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
-=======
-    <title>Quadro de Tarefas</title>
-    <link rel="stylesheet" href="{% static 'processos/css/fluxo_captacao.css' %}">
-</head>
-<body>
-    {% include 'menu_header.html' %}
-    <div class="board">
-        <div class="column">
-            <h2>A Fazer</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
-            {% for etapa in fluxo_a_fazer %}
-                <div class="card">
-                    <h3>{{ etapa_titulo }}</h3>
-                    <p>{{ etapa_descricao }}</p>
->>>>>>> backup-local
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
             {% endfor %}
-<<<<<<< HEAD
             </div>
         </div>
         <div class="column" data-status="Em andamento">
@@ -57,22 +35,11 @@
                 <div class="cardBoard" data-task-id="{{ etapa.id }}">
                     <h3>{{ etapa.titulo }}</h3>
                     <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
-=======
-        </div>
-
-        <div class="column">
-            <h2>Em Andamento</h2>
-            {% for etapa in fluxo_progresso %}
-                <div class="card">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.descricao }}</p>
->>>>>>> backup-local
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
             {% endfor %}
         </div>
-<<<<<<< HEAD
         </div>
         <div class="column" data-status="Concluído">
             <h2>Concluído</h2>
@@ -97,20 +64,10 @@
                 <div class="cardBoard" data-task-id="{{ etapa.id }}">
                     <h3>{{ etapa.titulo }}</h3>
                     <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
-=======
-
-        <div class="column">
-            <h2>Concluído</h2>
-            {% for etapa in fluxo_concluido %}
-                <div class="card">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.descricao }}</p>
->>>>>>> backup-local
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
             {% endfor %}
-<<<<<<< HEAD
             </div>
         </div> {% endcomment %}
     </div>
@@ -183,11 +140,3 @@
 
 
 
-=======
-        </div>
-    </div>
-
-    {% comment %} <script src="{% static 'js/scripts.js' %}"></script> {% endcomment %}
-</body>
-</html>
->>>>>>> backup-local

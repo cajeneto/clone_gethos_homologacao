@@ -4,16 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Criar Campanha</title>
-=======
-    <title>Enviar Mensagens</title>
->>>>>>> backup-local
     <link rel="stylesheet" href="{% static 'processos/css/enviar_mensagem.css' %}">
 </head>
 <body>
     {% include 'menu_header.html' %}
-<<<<<<< HEAD
     <div class="container">
         <h1>Criar Nova Campanha</h1>
         {% if messages %}
@@ -57,129 +52,3 @@
     </div>
 </body>
 </html>
-=======
-
-<div class="containerCampanhaEnviarMensagem">
-    <div class="group-contacts">
-        <h3>Grupo de contatos da campanha</h3>
-        <hr>
-        <br>
-        <div class="search-bar">
-            <input type="text" placeholder="Pesquisar Contatos">
-        </div>
-        <div class="contacts-list">
-            <!-- Lista de contatos -->
-            <ul class="listaContatosEnviarMensagem">
-                {% for contato in contato %}
-                <li><span class="icon">👤</span> {{ contato.nome }} | {{ contato.telefone }}</li>
-                {% empty %}
-            <li>Nenhum contato cadastrado.</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <button class="btn-add-group">+ Criar Grupo de Contatos</button>
-    </div>
-
-    <div class="message-section">
-        <h3>Enviar Mensagens</h3>
-        <hr>
-        <br>
-        <form id="sendMessageForm">
-            <!-- Seleção de Grupo e Instância -->
-            
-            <div class="form-group">
-                <div class="grupoContato">
-                        
-                        <label for="grupo">Selecione o grupo de contato</label>
-                        <select id="grupo"  name="grupo" required>
-                            <option value="" disabled selected>Select</option>
-                            {% for grupo in grupos %}
-                            <option value="{{ grupo.id }}">{{ grupo.nome }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-
-                    <div class="grupoContato">
-                        <label for="instancia">Instância</label>
-                        <select id="instancia" name="instancia" required>
-                            <option value="" disabled selected>Select</option>
-                            {% for instancia in instancias %}
-                            <option value="{{ instancia.id }}">{{ instancia.nome }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-            </div>
-
-            <!-- Campanha e Tempo de Envio -->
-            <div class="form-group">
-                <div class="grupoContato">
-
-                    
-                    <label for="campanha">Campanha</label>
-                    <select id="campanha" name="campanha" onchange="exibirMensagem()" required>
-                        <option value="" disabled selected selected>Selecione o título da campanha</option>
-                        {% for campanhas in campanhas %}
-                            <option value="{{ campanhas.titulo }}" data-mensagem="{{ campanhas.mensagem.conteudo_mensagem }}">
-                                {{ campanhas.titulo }}
-                            </option>
-                            {% endfor %}
-                    </select>
-                </div>
-
-                <div class="grupoContato">
-                    <label for="tempo_envio">Tempo de envio de mensagens</label>
-                    <select id="tempo_envio" name="tempo_envio" required>
-                        <option value="30">30 segundos</option>
-                        <option value="60">1 minuto</option>
-                        <option value="120">2 minutos</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Exibição de Mensagem -->
-            <div class="form-group">
-                <div class="grupoTexto">
-                    <label>Mensagem que será enviada para os contatos selecionados</label>
-                    <textarea id="conteudoMensagem">
-                        {% comment %} aqui exibe mensagem que será enviada. {% endcomment %}
-                    </textarea>
-                </div>
-            </div>
-
-
-
-
-            <!-- Botões -->
-            <div class="button-group">
-                <button type="button" class="btn-edit-message">Editar Mensagem</button>
-                <button type="button" class="btn-edit-contacts">Editar Contatos</button>
-            </div>
-        </form>
-    </div>
-</div>
-
-
-
-
-
-<script>
-    
-
-
-    function exibirMensagem() {
-        // Captura o select e o textarea
-        const selectCampanha = document.getElementById("campanha");
-        const conteudoMensagem = document.getElementById("conteudoMensagem");
-
-        // Obtém a mensagem associada à campanha selecionada
-        const campanhaSelecionada = selectCampanha.options[selectCampanha.selectedIndex];
-        const mensagem = campanhaSelecionada.getAttribute("data-mensagem") || "";
-
-        // Atualiza o textarea com o conteúdo da mensagem
-        conteudoMensagem.value = mensagem;
-    }
-    
-</script>
-</body>
-</html>
->>>>>>> backup-local
