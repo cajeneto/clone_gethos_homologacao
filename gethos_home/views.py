@@ -8,7 +8,6 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
 import pandas as pd
-<<<<<<< HEAD
 from .forms import UploadExcelForm
 from .models import Contato, Veterinario, MensagemWhatsApp
 from .forms import ContatoForm
@@ -25,12 +24,6 @@ from .models import Campanha
 from .serializers import ContatoSerializer, CampanhaSerializer
 from processos.tasks import enviar_campanha
 
-=======
-from django.contrib import messages
-from .forms import UploadExcelForm
-from .models import Contato
-from .forms import ContatoForm
->>>>>>> backup-local
 
 
 def home(request):
@@ -55,15 +48,12 @@ def create_account(request):
 
 
 
-<<<<<<< HEAD
 
 
 
 
 
 
-=======
->>>>>>> backup-local
 #  TRATA DE ADICIONAR O USUÁRIO NA LISTA DE CONTATOS
 # Função para tratar a adição de novos contatos e exibir a lista de contatos
 def dashboard_auth(request):
@@ -101,7 +91,6 @@ def dashboard_auth(request):
             messages.error(request, "Nenhum contato foi selecionado.")
 
 
-<<<<<<< HEAD
     contatos = Contato.objects.all().order_by('-data_criacao')  
     veterinarios = Veterinario.objects.all()  # Adicione esta linha para definir a variável
 
@@ -111,14 +100,6 @@ def dashboard_auth(request):
         'form': form,
         'listContacts': contatos,
         'veterinarios': veterinarios,
-=======
-            
-
-    contatos = Contato.objects.all().order_by('-data_criacao')
-    return render(request, 'dashboard_auth.html', {
-        'form': form,
-        'listContacts': contatos,
->>>>>>> backup-local
     })
 
 
@@ -136,7 +117,6 @@ def login_admin(request):
 
 
 def importar_contatos(request):
-<<<<<<< HEAD
     if request.method == "POST":
         try:
             # Chama a função do web scraping
@@ -236,38 +216,3 @@ class CampanhaListCreateView(generics.ListCreateAPIView):
         # Salva a campanha e dispara o envio
         campanha = serializer.save()
         enviar_campanha.delay(campanha.id, intervalo=10)  # Intervalo padrão de 10s
-=======
-    if request.method == 'POST':
-        form = UploadExcelForm(request.POST, request.FILES)
-        if form.is_valid():
-            arquivo_excel = request.FILES['arquivo_excel']
-            
-            try:
-                # Ler o arquivo Excel usando Pandas
-                df = pd.read_excel(arquivo_excel, engine='openpyxl')
-                
-                # Verificar se as colunas corretas estão presentes
-                if all(col in df.columns for col in ['nome', 'email', 'telefone']):
-                    # Iterar sobre as linhas do DataFrame e criar objetos de Contato
-                    for _, row in df.iterrows():
-                        Contato.objects.create(
-                            nome=row['nome'],
-                            email=row['email'],
-                            telefone=row['telefone'],
-                            empresa=row.get('empresa', ''),  # Coluna opcional
-                            status=row.get('status', 'Ativo')  # Coluna opcional
-                        )
-                    messages.success(request, 'Contatos importados com sucesso!')
-                    return redirect('dashboard_auth')  # Redireciona para onde você desejar
-                else:
-                    messages.error(request, 'Arquivo Excel não contém as colunas corretas.')
-            except Exception as e:
-                messages.error(request, f'Erro ao processar o arquivo: {e}')
-                
-    else:
-        form = UploadExcelForm()
-
-    return render(request, 'dashboard_auth.html', {'form': form})
-
-
->>>>>>> backup-local
