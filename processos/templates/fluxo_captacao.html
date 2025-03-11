@@ -1,15 +1,11 @@
 {% load static %}
-<<<<<<< HEAD
 
 <!-- taskmanager/templates/taskmanager/board.html -->
-=======
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Quadro de Tarefas</title>
     <link rel="stylesheet" href="{% static 'processos/css/fluxo_captacao.css' %}">
 </head>
@@ -23,30 +19,10 @@
                 <div class="card">
                     <h3>{{ etapa_titulo }}</h3>
                     <p>{{ etapa_descricao }}</p>
-=======
-    <title>Fluxo de Captação</title>
-    <link rel="stylesheet" href="{% static 'processos/css/fluxo_captacao.css' %}">
-
-</head>
-
-<body>
-    {% include 'menu_header.html' %}
-    <div class="board">
-        <div class="column" data-status="Enviar mensagens Whatsapp">
-            <h2>Enviar mensagens Whatsapp</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
-            <div class="columnCardMove">
-            {% for etapa in fluxo_a_fazer %}
-
-                <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
             {% endfor %}
-<<<<<<< HEAD
         </div>
 
         <div class="column">
@@ -55,24 +31,11 @@
                 <div class="card">
                     <h3>{{ etapa.titulo }}</h3>
                     <p>{{ etapa.descricao }}</p>
-=======
-            </div>
-        </div>
-        <div class="column" data-status="Em andamento">
-            <h2>Confirmações em Andamento</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
-            <div class="columnCardMove">
-            {% for etapa in fluxo_progresso %}
-                <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
             {% endfor %}
         </div>
-<<<<<<< HEAD
 
         <div class="column">
             <h2>Concluído</h2>
@@ -80,114 +43,13 @@
                 <div class="card">
                     <h3>{{ etapa.titulo }}</h3>
                     <p>{{ etapa.descricao }}</p>
-=======
-        </div>
-        <div class="column" data-status="Concluído">
-            <h2>Concluído</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
-            <div class="columnCardMove">
-            {% for etapa in fluxo_concluido %}
-                <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
             {% endfor %}
-<<<<<<< HEAD
         </div>
     </div>
 
     {% comment %} <script src="{% static 'js/scripts.js' %}"></script> {% endcomment %}
 </body>
 </html>
-=======
-            </div>
-        </div>
-        {% comment %} <div class="column" data-status="Confirmados">
-            <h2>Confirmados</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
-            <div class="columnCardMove">
-            {% for etapa in fluxo_a_fazer %}
-
-                <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
-                    <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
-                    <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
-                </div>
-            {% endfor %}
-            </div>
-        </div> {% endcomment %}
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script>
-        function inicializarSortable() {
-            document.querySelectorAll('.columnCardMove').forEach(column => {
-                new Sortable(column, {
-                    group: 'kanban',
-                    animation: 200,
-                    onEnd: function(evt) {
-                        const taskId = evt.item.dataset.taskId;
-                        const newStatus = evt.to.dataset.status;
-                        fetch('/processos/move-task/', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': '{{ csrf_token }}'
-                            },
-                            body: JSON.stringify({
-                                task_id: taskId,
-                                new_status: newStatus
-                            })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.status === 'success') {
-                                console.log('Tarefa movida com sucesso!');
-                            } else {
-                                console.error('Erro ao mover tarefa');
-                            }
-                        });
-                    }
-                });
-            });
-        }
-    
-        function atualizarKanban() {
-            fetch('/processos/', {
-                headers: { 'X-Requested-With': 'XMLHttpRequest' }
-            })
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                document.querySelector('.board').innerHTML = doc.querySelector('.board').innerHTML;
-                console.log("Kanban atualizado");
-                inicializarSortable();  // Reinicializa o Sortable
-            })
-            .catch(error => console.error("Erro ao atualizar Kanban:", error));
-        }
-    
-        document.addEventListener('DOMContentLoaded', () => {
-            inicializarSortable();
-            setInterval(atualizarKanban, 5000);
-        });
-    </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)

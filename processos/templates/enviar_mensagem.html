@@ -4,16 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Enviar Mensagens</title>
-=======
-    <title>Criar Campanha</title>
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     <link rel="stylesheet" href="{% static 'processos/css/enviar_mensagem.css' %}">
 </head>
 <body>
     {% include 'menu_header.html' %}
-<<<<<<< HEAD
 
 <div class="containerCampanhaEnviarMensagem">
     <div class="group-contacts">
@@ -138,48 +133,3 @@
 </script>
 </body>
 </html>
-=======
-    <div class="container">
-        <h1>Criar Nova Campanha</h1>
-        {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <div class="alert {% if message.tags == 'success' %}alert-success{% elif message.tags == 'error' %}alert-error{% endif %}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-        <form method="POST" action="{% url 'enviar_mensagem' %}">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="nome_campanha">Nome da Campanha:</label>
-                <input type="text" id="nome_campanha" name="nome_campanha" required>
-            </div>
-            <div class="form-group">
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Ex.: Olá, {nome}, seu pet {nome_animal} tem consulta marcada!"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Contatos:</label>
-                <select multiple name="contatos" required>
-                    {% for contato in contato %}
-                        <option value="{{ contato.id }}">{{ contato.nome }} - {{ contato.telefone }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="intervalo">Intervalo entre mensagens (segundos):</label>
-                <select id="intervalo" name="intervalo" required>
-                    <option value="5">5 segundos</option>
-                    <option value="10">10 segundos</option>
-                    <option value="30">30 segundos</option>
-                    <option value="60">1 minuto</option>
-                </select>
-            </div>
-            <button type="submit">Criar e Enviar Campanha</button>
-        </form>
-    </div>
-</body>
-</html>
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)

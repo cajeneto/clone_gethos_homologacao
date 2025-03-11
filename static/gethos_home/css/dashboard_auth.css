@@ -6,11 +6,6 @@
     
   }
 
-<<<<<<< HEAD
-
-=======
-/*/fdfdfdfdfdfdfdf
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     /* Navbar styles */
     .navbar {
       display: flex;
@@ -198,13 +193,6 @@
   border-radius: 8px;
   overflow: hidden;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-<<<<<<< HEAD
-=======
-  white-space: nowrap;
-    overflow-x: auto; /* Adiciona rolagem horizontal */
-    /* max-width: 250px; */
-    display: block;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 /* Table header */
@@ -213,10 +201,6 @@
   padding: 12px;
   text-align: center;
   border-bottom: 3px solid #ddd;
-<<<<<<< HEAD
-=======
-  
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 /* Table rows */
@@ -224,10 +208,6 @@
   padding: 12px;
   border-bottom: 1px solid #eee;
   text-align: center;
-<<<<<<< HEAD
-=======
-  
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 /* Hover effect on rows */
@@ -253,11 +233,7 @@
   display: flex;
   position: relative;
   height: auto; /* Pode ajustar conforme necessário */
-<<<<<<< HEAD
   width: 100%; /* Faz a div ocupar a largura completa */
-=======
-  width: 99%; /* Faz a div ocupar a largura completa */
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
   justify-content: flex-end; /* Alinha o botão à direita */
   align-items: center; /* Centraliza verticalmente */
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -266,12 +242,8 @@
   box-shadow: 1px 1px 2px rgb(106, 106, 106);
   margin-bottom: 1%;
   
-<<<<<<< HEAD
  
   
-=======
-
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
   }
 
 .list-contacts-title{
@@ -310,38 +282,17 @@
 }
 
 .action-btn:hover {
-<<<<<<< HEAD
   background-color: #d0d0d0;
-=======
-  background-color: #faf6f6;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 .adc-contato:hover {
   background-color: #3e3cc0;
   color: #fff;
-<<<<<<< HEAD
   
 }
 
 .view-btn {
   background-color: #4d5ac0;
-=======
-}
-
-
-
-
-/* Estilo do grupo de botões */
-.btn-grupo {
-  display: flex; /* Define o layout como flexbox */
-  flex-direction: column; /* Alinha os itens em coluna */
-  gap: 8px; /* Espaço entre os botões */
-}
-
-.view-btn {
-  background-color: #007bff;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
   color: #fff;
 }
 
@@ -353,20 +304,12 @@
 .delete-btn {
   background-color: #e74c3c;
   color: #fff;
-<<<<<<< HEAD
-=======
-
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 /* Adjust button sizes */
 .contacts-table td button {
   min-width: 60px;
   text-align: center;
-<<<<<<< HEAD
-=======
-  
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 /* estilização do modal */
@@ -381,22 +324,13 @@
     left: 0;
     top: 0;
     width: 100%; /* Largura completa da tela */
-<<<<<<< HEAD
     height: auto; /* Altura completa da tela */
     overflow: auto; /* Permite rolagem se o conteúdo for grande */
     background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro e transparente */
-=======
-    height: 100%; /* Altura completa da tela */
-    overflow: hidden; /* Permite rolagem se o conteúdo for grande */
-    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro e transparente */
-    
-    
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 /* Conteúdo do modal */
 .modal-content {
-<<<<<<< HEAD
     background-color: #fff; /* Fundo branco para o conteúdo */
     margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
     padding: 20px;
@@ -407,34 +341,6 @@
     top: -20vh;
     position: relative;
 }
-=======
-  background-color: #eeeeee; /* Fundo branco para o conteúdo */
-  margin: 2% auto; /* Centraliza verticalmente e horizontalmente */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 40%; /* Largura do modal */
-  max-height: 85vh; /* Limita a altura a 80% da janela de visualização */
-  overflow-y: auto; /* Adiciona rolagem vertical se necessário */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
-  border-radius: 10px; /* Cantos arredondados */
-  animation: slide-in 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  
-  
-}
-@keyframes slide-in {
-  0% {
-    transform: scaleX(0.4);
-    transform-origin: 100% 100%;
-  }
-  100% {
-    transform: scaleX(1);
-    transform-origin: 100% 100%;
-  }
-}
-
-
-
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 
 /* Estilos do botão de fechar */
 .close {
@@ -443,17 +349,8 @@
     font-size: 28px;
     font-weight: bold;
     color: red;
-<<<<<<< HEAD
 }
 
-=======
-    animation: scale-out-hor-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-    
-}
-
-
-
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 .close:hover,
 .close:focus {
     color: #000;
@@ -465,23 +362,14 @@
 form label {
     display: block;
     font-size: 16px;
-<<<<<<< HEAD
     margin-bottom: 8px;
-=======
-    margin-top: 10px;
-    margin-bottom: 2px;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     color: #333;
 }
 
 form input, form select {
     width: 100%;
     padding: 10px;
-<<<<<<< HEAD
     margin: 8px 0;
-=======
-    margin: 4px 0;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -567,50 +455,16 @@ form input:focus, form select:focus {
     height: 100%;
     transition: right 0.3s ease-in-out; /* Suavidade na abertura */
     z-index: 1000;
-<<<<<<< HEAD
-=======
-    animation: slide-in 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-    animation: scale-out-hor-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     
 }
 
 
-<<<<<<< HEAD
-=======
-@keyframes slide-in {
-  0% {
-    transform: scaleX(0.4);
-    transform-origin: 100% 100%;
-  }
-  100% {
-    transform: scaleX(1);
-    transform-origin: 100% 100%;
-  }
-}
-@keyframes scale-out-hor-right {
-  0% {
-    transform: scaleX(0.4);
-    transform-origin: 100% 100%;
-  }
-  100% {
-    transform: scaleX(1);
-    transform-origin: 100% 100%;
-  }
-}
-
-
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 /* Estilo dos botões da sidebar */
 .sidebox-btn {
     width: 100%;
     padding: 15px;
     margin-bottom: 10px;
-<<<<<<< HEAD
     background-color: #007bff;
-=======
-    background-color: #b1cbe7;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
     color: white;
     border: none;
     border-radius: 5px;
@@ -619,11 +473,7 @@ form input:focus, form select:focus {
 }
 
 .sidebox-btn:hover {
-<<<<<<< HEAD
     background-color: #0056b3;
-=======
-    background-color: #7fb8f5;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
 }
 
 /* Exibe a sidebar quando ativa */
@@ -660,13 +510,8 @@ a {
   }
   
   .action-btn {
-<<<<<<< HEAD
     padding: 4px 8px;
     font-size: 12px;
-=======
-    padding: 2px 6px;
-    font-size: 10px;
->>>>>>> 829be17 (Versão CRM GETHOS 1.3 - COM REST API)
   }
 
 
