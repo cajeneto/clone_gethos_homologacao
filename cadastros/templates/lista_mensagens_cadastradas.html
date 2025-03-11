@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Mensagens</title>
+    <link rel="stylesheet" href="{% static 'cadastros/css/lista_mensagens_cadastradas.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+    
+    <div class="container">
+        <h1>Mensagens Cadastradas</h1>
+
+        <button class="btn-criar-nova">
+            <a href="{% url 'cadastro_mensagens' %}" >Novo Modelo de Mensagem</a>
+        </button>
+
+        <table class="mensagens-tabela">
+            <thead>
+                <tr>
+                    <th>Nome do Modelo</th>
+                    <th>Tipo de Mensagem</th>
+                    <th>Conteúdo da Mensagem</th>
+                    <th>Data de Criação</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mensagem in mensagens %}
+                <tr>
+                    <td>{{ mensagem.nome_modelo }}</td>
+                    <td>
+                        {% if mensagem.tipo_mensagem == 1 %}
+                            SMS
+                        {% elif mensagem.tipo_mensagem == 2 %}
+                            WhatsApp
+                        {% elif mensagem.tipo_mensagem == 3 %}
+                            E-mail
+                        {% endif %}
+
+                    </td>
+                    <td>{{ mensagem.conteudo_mensagem }}</td>
+                    <td>{{ mensagem.data_criacao|date:"d/m/Y H:i" }}</td>
+                    <td class="actions-msg">
+                        <a href="{% url 'detalhe_mensagem_cadastrada' mensagem.id %}">
+                            <button class="action-btn view-btn">Ver</button>
+                        </a>
+                        <button href="#" class="action-btn edit-btn">Editar</button>
+                        <button href="#" class="action-btn delete-btn">Excluir</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">Nenhuma mensagem cadastrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>

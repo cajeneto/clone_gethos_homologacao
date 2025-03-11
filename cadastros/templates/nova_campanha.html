@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Campanha</title>
+    <link rel="stylesheet" href="{% static 'cadastros/css/nova_campanha.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+
+<div class="form-container">
+    <h2>Nova Campanha</h2>
+    <form method="POST" id="campanhaForm">
+        {% csrf_token %}
+
+        <!-- Responsável pela Campanha -->
+        <label for="responsavel">Responsável pela Campanha</label>
+        <input type="text" id="responsavel" name="responsavel" placeholder="Nome do responsável" required>
+
+        <!-- Título da Campanha -->
+        <label for="titulo">Título da Campanha</label>
+        <input type="text" id="titulo" name="titulo" placeholder="Título da campanha" required>
+
+        <!-- Seleção da Mensagem WhatsApp -->
+        <label for="mensagem">Selecione a Mensagem WhatsApp</label>
+        <div class="form-group">
+            <select id="mensagem" name="mensagem" required>
+                <option value="">Escolha uma mensagem...</option>
+                {% for mensagem in mensagens %}
+                    <option value="{{ mensagem.id }}">{{ mensagem.nome_modelo }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Data e Hora do envio -->
+        <div class="datetime-container">
+            <div>
+                <label for="data">Data para envio de mensagens</label>
+                <input type="date" id="data" name="data" required>
+            </div>
+            <div>
+                <label for="hora">Hora</label>
+                <input type="time" id="hora" name="hora" required>
+            </div>
+        </div>
+
+        <!-- Checkbox de confirmação -->
+        <div class="checkbox-container">
+            <input type="checkbox" id="confirmacao" name="confirmacao" required>
+            <label for="confirmacao">Aceito e confirmo as informações inseridas</label>
+        </div>
+
+        <!-- Botão de submissão -->
+        <button type="submit" class="submit-btn">Cadastrar Campanha</button>
+    </form>
+    <a href="{% url 'listar_campanhas' %}">
+        <button class="btn-voltar">Voltar à Lista de Campanhas</button>
+    </a>
+</div>
+
+<script>
+    document.getElementById('campanhaForm').addEventListener('submit', function(event) {
+        const checkbox = document.getElementById('confirmacao');
+        
+        if (!checkbox.checked) {
+            alert('Por favor, aceite e confirme as informações inseridas.');
+            event.preventDefault(); // Impede o envio do formulário
+        }
+    });
+    
+</script>
+</body>
+</html>

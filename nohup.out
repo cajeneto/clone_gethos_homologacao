@@ -1,0 +1,951 @@
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/webapps/gethosapp/projetoGethos/static' in the STATICFILES_DIRS setting does not exist.
+?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace
+
+System check identified 2 issues (0 silenced).
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/webapps/gethosapp/projetoGethos/static' in the STATICFILES_DIRS setting does not exist.
+?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace
+
+System check identified 2 issues (0 silenced).
+Error: That port is already in use.
+[22/Nov/2024 18:39:02] "GET / HTTP/1.1" 200 1783
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory '/webapps/gethosapp/projetoGethos/static' in the STATICFILES_DIRS setting does not exist.
+?: (urls.W005) URL namespace 'admin' isn't unique. You may not be able to reverse all URLs in this namespace
+
+System check identified 2 issues (0 silenced).
+[22/Nov/2024 18:41:54] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:42:03] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:43:07] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:43:13] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:43:35] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:46:04] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:52:14] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:54:33] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:54:34] "GET /static/gethos_home/css/home.css HTTP/1.1" 304 0
+[22/Nov/2024 18:54:34] "GET /static/gethos_home/img/gethosImg-login.png HTTP/1.1" 304 0
+Not Found: /favicon.ico
+[22/Nov/2024 18:54:34] "GET /favicon.ico HTTP/1.1" 404 4360
+[22/Nov/2024 18:54:51] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 18:55:28] "POST / HTTP/1.1" 302 0
+[22/Nov/2024 18:55:29] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[22/Nov/2024 18:55:29] "GET /static/gethos_home/css/menu_header.css HTTP/1.1" 200 3330
+[22/Nov/2024 18:55:29] "GET /static/gethos_home/css/dashboard_auth.css HTTP/1.1" 200 10948
+[22/Nov/2024 18:55:30] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[22/Nov/2024 18:55:49] "POST / HTTP/1.1" 302 0
+[22/Nov/2024 18:55:50] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[22/Nov/2024 18:55:51] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[22/Nov/2024 19:17:11] code 400, message Bad request syntax ('MGLNDD_167.172.206.194_8000')
+[22/Nov/2024 19:17:11] "MGLNDD_167.172.206.194_8000" 400 -
+[22/Nov/2024 20:50:23] "GET / HTTP/1.1" 200 1783
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[22/Nov/2024 21:01:26] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[22/Nov/2024 22:06:53] "GET / HTTP/1.0" 200 1783
+[22/Nov/2024 22:12:27,854] - Broken pipe from ('199.45.155.111', 54182)
+[22/Nov/2024 22:12:30] "GET / HTTP/1.1" 200 1783
+[22/Nov/2024 22:12:31,145] - Broken pipe from ('199.45.155.111', 54212)
+[22/Nov/2024 22:12:34] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[22/Nov/2024 22:12:34] "GET /favicon.ico HTTP/1.1" 404 4360
+[22/Nov/2024 22:12:35] code 505, message Invalid HTTP version (2.0)
+[22/Nov/2024 22:12:35] "PRI * HTTP/2.0" 505 -
+[22/Nov/2024 23:51:39] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[22/Nov/2024 23:51:40] "GET /favicon.ico HTTP/1.1" 404 4360
+[22/Nov/2024 23:59:18] "GET / HTTP/1.0" 200 1783
+[23/Nov/2024 00:19:01] "GET / HTTP/1.1" 200 2007
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[23/Nov/2024 00:41:42] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[23/Nov/2024 02:13:50,828] - Broken pipe from ('199.45.154.146', 45150)
+[23/Nov/2024 02:13:54] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 02:13:54,290] - Broken pipe from ('199.45.154.146', 45164)
+[23/Nov/2024 02:14:01] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[23/Nov/2024 02:14:01] "GET /favicon.ico HTTP/1.1" 404 4360
+[23/Nov/2024 02:14:02] code 505, message Invalid HTTP version (2.0)
+[23/Nov/2024 02:14:02] "PRI * HTTP/2.0" 505 -
+[23/Nov/2024 02:27:37] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 02:29:33] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[23/Nov/2024 02:29:34] "GET /favicon.ico HTTP/1.1" 404 4360
+[23/Nov/2024 03:50:54,094] - Broken pipe from ('199.45.154.126', 45404)
+[23/Nov/2024 03:50:57] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 03:50:58,073] - Broken pipe from ('199.45.154.126', 45410)
+[23/Nov/2024 03:51:03] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[23/Nov/2024 03:51:05] "GET /favicon.ico HTTP/1.1" 404 4360
+[23/Nov/2024 03:51:08] code 505, message Invalid HTTP version (2.0)
+[23/Nov/2024 03:51:08] "PRI * HTTP/2.0" 505 -
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[23/Nov/2024 04:40:40] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[23/Nov/2024 06:45:56] code 400, message Bad request version ('À\x14À')
+[23/Nov/2024 06:45:56] You're accessing the development server over HTTPS, but it only supports HTTP.
+Invalid HTTP_HOST header: 'httpbin.org'. You may need to add 'httpbin.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'httpbin.org'. You may need to add 'httpbin.org' to ALLOWED_HOSTS.
+Bad Request: /httpbin.org:443
+[23/Nov/2024 08:59:26] "CONNECT httpbin.org:443 HTTP/1.1" 400 63759
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[23/Nov/2024 09:01:30] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[23/Nov/2024 09:29:09] code 400, message Bad request syntax ('\x05\x01\x00')
+[23/Nov/2024 09:29:09] " " 400 -
+Invalid HTTP_HOST header: 'checkip.amazonaws.com:443'. You may need to add 'checkip.amazonaws.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'checkip.amazonaws.com:443'. You may need to add 'checkip.amazonaws.com' to ALLOWED_HOSTS.
+Bad Request: /checkip.amazonaws.com:443
+[23/Nov/2024 09:31:28] "CONNECT checkip.amazonaws.com:443 HTTP/1.1" 400 63799
+[23/Nov/2024 09:32:58] code 400, message Bad request version ('\x16Ë\x88ÆN!ªaì')
+[23/Nov/2024 09:32:58] You're accessing the development server over HTTPS, but it only supports HTTP.
+[23/Nov/2024 09:46:30] code 400, message Bad request syntax ('\x04\x01\x01»43¨¥\x00')
+[23/Nov/2024 09:46:30] "»43¨¥ " 400 -
+[23/Nov/2024 10:07:12,590] - Broken pipe from ('162.142.125.33', 55002)
+[23/Nov/2024 10:07:15] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 10:07:16,193] - Broken pipe from ('162.142.125.33', 55030)
+[23/Nov/2024 10:07:21] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[23/Nov/2024 10:07:22] "GET /favicon.ico HTTP/1.1" 404 4360
+[23/Nov/2024 10:07:23] code 505, message Invalid HTTP version (2.0)
+[23/Nov/2024 10:07:23] "PRI * HTTP/2.0" 505 -
+[23/Nov/2024 11:08:05] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 11:08:06] "GET /static/gethos_home/css/home.css HTTP/1.1" 304 0
+[23/Nov/2024 11:08:06] "GET /static/gethos_home/img/gethosImg-login.png HTTP/1.1" 304 0
+Not Found: /favicon.ico
+[23/Nov/2024 11:08:06] "GET /favicon.ico HTTP/1.1" 404 4360
+[23/Nov/2024 11:08:52] "POST / HTTP/1.1" 200 1917
+[23/Nov/2024 11:09:07] "POST / HTTP/1.1" 302 0
+[23/Nov/2024 11:09:08] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[23/Nov/2024 11:09:08] "GET /static/gethos_home/css/menu_header.css HTTP/1.1" 304 0
+[23/Nov/2024 11:09:08] "GET /static/gethos_home/css/dashboard_auth.css HTTP/1.1" 304 0
+[23/Nov/2024 11:09:09] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[23/Nov/2024 12:32:59] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[23/Nov/2024 12:33:11] "GET /favicon.ico HTTP/1.1" 404 4360
+Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Bad Request: /http:/api.ipify.org/
+[23/Nov/2024 12:33:15] "GET http://api.ipify.org/?format=json HTTP/1.1" 400 64172
+Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Bad Request: /www.shadowserver.org:443
+[23/Nov/2024 12:33:18] "CONNECT www.shadowserver.org:443 HTTP/1.1" 400 64351
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[23/Nov/2024 12:37:02] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[23/Nov/2024 13:05:54] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 14:36:36] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+[23/Nov/2024 14:36:36] You're accessing the development server over HTTPS, but it only supports HTTP.
+[23/Nov/2024 14:36:46] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[23/Nov/2024 14:37:05] "GET /favicon.ico HTTP/1.1" 404 4360
+Not Found: /robots.txt
+[23/Nov/2024 14:37:05] "GET /robots.txt HTTP/1.1" 404 4357
+Not Found: /sitemap.xml
+[23/Nov/2024 14:37:05] "GET /sitemap.xml HTTP/1.1" 404 4360
+Not Found: /config.json
+[23/Nov/2024 14:37:05] "GET /config.json HTTP/1.1" 404 4360
+[23/Nov/2024 14:37:05,905] - Broken pipe from ('152.32.150.29', 59582)
+Not Found: /.env
+[23/Nov/2024 16:25:06] "GET /.env HTTP/1.1" 404 4339
+[23/Nov/2024 16:27:25] code 400, message Bad request version ('À\x13À')
+[23/Nov/2024 16:27:25] You're accessing the development server over HTTPS, but it only supports HTTP.
+[23/Nov/2024 16:27:25] code 400, message Bad request version ('À(À$À\x14À')
+[23/Nov/2024 16:27:25] You're accessing the development server over HTTPS, but it only supports HTTP.
+Invalid HTTP_HOST header: 'checkip.amazonaws.com:443'. You may need to add 'checkip.amazonaws.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'checkip.amazonaws.com:443'. You may need to add 'checkip.amazonaws.com' to ALLOWED_HOSTS.
+Bad Request: /checkip.amazonaws.com:443
+[23/Nov/2024 16:37:17] "CONNECT checkip.amazonaws.com:443 HTTP/1.1" 400 63801
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[23/Nov/2024 16:56:44] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[23/Nov/2024 17:13:42,467] - Broken pipe from ('167.94.145.96', 35530)
+[23/Nov/2024 17:13:45] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 17:13:46,054] - Broken pipe from ('167.94.145.96', 50886)
+[23/Nov/2024 17:13:49] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[23/Nov/2024 17:13:49] "GET /favicon.ico HTTP/1.1" 404 4360
+[23/Nov/2024 17:13:50] code 505, message Invalid HTTP version (2.0)
+[23/Nov/2024 17:13:50] "PRI * HTTP/2.0" 505 -
+[23/Nov/2024 17:37:09] code 400, message Bad request syntax ('\x04\x01\x00\x194e)\x14\x00')
+[23/Nov/2024 17:37:09] " 4e) " 400 -
+[23/Nov/2024 17:38:09] code 400, message Bad request syntax ('\x05\x01\x00')
+[23/Nov/2024 17:38:09] " " 400 -
+Invalid HTTP_HOST header: 'hotmail-com.olc.protection.outlook.com:25'. You may need to add 'hotmail-com.olc.protection.outlook.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'hotmail-com.olc.protection.outlook.com:25'. You may need to add 'hotmail-com.olc.protection.outlook.com' to ALLOWED_HOSTS.
+Bad Request: /hotmail-com.olc.protection.outlook.com:25
+[23/Nov/2024 17:38:09] "CONNECT hotmail-com.olc.protection.outlook.com:25 HTTP/1.1" 400 64026
+[23/Nov/2024 18:50:05] "GET / HTTP/1.0" 200 1783
+Not Found: /.env
+[23/Nov/2024 18:54:42] "GET /.env HTTP/1.1" 404 4339
+[23/Nov/2024 19:19:00] "GET / HTTP/1.1" 200 1783
+[23/Nov/2024 20:22:11] code 400, message Bad request syntax ('\x04\x01\x00PPBS/\x00')
+[23/Nov/2024 20:22:11] " PPBS/ " 400 -
+[23/Nov/2024 20:23:11] code 400, message Bad request syntax ('\x05\x01\x00')
+[23/Nov/2024 20:23:11] " " 400 -
+Invalid HTTP_HOST header: '80.66.83.47:80'. You may need to add '80.66.83.47' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '80.66.83.47:80'. You may need to add '80.66.83.47' to ALLOWED_HOSTS.
+Bad Request: /80.66.83.47:80
+[23/Nov/2024 20:23:11] "CONNECT 80.66.83.47:80 HTTP/1.1" 400 63324
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[23/Nov/2024 20:29:50] "CONNECT example.com:443 HTTP/1.1" 400 63517
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[24/Nov/2024 01:01:46] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[24/Nov/2024 01:47:36,620] - Broken pipe from ('167.94.146.48', 34450)
+[24/Nov/2024 01:47:40] "GET / HTTP/1.1" 200 1783
+[24/Nov/2024 01:47:40,184] - Broken pipe from ('167.94.146.48', 34532)
+[24/Nov/2024 01:47:43] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[24/Nov/2024 01:47:44] "GET /favicon.ico HTTP/1.1" 404 4360
+[24/Nov/2024 01:47:44] code 505, message Invalid HTTP version (2.0)
+[24/Nov/2024 01:47:44] "PRI * HTTP/2.0" 505 -
+[24/Nov/2024 01:58:09] "GET / HTTP/1.1" 200 1783
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[24/Nov/2024 04:35:19] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[24/Nov/2024 04:57:14] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[24/Nov/2024 04:57:29] "GET /favicon.ico HTTP/1.1" 404 4360
+Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Bad Request: /http:/api.ipify.org/
+[24/Nov/2024 04:57:33] "GET http://api.ipify.org/?format=json HTTP/1.1" 400 64036
+Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Bad Request: /www.shadowserver.org:443
+[24/Nov/2024 04:57:36] "CONNECT www.shadowserver.org:443 HTTP/1.1" 400 64215
+[24/Nov/2024 07:26:55] code 400, message Bad request syntax ('MGLNDD_167.172.206.194_8000')
+[24/Nov/2024 07:26:55] "MGLNDD_167.172.206.194_8000" 400 -
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[24/Nov/2024 08:47:42] "CONNECT example.com:443 HTTP/1.1" 400 63517
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[24/Nov/2024 09:12:50] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63539
+[24/Nov/2024 09:13:00] code 400, message Bad request syntax ('\x05\x01\x00')
+[24/Nov/2024 09:13:00] " " 400 -
+[24/Nov/2024 10:55:37] code 400, message Bad request version ('À\x14À')
+[24/Nov/2024 10:55:37] You're accessing the development server over HTTPS, but it only supports HTTP.
+[24/Nov/2024 10:55:37] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03¬\x83\x19')
+[24/Nov/2024 10:55:37] You're accessing the development server over HTTPS, but it only supports HTTP.
+[24/Nov/2024 10:55:37] "GET / HTTP/1.1" 200 1783
+Not Found: /login
+[24/Nov/2024 10:55:37] "GET /login HTTP/1.1" 404 4342
+[24/Nov/2024 11:03:26,826] - Broken pipe from ('206.168.34.119', 47280)
+[24/Nov/2024 11:03:30] "GET / HTTP/1.1" 200 1783
+[24/Nov/2024 11:03:31,034] - Broken pipe from ('206.168.34.119', 47298)
+[24/Nov/2024 11:03:35] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[24/Nov/2024 11:03:36] "GET /favicon.ico HTTP/1.1" 404 4360
+[24/Nov/2024 11:03:37] code 505, message Invalid HTTP version (2.0)
+[24/Nov/2024 11:03:37] "PRI * HTTP/2.0" 505 -
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[24/Nov/2024 13:01:11] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[24/Nov/2024 14:06:44] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+[24/Nov/2024 14:06:44] You're accessing the development server over HTTPS, but it only supports HTTP.
+[24/Nov/2024 14:06:54] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[24/Nov/2024 14:07:13] "GET /favicon.ico HTTP/1.1" 404 4360
+Not Found: /robots.txt
+[24/Nov/2024 14:07:13] "GET /robots.txt HTTP/1.1" 404 4357
+Not Found: /sitemap.xml
+[24/Nov/2024 14:07:14] "GET /sitemap.xml HTTP/1.1" 404 4360
+Not Found: /config.json
+[24/Nov/2024 14:07:14] "GET /config.json HTTP/1.1" 404 4360
+[24/Nov/2024 14:07:14,952] - Broken pipe from ('165.154.100.42', 33486)
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[24/Nov/2024 15:03:10] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63541
+[24/Nov/2024 15:03:20] code 400, message Bad request syntax ('\x05\x01\x00')
+[24/Nov/2024 15:03:20] " " 400 -
+[24/Nov/2024 15:33:08,439] - Broken pipe from ('167.94.146.54', 43804)
+[24/Nov/2024 15:33:11] "GET / HTTP/1.1" 200 1783
+[24/Nov/2024 15:33:12,061] - Broken pipe from ('167.94.146.54', 43816)
+[24/Nov/2024 15:33:15] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[24/Nov/2024 15:33:16] "GET /favicon.ico HTTP/1.1" 404 4360
+[24/Nov/2024 15:33:16] code 505, message Invalid HTTP version (2.0)
+[24/Nov/2024 15:33:16] "PRI * HTTP/2.0" 505 -
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[24/Nov/2024 15:35:02] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63539
+[24/Nov/2024 15:35:12] code 400, message Bad request syntax ('\x05\x01\x00')
+[24/Nov/2024 15:35:12] " " 400 -
+[24/Nov/2024 15:47:09] "GET / HTTP/1.1" 200 1783
+[24/Nov/2024 16:05:35] code 400, message Bad request version ('À\x14À')
+[24/Nov/2024 16:05:35] You're accessing the development server over HTTPS, but it only supports HTTP.
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[24/Nov/2024 16:43:02] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[24/Nov/2024 18:00:58] "GET / HTTP/1.0" 200 1783
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[24/Nov/2024 18:12:11] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63541
+[24/Nov/2024 18:12:21] code 400, message Bad request syntax ('\x05\x01\x00')
+[24/Nov/2024 18:12:21] " " 400 -
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[24/Nov/2024 20:11:51] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63539
+[24/Nov/2024 20:12:01] code 400, message Bad request syntax ('\x05\x01\x00')
+[24/Nov/2024 20:12:01] " " 400 -
+[24/Nov/2024 20:20:08] "GET / HTTP/1.1" 200 1783
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[24/Nov/2024 20:35:58] "CONNECT example.com:443 HTTP/1.1" 400 63517
+Not Found: /aaa9
+[24/Nov/2024 21:05:31] "GET /aaa9 HTTP/1.1" 404 4339
+Not Found: /aab8
+[24/Nov/2024 21:05:32] "GET /aab8 HTTP/1.1" 404 4339
+[24/Nov/2024 21:05:33] "GET / HTTP/1.1" 200 1783
+[24/Nov/2024 22:05:17] "GET / HTTP/1.0" 200 1783
+[25/Nov/2024 00:08:37] "GET / HTTP/1.1" 200 1783
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[25/Nov/2024 00:43:20] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[25/Nov/2024 03:16:40] code 400, message Bad request version ('þ')
+[25/Nov/2024 03:16:40] You're accessing the development server over HTTPS, but it only supports HTTP.
+[25/Nov/2024 03:16:51] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[25/Nov/2024 03:17:09] "GET /favicon.ico HTTP/1.1" 404 4360
+Not Found: /robots.txt
+[25/Nov/2024 03:17:10] "GET /robots.txt HTTP/1.1" 404 4357
+Not Found: /sitemap.xml
+[25/Nov/2024 03:17:11] "GET /sitemap.xml HTTP/1.1" 404 4360
+Not Found: /config.json
+[25/Nov/2024 03:17:11] "GET /config.json HTTP/1.1" 404 4360
+[25/Nov/2024 03:17:12,059] - Broken pipe from ('118.194.251.246', 51028)
+[25/Nov/2024 03:22:32] "GET / HTTP/1.1" 200 1783
+Invalid HTTP_HOST header: 'ubuntu-s-1vcpu-1gb-sfo2-001:8000'. You may need to add 'ubuntu-s-1vcpu-1gb-sfo2-001' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'ubuntu-s-1vcpu-1gb-sfo2-001:8000'. You may need to add 'ubuntu-s-1vcpu-1gb-sfo2-001' to ALLOWED_HOSTS.
+Bad Request: /
+[25/Nov/2024 03:24:15] "GET / HTTP/1.0" 400 63356
+[25/Nov/2024 03:28:45] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[25/Nov/2024 03:29:17] "GET /favicon.ico HTTP/1.1" 404 4360
+Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ipify.org'. You may need to add 'api.ipify.org' to ALLOWED_HOSTS.
+Bad Request: /http:/api.ipify.org/
+[25/Nov/2024 03:29:39] "GET http://api.ipify.org/?format=json HTTP/1.1" 400 64170
+Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.shadowserver.org'. You may need to add 'www.shadowserver.org' to ALLOWED_HOSTS.
+Bad Request: /www.shadowserver.org:443
+[25/Nov/2024 03:30:01] "CONNECT www.shadowserver.org:443 HTTP/1.1" 400 64348
+[25/Nov/2024 03:57:59] "GET / HTTP/1.0" 200 1783
+[25/Nov/2024 04:06:39] "GET / HTTP/1.0" 200 1783
+[25/Nov/2024 04:06:40] "GET / HTTP/1.0" 200 1783
+[25/Nov/2024 04:18:03] "GET / HTTP/1.1" 200 1783
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[25/Nov/2024 04:54:04] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[25/Nov/2024 06:24:20] "GET / HTTP/1.0" 200 1783
+[25/Nov/2024 08:06:42,005] - Broken pipe from ('45.149.241.55', 33861)
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[25/Nov/2024 08:57:50] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[25/Nov/2024 09:02:38] "GET / HTTP/1.0" 200 1783
+Not Found: /actuator/env
+[25/Nov/2024 10:09:58] "GET /actuator/env HTTP/1.1" 404 4363
+[25/Nov/2024 10:10:03,140] - Broken pipe from ('206.221.176.75', 54762)
+[25/Nov/2024 11:46:54] "GET / HTTP/1.1" 200 1783
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[25/Nov/2024 12:46:05] "CONNECT example.com:443 HTTP/1.1" 400 63517
+[25/Nov/2024 13:27:32] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 13:27:32] You're accessing the development server over HTTPS, but it only supports HTTP.
+[25/Nov/2024 13:27:32] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03±\x10©õ®')
+[25/Nov/2024 13:27:32] You're accessing the development server over HTTPS, but it only supports HTTP.
+[25/Nov/2024 13:27:32] "GET / HTTP/1.1" 200 1783
+Not Found: /login
+[25/Nov/2024 13:27:33] "GET /login HTTP/1.1" 404 4342
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[25/Nov/2024 13:31:53] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63541
+[25/Nov/2024 13:32:03] code 400, message Bad request syntax ('\x05\x01\x00')
+[25/Nov/2024 13:32:03] " " 400 -
+[25/Nov/2024 13:55:14] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+[25/Nov/2024 13:55:14] You're accessing the development server over HTTPS, but it only supports HTTP.
+[25/Nov/2024 13:55:25] "GET / HTTP/1.1" 200 1783
+Not Found: /favicon.ico
+[25/Nov/2024 13:55:44] "GET /favicon.ico HTTP/1.1" 404 4360
+Not Found: /robots.txt
+[25/Nov/2024 13:55:44] "GET /robots.txt HTTP/1.1" 404 4357
+Not Found: /sitemap.xml
+[25/Nov/2024 13:55:45] "GET /sitemap.xml HTTP/1.1" 404 4360
+Not Found: /config.json
+[25/Nov/2024 13:55:45] "GET /config.json HTTP/1.1" 404 4360
+[25/Nov/2024 13:55:46,142] - Broken pipe from ('123.58.207.127', 45836)
+[25/Nov/2024 14:32:52] "GET / HTTP/1.1" 200 1783
+[25/Nov/2024 14:32:53] "GET /static/gethos_home/css/home.css HTTP/1.1" 304 0
+[25/Nov/2024 14:32:53] "GET /static/gethos_home/img/gethosImg-login.png HTTP/1.1" 304 0
+Not Found: /favicon.ico
+[25/Nov/2024 14:32:54] "GET /favicon.ico HTTP/1.1" 404 4360
+[25/Nov/2024 14:32:58] "POST / HTTP/1.1" 302 0
+[25/Nov/2024 14:32:58] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[25/Nov/2024 14:32:59] "GET /static/gethos_home/css/menu_header.css HTTP/1.1" 304 0
+[25/Nov/2024 14:32:59] "GET /static/gethos_home/css/dashboard_auth.css HTTP/1.1" 304 0
+[25/Nov/2024 14:33:00] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[25/Nov/2024 14:33:07] "POST /importar-contatos/ HTTP/1.1" 200 11438
+[25/Nov/2024 14:33:08] "GET /importar-contatos/ HTTP/1.1" 200 11438
+[25/Nov/2024 14:33:16] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[25/Nov/2024 14:33:16] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[25/Nov/2024 14:33:21] "POST /painelCentralUser/ HTTP/1.1" 200 21154
+[25/Nov/2024 14:33:22] "GET /painelCentralUser/ HTTP/1.1" 200 21154
+[25/Nov/2024 14:33:29] "GET /cadastros/adicionar-contato/ HTTP/1.1" 200 5488
+[25/Nov/2024 14:33:29] "GET /static/cadastros/css/cadastro-contato.css HTTP/1.1" 200 1205
+[25/Nov/2024 14:33:29] "GET /cadastros/adicionar-contato/ HTTP/1.1" 200 5488
+[25/Nov/2024 14:33:33] "GET /cadastros/cadastro_mensagens/ HTTP/1.1" 200 9122
+[25/Nov/2024 14:33:34] "GET /static/cadastros/css/lista_mensagens_cadastradas.css HTTP/1.1" 200 4132
+[25/Nov/2024 14:33:34] "GET /cadastros/cadastro_mensagens/ HTTP/1.1" 200 9122
+Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'example.com:443'. You may need to add 'example.com' to ALLOWED_HOSTS.
+Bad Request: /example.com:443
+[25/Nov/2024 16:52:52] "CONNECT example.com:443 HTTP/1.1" 400 63517
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[25/Nov/2024 17:03:48] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63539
+[25/Nov/2024 17:03:58] code 400, message Bad request syntax ('\x05\x01\x00')
+[25/Nov/2024 17:03:58] " " 400 -
+Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 128, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/webapps/gethosapp/projetoGethos/venv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'api.ip.pn'. You may need to add 'api.ip.pn' to ALLOWED_HOSTS.
+Bad Request: /api.ip.pn:443
+[25/Nov/2024 17:18:09] "CONNECT api.ip.pn:443 HTTP/1.1" 400 63541
+[25/Nov/2024 17:18:19] code 400, message Bad request syntax ('\x05\x01\x00')
+[25/Nov/2024 17:18:19] " " 400 -
+[25/Nov/2024 18:10:29] "GET / HTTP/1.1" 200 2265
+[25/Nov/2024 18:20:14] code 400, message Bad request syntax ('MGLNDD_167.172.206.194_8000')
+[25/Nov/2024 18:20:14] "MGLNDD_167.172.206.194_8000" 400 -
+[25/Nov/2024 18:30:38] "GET / HTTP/1.1" 200 1783
+[25/Nov/2024 18:30:53] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:30:53] You're accessing the development server over HTTPS, but it only supports HTTP.
+[25/Nov/2024 18:31:54] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03\x06wYù°)p\x00\x83\x15Î`\x82\x9fÊâ\x98ð\x9d_^Ã\x8dâù9ÇVy\xadåU\x00\x00PÀ/À+À\x11À\x07À\x13À')
+[25/Nov/2024 18:31:54] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /favicon.ico
+[25/Nov/2024 18:32:34] "GET /favicon.ico HTTP/1.1" 404 4360
+[25/Nov/2024 18:33:13] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:33:13] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /manage/account/login
+[25/Nov/2024 18:33:50] "GET /manage/account/login HTTP/1.1" 404 4387
+[25/Nov/2024 18:35:13] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:35:13] You're accessing the development server over HTTPS, but it only supports HTTP.
+[25/Nov/2024 18:35:48] "GET /admin/index.html HTTP/1.1" 302 0
+[25/Nov/2024 18:37:09] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:37:09] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /index.html
+[25/Nov/2024 18:37:43] "GET /index.html HTTP/1.1" 404 4357
+[25/Nov/2024 18:39:25] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:39:25] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /+CSCOE+/logon.html
+[25/Nov/2024 18:40:01] "GET /+CSCOE+/logon.html HTTP/1.1" 404 4381
+[25/Nov/2024 18:41:26] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:41:26] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /cgi-bin/login.cgi
+[25/Nov/2024 18:42:04] "GET /cgi-bin/login.cgi HTTP/1.1" 404 4378
+[25/Nov/2024 18:43:24] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03a\x9b¹[oÖ\xad`º<nªºÔj·\x93@8¶óÀ.\x8b\x1b\x96p<\x84Êèh\x00\x00PÀ/À+À\x11À\x07À\x13À')
+[25/Nov/2024 18:43:24] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /logon.htm
+[25/Nov/2024 18:43:59] "GET /logon.htm HTTP/1.1" 404 4354
+[25/Nov/2024 18:45:12] "GET / HTTP/1.1" 200 1783
+[25/Nov/2024 18:45:49] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:45:49] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /login.jsp
+[25/Nov/2024 18:46:27] "GET /login.jsp HTTP/1.1" 404 4354
+[25/Nov/2024 18:47:52] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:47:52] You're accessing the development server over HTTPS, but it only supports HTTP.
+Not Found: /doc/index.html
+[25/Nov/2024 18:48:27] "GET /doc/index.html HTTP/1.1" 404 4369
+[25/Nov/2024 18:49:46] code 400, message Bad request version ('À\x14À')
+[25/Nov/2024 18:49:46] You're accessing the development server over HTTPS, but it only supports HTTP.
+[25/Nov/2024 18:50:22] "GET / HTTP/1.1" 200 1783

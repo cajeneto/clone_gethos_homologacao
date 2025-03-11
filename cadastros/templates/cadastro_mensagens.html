@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Mensagem WhatsApp</title>
+    <link rel="stylesheet" href="{% static 'cadastros/css/cadastro_mensagens.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+    <div class="container-principal">
+        <form method="POST" action="{% url 'cadastro_mensagens' %}" class="formulario-modelo-mensagem">
+            {% csrf_token %}  <!-- Proteção CSRF -->
+            {% comment %}  {% endcomment %}
+            <div class="cabecalho">
+                <p class="titulo">Modelo de Mensagem</p>
+                <p class="subtitulo">
+                    Cadastre o modelo de mensagens que você deseja enviar para o seu cliente. A quantidade de caracteres e a presença de acentuação impactam o custo de cada envio. Entenda as validações necessárias e cadastre um modelo otimizado.
+                </p>
+                {% comment %}  {% endcomment %}
+            </div>
+
+            <div class="conteudo">
+                <!-- Campo de nome do modelo -->
+                <div class="campo-formulario">
+                    <label for="nome_modelo" class="label-requerido">Nome do Modelo</label>
+                    {{ form.nome_modelo }}  <!-- Renderiza o campo do formulário -->
+                    <div class="erro-nome">Campo obrigatório</div>
+                </div>
+
+                <!-- Campo de tipo de mensagem -->
+                <div class="campo-formulario">
+                    <label for="tipo_mensagem" class="label-requerido">Tipo de Mensagem</label>
+                    {{ form.tipo_mensagem }}  <!-- Renderiza o campo select do Django -->
+                </div>
+
+                <!-- Campo de conteúdo da mensagem -->
+                <div class="editor-texto" id="editor-texto">
+                    {{ form.conteudo_mensagem }}  <!-- Renderiza o campo Textarea -->
+                </div>
+
+                <div class="contador-caracteres">
+                    <span id="contador">Caracteres: 0</span>
+                </div>
+
+                <div class="informacao-caracteres">
+                    <p>A contagem de caracteres não considera os valores preenchidos em uma variável após ser preenchida com os dados do contato ou registro.</p>
+                </div>
+            </div>
+            <br>
+
+            <div class="botoes-formulario">
+                <a href="{% url 'lista_mensagens_cadastradas' %}">
+                    <button type="button" class="botao-cancelar">Cancelar</button>
+                </a>
+                    <button type="submit" class="botao-salvar">Salvar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

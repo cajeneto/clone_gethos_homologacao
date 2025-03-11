@@ -1,0 +1,96 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'gethos_home/css/menu_header.css' %}">
+</head>
+
+<div class="navbar">
+    <div class="navbar-left">
+      <div class="menu-btn">
+        <p class="titulo-empresa" class="material-symbols-outlined">GETHOS CRM</p>
+      </div>
+      <form class="search-box">
+        <input type="text" placeholder="Pesquise aqui..." />
+        <button class="search-btn">
+          <i class="material-symbols-outlined">Pesquisar</i>
+        </button>
+      </form>
+    </div>
+    <div class="navbar-right">
+      {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Cadastros</i></button> {% endcomment %}
+      <button class="icon-btn dropdown-btn">
+        <i class="material-symbols-outlined">
+          <a href="{% url 'dashboard_auth' %}">Lista de Contatos</a>
+        </i>
+      </button>
+      <div class="dropdown">
+        <button class="icon-btn dropdown-btn">
+          <i class="material-symbols-outlined">Cadastros</i>
+        </button>
+        <div class="dropdown-content">
+          <a href="{% url 'adicionar_contato' %}">Cadastrar Contatos</a>
+          <a href="{% url 'lista_mensagens_cadastradas' %}">Cadastrar Mensagens</a>
+          {% comment %} <a href="#">Mensagens SMS's</a> {% endcomment %}
+          <a href="{% url 'listar_campanhas'%}">Campanhas de Captação Leads</a>
+        </div>
+      </div>
+      {% comment %} Cadastros/ [Cadastrar Contatos, Mensagem Whatsapp, Mensagens SMS's, Campanhas de Captação Leads  {% endcomment %}
+
+      {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Processos</i></button> {% endcomment %}
+      <div class="dropdown">
+        <button class="icon-btn dropdown-btn">
+          <i class="material-symbols-outlined">Processos</i>
+        </button>
+        <div class="dropdown-content">
+          <a href="{% url 'fluxo_captacao' %}">Fluxo de Captação</a>
+          <a href="{% url 'enviar_mensagem' %}">Enviar Mensagens</a>
+          <a href="#">Iniciar Campanha de Captação Leads</a>
+          <a href="#">Captação</a>
+        </div>
+      </div>
+      {% comment %} Processos/ [Enviar Mensagem Whatsapp, Enviar Mensagens SMS's, Iniciar Campanha de Captação Leads  {% endcomment %}
+      {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Notificações</i></button> {% endcomment %}
+      <div class="dropdown">
+        <button class="icon-btn dropdown-btn">
+          <i class="material-symbols-outlined">Notificações</i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Mensagens Enviadas</a>
+          {% comment %} <a href="#">Mensagens SMS's Enviadas</a> {% endcomment %}
+          {% comment %} <a href="#">Mensagens SMS's</a> {% endcomment %}
+          <a href="#">Resultado Campanha de Captação Leads</a>
+        </div>
+      </div>
+    
+      <div class="dropdown">
+        <button class="icon-btn dropdown-btn">
+          <i class="material-symbols-outlined">Relatórios</i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Relatório Mensagens Enviadas</a>
+          {% comment %} <a href="#">Relatório Mensagens SMS's Enviadas</a> {% endcomment %}
+          <a href="#">Relatório Campanha de Captação Leads</a>
+        </div>
+      </div>
+      
+      
+      <div class="dropdown">
+        <button class="icon-btn dropdown-btn">
+          <i class="material-symbols-outlined">Perfil</i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Dados Usuário</a>
+          <a href="#">Alterar Foto</a>
+          <a href="{% url 'logout_view' %}">Encerrar Sessão</a>
+          <a href="#">Configurações</a>
+        </div>
+      </div>
+
+     {% comment %}  <div class="profile-menu">
+        <img src="#" alt="Profile" class="profile-img" />
+        <span class="profile-name">Hostílio Neto</span>
+      </div> {% endcomment %}
+     
+    </div>
+  </div>
+
+  {% comment %} FIM DO HEADER MENU {% endcomment %}

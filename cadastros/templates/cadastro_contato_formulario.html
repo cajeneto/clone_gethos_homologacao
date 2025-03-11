@@ -1,0 +1,57 @@
+
+
+
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+  <div class="modal-content">
+    
+    
+    <!-- Formulário configurado corretamente -->
+    <form method="POST" action="{% url 'adicionar_contato' %}">
+        {% csrf_token %}  <!-- Adiciona proteção CSRF necessária no Django -->
+        
+        <label for="name">Nome Tutor</label>
+        <input type="text" id="name" name="nome" placeholder="Olivia Silva" required>
+        
+        
+        <label for="phone">Telefone</label>
+        <input type="tel" id="phone" name="telefone" placeholder="(82) 99132-6715" maxlength="11" required>
+        
+        
+        <label for="nomeAnimal">Nome Pet</label>
+        <input type="text" id="nomeAnimal" name="nomeAnimal" placeholder="Totó" required>
+
+
+        <label for="nomeVet">Veterinário Responsável</label>
+        <input type="text" id="nomeVet" name="nomeVet" required>
+
+
+        <label for="dataConsulta">Data do Atendimento</label>
+        <input type="date" id="dataConsulta" name="dataConsulta" placeholder="12/12/2024" required>
+
+
+        <label for="horaConsulta">Hora do Atendimento</label>
+        <input type="time" id="horaConsulta" name="horaConsulta" placeholder="15:00" required>
+
+
+        <label for="tipoAtendimento">Tipo do Atendimento</label>
+        <input type="text" id="tipoAtendimento" name="tipoAtendimento" placeholder="Consulta Oftalmológica" required>
+
+
+        <label for="dataAcao">Data do envio</label>
+        <input type="date" id="dataAcao" name="dataAcao" placeholder="Consulta Oftalmológica" required>
+        
+        
+        <label for="empresa">Empresa</label>
+        <input type="text" id="empresa" name="empresa" placeholder="Empresa">
+        
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+        </select>
+        
+        <button type="submit" class="create-btn">Criar</button>
+    </form>
+  </div>
+</div>

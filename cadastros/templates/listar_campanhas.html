@@ -1,0 +1,48 @@
+<!-- cadastros/templates/cadastros/lista_campanhas.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Campanhas</title>
+    <link rel="stylesheet" href="{% static 'cadastros/css/listar_campanhas.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+    
+    <div class="container">
+        <h1>Lista de Campanhas Cadastradas</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Responsável da Campanha</th>
+                    <th>Descrição</th>
+                    <th>Mensagem</th>
+                    <th>Data de Criação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campanha in campanhas %}
+                <tr>
+                    <td>{{ campanha.responsavel }}</td>
+                    <td>{{ campanha.titulo }}</td>
+                    <td>{{ campanha.mensagem.nome_modelo }}</td> <!-- Nome do modelo de mensagem -->
+                    <td>{{ campanha.data_criacao|date:"d/m/Y H:i" }}</td> <!-- Formatação da data -->
+                    <td>
+                        
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">Nenhuma campanha cadastrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'nova_campanha' %}" class="a-link">
+            <button class="btn-criar-nova-campanha">Criar Nova Campanha</button>
+        </a>
+    </div>
+</body>
+</html>

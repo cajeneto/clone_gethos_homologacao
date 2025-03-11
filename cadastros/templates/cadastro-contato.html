@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar Novo Contato{% endblock %}
+
+{% block extra_css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'cadastros/css/cadastro-contato.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-geral-cadastro-contato">
+
+    {% comment %} <div class="adc-contato">
+        <div class="container-div">
+            <p class="list-contacts-title"><strong>CRIAR NOVO CONTATO</strong></p>
+          </div>
+        {% include 'cadastro_contato_formulario.html' %}
+    </div> {% endcomment %}
+    
+    <div class="lista-contatos">
+        {% include 'listar_contatos.html' %}
+    </div>
+
+
+</div>
+    {% endblock %}
+    
