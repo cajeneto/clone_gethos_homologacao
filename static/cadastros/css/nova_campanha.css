@@ -1,0 +1,83 @@
+/* Centraliza e estiliza o container do formulário */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Estilo geral para inputs */
+label {
+    display: block;
+    margin-top: 15px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Layout para campos de data e hora */
+.datetime-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.datetime-container div {
+    width: 48%;
+}
+
+/* Estilo para checkbox */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.checkbox-container label {
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+/* Botão de submissão */
+.submit-btn {
+    background-color: #585ce5;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #4044d1;
+}

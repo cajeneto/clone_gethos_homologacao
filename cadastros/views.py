@@ -4,12 +4,16 @@ from .forms import ModeloMensagemForm, ModeloMensagem
 from .models import Campanha
 from .forms import CampanhaForm
 from django.contrib import messages
+<<<<<<< HEAD
 from gethos_home.models import Contato
 from gethos_home.forms import ContatoForm
+=======
+>>>>>>> backup-local
 
 
 
 def adicionar_contato(request):
+<<<<<<< HEAD
     if request.method == 'POST':
         form = ContatoForm(request.POST)
         if form.is_valid():
@@ -27,6 +31,9 @@ def adicionar_contato(request):
         'contato': contatos,
         'form': form,
         })
+=======
+    return render(request, 'cadastro-contato.html')
+>>>>>>> backup-local
 
 
 def visualizar_contato(request):

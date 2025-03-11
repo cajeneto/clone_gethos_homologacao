@@ -105,6 +105,7 @@ body {
     justify-content: space-around;
     gap: 20px;
     margin-bottom: 15px;
+<<<<<<< HEAD
 }
 
 .box_multiple_contacts {
@@ -113,6 +114,9 @@ body {
     gap: 20px;
     margin-bottom: 15px;
     height: 200px;
+=======
+    
+>>>>>>> backup-local
 }
 
 .grupoContato {
@@ -170,6 +174,7 @@ textarea {
 .btn-edit-message:hover, .btn-edit-contacts:hover {
     background-color: #4044d1;
 }
+<<<<<<< HEAD
 
 
 .alert {
@@ -187,3 +192,5 @@ textarea {
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+=======
+>>>>>>> backup-local
