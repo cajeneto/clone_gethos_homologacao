@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-<<<<<<< HEAD
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone  # Import correto para timezone
@@ -14,22 +13,10 @@ from django.contrib import messages
 
 def fluxo_captacao(request):
     # Filtra os contatos por status para exibir no Kanban
-=======
-from .models import FluxoCaptacao
-from gethos_home.models import Contato
-from cadastros.models import ModeloMensagem, Campanha
-
-
-
-
-# View principal de visualização de tarefas (dashboard)
-def fluxo_captacao(request):
->>>>>>> backup-local
     fluxo_a_fazer = FluxoCaptacao.objects.filter(status='A fazer')
     fluxo_progresso = FluxoCaptacao.objects.filter(status='Em andamento')
     fluxo_concluido = FluxoCaptacao.objects.filter(status='Concluído')
 
-<<<<<<< HEAD
     """ # Para garantir que todos os contatos estejam no fluxo (opcional)
     default_status = 'A fazer'
     for contato in Contato.objects.filter(fluxocaptacao__isnull=True):
@@ -43,15 +30,12 @@ def fluxo_captacao(request):
     logger = logging.getLogger(__name__)
     logger.info(f"A fazer: {fluxo_a_fazer.count()}, Em andamento: {fluxo_progresso.count()}, Concluído: {fluxo_concluido.count()}")
 
-=======
->>>>>>> backup-local
     return render(request, 'fluxo_captacao.html', {
         'fluxo_a_fazer': fluxo_a_fazer,
         'fluxo_progresso': fluxo_progresso,
         'fluxo_concluido': fluxo_concluido,
     })
 
-<<<<<<< HEAD
 @csrf_exempt
 def move_task(request):
     if request.method == 'POST':
@@ -75,15 +59,10 @@ def move_task(request):
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)
 
-=======
-
-# View para adicionar etapa dentro de um fluxo
->>>>>>> backup-local
 def add_etapa(request):
     if request.method == 'POST':
         titulo = request.POST.get('titulo')
         descricao = request.POST.get('descricao')
-<<<<<<< HEAD
         status = request.POST.get('status', 'A fazer')
         contato_id = request.POST.get('contato')
         contato = Contato.objects.get(id=contato_id) if contato_id else None
@@ -94,46 +73,21 @@ def add_etapa(request):
 
 def edit_etapa(request, id_etapa):
     etapa = get_object_or_404(FluxoCaptacao, id=id_etapa)
-=======
-        status = request.POST.get('status', 'A fazer')  # Padrão: 'A fazer'
-        FluxoCaptacao.objects.create(titulo=titulo, descricao=descricao, status=status)
-        return redirect('fluxo_captacao')
-
-    return render(request, 'add_etapa.html')
-
-
-# View para editar uma etapa
-def edit_etapa(request, id_etapa):
-    etapa = get_object_or_404(FluxoCaptacao, id=id_etapa)
-
->>>>>>> backup-local
     if request.method == 'POST':
         etapa.titulo = request.POST.get('titulo')
         etapa.descricao = request.POST.get('descricao')
         etapa.status = request.POST.get('status')
-<<<<<<< HEAD
         etapa.contato = Contato.objects.get(id=request.POST.get('contato')) if request.POST.get('contato') else None
         etapa.save()
         return redirect('fluxo_captacao')
     contatos = Contato.objects.all()
     return render(request, 'edit_etapa.html', {'etapa': etapa, 'contatos': contatos})
 
-=======
-        etapa.save()
-        return redirect('fluxo_captacao')
-
-    return render(request, 'edit_etapa.html', {'etapa': etapa})
-
-
-
-# View para excluir uma etapa
->>>>>>> backup-local
 def delete_etapa(request, id_etapa):
     etapa = get_object_or_404(FluxoCaptacao, id=id_etapa)
     etapa.delete()
     return redirect('fluxo_captacao')
 
-<<<<<<< HEAD
 def enviar_mensagem(request):
     if request.method == 'POST':
         nome_campanha = request.POST.get('nome_campanha')
@@ -206,17 +160,3 @@ def relatorios(request):
     contatos = Contato.objects.all()
     return render(request, 'enviar_mensagem.html', {'contato': contatos}) 
 """
-=======
-
-
-def enviar_mensagem(request):
-    contatos = Contato.objects.all()  # Consulta todos os contatos cadastrados
-    mensagens = ModeloMensagem.objects.all()
-    campanhas = Campanha.objects.all()
-
-    return render(request, 'enviar_mensagem.html', 
-                  { 'contato': contatos, 
-                   'mensagens' : mensagens,
-                   'campanhas': campanhas
-                   } )
->>>>>>> backup-local

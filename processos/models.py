@@ -1,12 +1,5 @@
 from django.db import models
-<<<<<<< HEAD
 from gethos_home.models import Contato
-=======
-
-
-# processos/models.py
-
->>>>>>> backup-local
 
 class FluxoCaptacao(models.Model):
     STATUS_CHOICES = [
@@ -16,7 +9,6 @@ class FluxoCaptacao(models.Model):
     ]
 
     titulo = models.CharField(max_length=100)
-<<<<<<< HEAD
     descricao = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='A fazer')
     contato = models.ForeignKey(Contato, on_delete=models.CASCADE, null=True, blank=True)  # Associação com Contato
@@ -28,13 +20,3 @@ class FluxoCaptacao(models.Model):
     class Meta:
         ordering = ['created_at']
         
-=======
-    descricao = models.TextField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='A fazer')
-
-    def __str__(self):
-        return self.title
-    
-
-
->>>>>>> backup-local

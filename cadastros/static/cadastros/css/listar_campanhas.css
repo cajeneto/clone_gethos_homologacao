@@ -54,7 +54,6 @@ table td {
 }
 
 /* Estilo dos botões */
-<<<<<<< HEAD
 .btn-criar-nova-campanha, .btn-voltar {
     padding: 10px 20px;
     font-size: 1em;
@@ -63,47 +62,25 @@ table td {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.4s ease;
-=======
-button, .btn-criar-nova, .btn-voltar {
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
->>>>>>> backup-local
     text-decoration: none;
     color: #ffffff;
 }
 
-<<<<<<< HEAD
 .btn-criar-nova-campanha, .btn-voltar {
-=======
-.btn-criar-nova, .btn-voltar {
->>>>>>> backup-local
     display: inline-block;
     margin-top: 20px;
 }
 
-<<<<<<< HEAD
 .btn-criar-nova-campanha {
     background-color: #4d5ac0;
     color: #fff;
-=======
-.btn-criar-nova {
-    background-color: #4d5ac0;
->>>>>>> backup-local
 }
 
 .btn-voltar {
     background-color: #6c757d;
 }
 
-<<<<<<< HEAD
 button:hover, .btn-criar-nova-campanha:hover, .btn-voltar:hover {
-=======
-button:hover, .btn-criar-nova:hover, .btn-voltar:hover {
->>>>>>> backup-local
     background-color: #3a4a91;
 }
 

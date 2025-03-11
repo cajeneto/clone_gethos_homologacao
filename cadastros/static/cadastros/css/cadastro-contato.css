@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-=======
-/* Centraliza o formulário na tela */
->>>>>>> backup-local
 
 body {
         font-family: 'Roboto', sans-serif; /* Aplica a fonte Roboto */
         background-color: #f0f0f0;
-<<<<<<< HEAD
         width: 100%;
     }
 
@@ -234,64 +229,6 @@ justify-content: center;
 
 
 
-=======
-    }
-
-
-
-.form-container {
-    width: 500px;
-    margin: 50px auto; /* Centraliza na horizontal */
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Estiliza os campos de input */
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group select {
-    width: 90%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-/* Botão de envio */
-.submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.submit-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Centralizar o título */
-.form-container h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
->>>>>>> backup-local
 /* Ajustes responsivos */
 @media (max-width: 600px) {
     .form-container {
