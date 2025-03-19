@@ -20,35 +20,37 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <form method="POST" action="{% url 'enviar_mensagem' %}">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="nome_campanha">Nome da Campanha:</label>
-                <input type="text" id="nome_campanha" name="nome_campanha" required>
-            </div>
-            <div class="form-group">
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Ex.: Olá, {nome}, seu pet {nome_animal} tem consulta marcada!"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Contatos:</label>
-                <select multiple name="contatos" required>
-                    {% for contato in contato %}
-                        <option value="{{ contato.id }}">{{ contato.nome }} - {{ contato.telefone }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="intervalo">Intervalo entre mensagens (segundos):</label>
-                <select id="intervalo" name="intervalo" required>
-                    <option value="5">5 segundos</option>
-                    <option value="10">10 segundos</option>
-                    <option value="30">30 segundos</option>
-                    <option value="60">1 minuto</option>
-                </select>
-            </div>
-            <button type="submit">Criar e Enviar Campanha</button>
-        </form>
+        <div class="form-container">
+            <form method="POST" action="{% url 'enviar_mensagem' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nome_campanha">Nome da Campanha:</label>
+                    <input type="text" id="nome_campanha" name="nome_campanha" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Ex.: Olá, @nome, seu pet @nome_animal tem consulta marcada!"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Contatos:</label>
+                    <select multiple name="contatos" class="contatos-select" required>
+                        {% for contato in contato %}
+                            <option value="{{ contato.id }}">{{ contato.nome }} - {{ contato.telefone }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="intervalo">Intervalo entre mensagens (segundos):</label>
+                    <select id="intervalo" name="intervalo" required>
+                        <option value="5">5 segundos</option>
+                        <option value="10">10 segundos</option>
+                        <option value="30">30 segundos</option>
+                        <option value="60">1 minuto</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Criar e Enviar Campanha</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

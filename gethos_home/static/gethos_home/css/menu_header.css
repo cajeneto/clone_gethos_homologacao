@@ -18,6 +18,7 @@
       background-color: white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       font-family: "Rethink Sans", sans-serif;
+      z-index: 99999;
       
     }
 
@@ -138,6 +139,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  z-index: 9999;
 }
 
 /* Dropdown button */
@@ -149,6 +151,7 @@
   padding: 10px;
   display: flex;
   align-items: center;
+  z-index: 9999;
 }
 
 /* Dropdown content (hidden by default) */
@@ -176,6 +179,7 @@
 /* Hover styles for dropdown content */
 .dropdown-content a:hover {
   background-color: #f1f1f1;
+  z-index: 9999;
 }
 
 /* Show the dropdown content when hovering */

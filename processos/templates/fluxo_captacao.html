@@ -6,21 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fluxo de Captação</title>
     <link rel="stylesheet" href="{% static 'processos/css/fluxo_captacao.css' %}">
-
 </head>
 
 <body>
     {% include 'menu_header.html' %}
     <div class="board">
         <div class="column" data-status="Enviar mensagens Whatsapp">
-            <h2>Enviar mensagens Whatsapp</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
+            <h2 class="h2Titulo">Enviar mensagens Whatsapp</h2>
+            {% comment %} <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a> {% endcomment %}
             <div class="columnCardMove">
             {% for etapa in fluxo_a_fazer %}
 
                 <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
+                    <h3 class="nomeContato">{{ etapa.titulo }}</h3>
+                    <p class="telContato">{{ etapa.contato.telefone|default:"Sem contato" }}</p>
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
@@ -28,13 +27,13 @@
             </div>
         </div>
         <div class="column" data-status="Em andamento">
-            <h2>Confirmações em Andamento</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
+            <h2 class="h2Titulo">Confirmações em Andamento</h2>
+            {% comment %} <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a> {% endcomment %}
             <div class="columnCardMove">
             {% for etapa in fluxo_progresso %}
                 <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
+                    <h3 class="nomeContato">{{ etapa.titulo }}</h3>
+                    <p class="telContato">{{ etapa.contato.telefone|default:"Sem contato" }}</p>
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
@@ -42,34 +41,19 @@
         </div>
         </div>
         <div class="column" data-status="Concluído">
-            <h2>Concluído</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
+            <h2 class="h2Titulo">Concluído</h2>
+            {% comment %} <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a> {% endcomment %}
             <div class="columnCardMove">
             {% for etapa in fluxo_concluido %}
                 <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
+                    <h3 class="nomeContato">{{ etapa.titulo }}</h3>
+                    <p class="telContato">{{ etapa.contato.telefone|default:"Sem contato" }}</p>
                     <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
                     <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
                 </div>
             {% endfor %}
             </div>
         </div>
-        {% comment %} <div class="column" data-status="Confirmados">
-            <h2>Confirmados</h2>
-            <a href="{% url 'add_etapa' %}">Adicionar Tarefa</a>
-            <div class="columnCardMove">
-            {% for etapa in fluxo_a_fazer %}
-
-                <div class="cardBoard" data-task-id="{{ etapa.id }}">
-                    <h3>{{ etapa.titulo }}</h3>
-                    <p>{{ etapa.contato.telefone|default:"Sem contato" }}</p>
-                    <a href="{% url 'edit_etapa' etapa.id %}">Editar</a>
-                    <a href="{% url 'delete_etapa' etapa.id %}">Deletar</a>
-                </div>
-            {% endfor %}
-            </div>
-        </div> {% endcomment %}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>

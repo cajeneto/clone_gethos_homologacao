@@ -47,13 +47,6 @@ def create_account(request):
     return render(request, 'create_account.html')
 
 
-
-
-
-
-
-
-
 #  TRATA DE ADICIONAR O USUÁRIO NA LISTA DE CONTATOS
 # Função para tratar a adição de novos contatos e exibir a lista de contatos
 def dashboard_auth(request):
@@ -194,23 +187,20 @@ def enviar_mensagem_whatsapp(request):
 
 
 
-
-
-
-
-
 class ContatoListCreate(generics.ListCreateAPIView):
     queryset = Contato.objects.all()
     serializer_class = ContatoSerializer
 
-class ContatoDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Contato.objects.all()
-    serializer_class = ContatoSerializer
 
 
 class CampanhaListCreateView(generics.ListCreateAPIView):
     queryset = Campanha.objects.all()
     serializer_class = CampanhaSerializer
+
+
+class ContatoDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Contato.objects.all()
+    serializer_class = ContatoSerializer
 
     def perform_create(self, serializer):
         # Salva a campanha e dispara o envio

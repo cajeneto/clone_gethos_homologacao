@@ -1,6 +1,7 @@
 # gethos_home/serializers.py
 from rest_framework import serializers
 from .models import Contato, Veterinario, Campanha
+import re
 
 
 class ContatoSerializer(serializers.ModelSerializer):
@@ -9,12 +10,12 @@ class ContatoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contato
-        fields = ['id', 'nome', 'telefone','veterinario', 'nome_animal', 'status']  # Campos que quer expor
+        fields = ['id', 'nome', 'telefone','veterinario', 'nome_animal', 'status']  # Campos que estou expondo
 
         read_only_fields = ['id', 'data_criacao']
 
     def validate_telefone(self, value):
-        import re
+        
         telefone = re.sub(r'\D', '', value)
         if not re.match(r'^\d{10,11}$', telefone):
             raise serializers.ValidationError("Digite um telefone válido com DDD (10 ou 11 dígitos).")

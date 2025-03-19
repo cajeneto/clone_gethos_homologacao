@@ -1,24 +1,30 @@
-/* taskmanager/static/css/styles.css */
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f6f7f9;
+    background-color: #F5F7FA;
 }
 
 .board {
     display: flex;
     justify-content: space-around;
-    margin: 10px;
+    margin: 1rem;
+
     
 }
 
 .column {
     width: 30%;
     padding: 10px;
-    background-color: #d8d8d8;
+    background-color: #E6ECF0;
+    height: 35em;
     border-radius: 4px;
-    min-height: 400px;
+    min-height: 40em;
     flex-shrink: 0;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    overflow-y: auto;
+    border: 1px #bab8b8
+
 }
 
 .cardBoard {
@@ -32,12 +38,33 @@ body {
     margin: 5px 0;
     border: 1px solid #bab8b8;
     cursor: move;
+    align-items: center;
+    justify-content: center;
 }
 
-.card a {
+a {
     margin-right: 10px;
+    color: #4A90E2;
 }
 
 .columnCardMove {
     height: 100%;
 }
+
+.h2Titulo{ 
+    display: flex;
+    background-color: #D1DCE5;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #2D3748;
+    border-radius: 5px;
+}
+
+
+.nomeContato{ 
+    display: flex;
+    color: #2D3748;
+    border-radius: 5px;
+}
+
