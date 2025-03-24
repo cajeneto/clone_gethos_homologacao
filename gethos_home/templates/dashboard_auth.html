@@ -188,29 +188,7 @@
                   {% endfor %}
               </tbody>
           </table>
-          {% comment %} <button type="submit" class="submit-btn">Realizar Ação</button> <!-- Botão para enviar contatos selecionados --> {% endcomment %}
-      
-{% comment %} 
-                            <h3>Enviar Mensagem no WhatsApp</h3>
 
-                  <form method="POST" action="{% url 'enviar_mensagem_whatsapp' %}">
-                      {% csrf_token %}
-                  
-                      <label for="contato">Selecione um Cliente:</label>
-                      <select name="contato" required>
-                          {% for contato in listContacts %}
-                              <option value="{{ contato.id }}">{{ contato.nome }} - {{ contato.telefone }}</option>
-                          {% endfor %}
-                      </select>
-                    
-                      <label for="mensagem">Digite a Mensagem:</label>
-                      <textarea name="mensagem" required></textarea>
-                    
-                      <label for="data_envio">Enviar em (Deixe em branco para envio imediato):</label>
-                      <input type="datetime-local" name="data_envio">
-                    
-                      <button type="submit">Confirmar Envio</button>
-                  </form> {% endcomment %}
       
       
       
@@ -225,38 +203,9 @@
       </div>
 
     
-      
-       <h3>Enviar Mensagem no WhatsApp</h3>
-                          
-      <form method="POST" action="{% url 'enviar_mensagem_whatsapp' %}">
-          {% csrf_token %}
-      
-          <label for="contato">Selecione um Cliente:</label>
-          <select name="contato" required>
-              {% for contato in listContacts %}
-                  <option value="{{ contato.id }}">{{ contato.nome }} - {{ contato.telefone }}</option>
-              {% endfor %}
-          </select>
-        
-          <label for="mensagem">Digite a Mensagem:</label>
-          <textarea name="mensagem" required></textarea>
-        
-          <label for="data_envio">Enviar em (Deixe em branco para envio imediato):</label>
-          <input type="datetime-local" name="data_envio">
-        
-          <button type="submit">Confirmar Envio</button>
-      </form>
-
-
-
-      
-      
-  
-    
 </div>
 
 
-      
 </body>
 <script>
 
