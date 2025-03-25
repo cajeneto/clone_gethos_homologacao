@@ -78,10 +78,10 @@
           <i class="material-symbols-outlined">Perfil</i>
         </button>
         <div class="dropdown-content">
-          <a href="#">Dados Usuário</a>
-          <a href="#">Alterar Foto</a>
-          <a href="{% url 'logout_view' %}">Encerrar Sessão</a>
+          <a href="{% url 'editar_perfil' %}">Dados Usuário</a>
+          <a href="{% url 'contatos_excluidos' %}">Lixeira</a>
           <a href="#">Configurações</a>
+          <a href="{% url 'logout_view' %}">Encerrar Sessão</a>
         </div>
       </div>
 

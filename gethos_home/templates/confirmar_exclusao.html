@@ -1,0 +1,25 @@
+<!-- gethos_home/templates/gethos_home/confirmar_exclusao.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão - {{ contato.nome }}</title>
+    <link rel="stylesheet" href="{% static 'gethos_home/css/editar_contato.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+    <div class="container">
+        <h1>Confirmar Exclusão</h1>
+        <p>Tem certeza de que deseja excluir o contato <strong>{{ contato.nome }}</strong>?</p>
+        <p>Esta ação não pode ser desfeita diretamente, mas o contato poderá ser visualizado pelo administrador.</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="action-btn delete-btn">Confirmar Exclusão</button>
+            <a href="{% url 'dashboard_auth' %}" class="action-btn">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

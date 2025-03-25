@@ -71,6 +71,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+AUTH_USER_MODEL = 'gethos_home.Usuario'
+
 ROOT_URLCONF = "gethosapp.urls"
 
 TEMPLATES = [
@@ -101,7 +103,7 @@ WSGI_APPLICATION = "gethosapp.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "gethosapp",
+        "NAME": "gethosapp_db",
 	"USER": "postgres",
 	"PASSWORD": "gethosappsenha",
 	"HOST": "127.0.0.1",
@@ -180,10 +182,14 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# URL para redirecionar após o login
-LOGIN_REDIRECT_URL = 'dashboard.auth'
+# # URL para redirecionar após o login
+# LOGIN_REDIRECT_URL = 'dashboard.auth'
 
-# URL para redirecionar ao fazer logout
+# # URL para redirecionar ao fazer logout
+# LOGOUT_REDIRECT_URL = 'home'
+
+LOGIN_URL = 'home'
+LOGIN_REDIRECT_URL = 'dashboard_auth'
 LOGOUT_REDIRECT_URL = 'home'
 
 

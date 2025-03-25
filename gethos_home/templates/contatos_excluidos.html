@@ -1,0 +1,46 @@
+<!-- gethos_home/templates/gethos_home/contatos_excluidos.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos Excluídos</title>
+    <link rel="stylesheet" href="{% static 'gethos_home/css/contatos_excluidos.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+    <div class="container">
+        <h1>Contatos Excluídos</h1>
+        {% if contatos %}
+            <table class="contacts-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Contato</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>Status</th>
+                        <th>Criado em:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contato in contatos %}
+                    <tr>
+                        <td>{{ contato.id }}</td>
+                        <td>{{ contato.nome }}</td>
+                        <td>{{ contato.telefone }}</td>
+                        <td>{{ contato.email }}</td>
+                        <td>{{ contato.status }}</td>
+                        <td>{{ contato.data_criacao|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nenhum contato excluído encontrado.</p>
+        {% endif %}
+        <a href="{% url 'dashboard_auth' %}" class="action-btn">Voltar ao Dashboard</a>
+    </div>
+</body>
+</html>

@@ -12,16 +12,10 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Telefone</th>
-                <th>Nome Pet</th>
-                <th>Veterinário Responsável</th>
-                <th>Data Atendimento</th>
-                <th>Hora Atendimento</th>
-                <th>Tipo do Atendimento</th>
-                <th>Data do Envio Mensagens</th>
+                <th>E-mail</th>
                 <th>Empresa</th>
                 <th>Status</th>
                 <th>Criado em:</th>
-                <th>Ação</th>
             </tr>
         </thead>
         <tbody>
@@ -31,21 +25,12 @@
                 <td>{{ contato.id }}</td>
                 <td>{{ contato.nome }}</td>
                 <td>{{ contato.telefone_formatado }}</td>
-                <td>{{ contato.nomeAnimal }}</td>
-                <td>{{ contato.nomeVet }}</td>
-                <td>{{ contato.dataConsulta|date:"d/m/Y" }}</td>
-                <td>{{ contato.horaConsulta|time:"H:i" }}</td>
-                <td>{{ contato.tipoAtendimento }}</td>
-                <td>{{ contato.dataAcao|date:"d/m/Y" }}</td>
+                <td>{{ contato.email }}</td>
                 <td>{{ contato.empresa }}</td>
                 <td>{{ contato.status }}</td>
                 <td>{{ contato.data_criacao|date:"d/m/Y H:i"}}</td>
                 <td>
-                    <div class="btn-grupo">
-                        <button href="#" class="action-btn view-btn" id="btn-acion">Ver</button>
-                        <button href="#" class="action-btn edit-btn" id="btn-acion">Editar</button>
-                        <button href="#" class="action-btn delete-btn" id="btn-acion">Excluir</button>
-                    </div>
+
                 </td>
             </tr>
             {% endfor %}

@@ -79,55 +79,48 @@
           <span class="close">&times;</span>
           <h2>Adicionar Novo Contato</h2>
           
-          <!-- Formulário configurado corretamente -->
-          <form method="POST" action="{% url 'dashboard_auth' %}">
-              {% csrf_token %}  <!-- Adiciona proteção CSRF necessária no Django -->
-              
-              <label for="name">Nome Tutor</label>
-              <input type="text" id="name" name="nome" placeholder="Olivia Silva" required>
-              
-              
-              <label for="phone">Telefone</label>
-              <input type="tel" id="phone" name="telefone" pattern="[0-9]{10,11}" title="Digite um número válido" required>
-              
-              
-              <label for="nomeAnimal">Nome Pet</label>
-              <input type="text" id="nome_animal" name="nome_animal" placeholder="Totó" required>
-
-
-              <label for="veterinario">Veterinário Responsável</label>
-              <select name="veterinario" required>
-                  {% for vet in veterinarios %}
-                      <option value="{{ vet.id }}">{{ vet.nome }}</option>
+          <!-- Formulário configurado para usar ContatoForm -->
+        <form method="POST" action="{% url 'dashboard_auth' %}">
+          {% csrf_token %}
+          <input type="hidden" name="adicionar_contato" value="1">
+          
+          {% if form.errors %}
+              <div class="errors">
+                  {% for field, errors in form.errors.items %}
+                      <p style="color: red;">{{ field }}: {{ errors }}</p>
                   {% endfor %}
-              </select>
-
-
-              <label for="dataConsulta">Data do Atendimento</label>
-              <input type="date" id="data_consulta" name="data_consulta" placeholder="12/12/2024" required>
-
-
-              <label for="horaConsulta">Hora do Atendimento</label>
-              <input type="time" id="hora_consulta" name="hora_consulta" placeholder="15:00" required>
-
-
-              <label for="tipoAtendimento">Tipo do Atendimento</label>
-              <input type="text" id="tipo_atendimento" name="tipo_atendimento" placeholder="Consulta Oftalmológica" required>
-
-              <!-- Remova este campo -->
-              {% comment %} <label for="dataAcao">Data do envio</label> {% endcomment %}
-              {% comment %} <input type="date" id="dataAcao" name="dataAcao" placeholder="Consulta Oftalmológica" required> {% endcomment %}
-              
-              
-              <label for="empresa">Empresa</label>
-              <input type="text" id="empresa" name="empresa" placeholder="Empresa">
-              
-              <label for="status">Status</label>
-              <select id="status" name="status" required>
-                  <option value="Agendado">Agendado</option>
-                  <option value="Confirmado">Confirmado</option>
-                  <option value="Cancelado">Cancelado</option>
-              </select>
+              </div>
+          {% endif %}
+          
+          <div class="form-group">
+              <label for="id_nome">Nome</label>
+              {{ form.nome }}
+          </div>
+          
+          <div class="form-group">
+              <label for="id_telefone">Telefone</label>
+              {{ form.telefone }}
+          </div>
+          
+          <div class="form-group">
+              <label for="id_email">E-mail</label>
+              {{ form.email }}
+          </div>
+          
+          <div class="form-group">
+              <label for="id_empresa">Empresa</label>
+              {{ form.empresa }}
+          </div>
+          
+          <div class="form-group">
+              <label for="id_status">Status</label>
+              {{ form.status }}
+          </div>
+          
+          <div class="form-group">
+              <label for="id_observacoes">Observações</label>
+              {{ form.observacoes }}
+          </div>
               
               <button type="submit" class="create-btn">Criar</button>
           </form>
@@ -145,46 +138,40 @@
           <table class="contacts-table">
               <thead>
                   <tr>
-                      <th><input type="checkbox" id="select-all"></th> <!-- Checkbox para selecionar todos -->
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Telefone</th>
-                      <th>Nome Pet</th>
-                      <th>Veterinário Responsável</th>
-                      <th>Data Atendimento</th>
-                      <th>Hora Atendimento</th>
-                      <th>Tipo do Atendimento</th>
-                      <th>Data do Envio Mensagens</th>
-                      <th>Empresa</th>
-                      <th>Status</th>
-                      <th>Criado em:</th>
-                      <th>Ação</th>
+                    <th><input type="checkbox" id="select-all"></th>
+                    <th>ID</th>
+                    <th>Contato</th>
+                    <th>Telefone</th>
+                    <th>E-mail</th>
+                    <th>Status</th>
+                    <th>Criado em:</th>
+                    <th>Observações</th>
+                    <th>Ações</th>
                   </tr>
               </thead>
               <tbody>
                   {% for contato in listContacts %}
                   <tr>
-                      <td><input type="checkbox" name="selected_contacts" value="{{ contato.id }}" class="contact-checkbox"></td> <!-- Checkbox individual -->
+                    <td><input type="checkbox" name="selected_contacts" value="{{ contato.id }}" class="contact-checkbox"></td>
                       <td>{{ contato.id }}</td>
-                      <td>{{ contato.nome }}</td>
-                      <td>{{ contato.telefone_formatado }}</td>
-                      <td>{{ contato.nome_animal }}</td>
-                      <td>{{ contato.veterinario }}</td>
-                      <td>{{ contato.data_consulta|date:"d/m/Y" }}</td>
-                      <td>{{ contato.hora_consulta|time:"H:i" }}</td>
-                      <td>{{ contato.tipo_atendimento }}</td>
-                      <td>{{ contato.dataAcao|date:"d/m/Y" }}</td>
-                      <td>{{ contato.empresa }}</td>
+                      <td><a href="{% url 'editar_contato' contato.id %}">{{ contato.nome }}</a></td>
+                      {% comment %} <td>{{ contato.nome }}</td> {% endcomment %}
+                      <td>{{ contato.telefone }}</td>
+                      <td>{{ contato.email }}</td>
                       <td>{{ contato.status }}</td>
-                      <td>{{ contato.data_criacao|date:"d/m/Y H:i"}}</td>
+                      <td>{{ contato.data_criacao|date:"d/m/Y H:i" }}</td>
+                      <td>{{ contato.observacoes }}</td>
                       <td>
                         <div class="btn-grupo">
-                          {% comment %} <button href="#" class="action-btn view-btn" id="btn-acion">Ver</button>
-                          <button href="#" class="action-btn edit-btn" id="btn-acion">Editar</button>
-                          <button href="#" class="action-btn delete-btn" id="btn-acion">Excluir</button> {% endcomment %}
-                        </div>
+                          <a href="{% url 'editar_contato' contato.id %}" class="action-btn edit-btn">Editar</a>
+                          <a href="{% url 'excluir_contato' contato.id %}" class="action-btn delete-btn">Excluir</a>
+                      </div>
                       </td>
+
+                      </td>
+
                   </tr>
+
                   {% endfor %}
               </tbody>
           </table>

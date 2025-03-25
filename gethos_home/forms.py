@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contato
+from .models import Contato, Usuario
 from django.core.validators import RegexValidator
 import re
 from django.core.exceptions import ValidationError
@@ -34,6 +34,18 @@ class UploadExcelForm(forms.Form):
     arquivo_excel = forms.FileField(label='Selecione um arquivo Excel')
 
 
+class UsuarioEditForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['first_name', 'email', 'whatsapp']
+        labels = {
+            'first_name': 'Nome',
+            'email': 'E-mail',
+            'whatsapp': 'WhatsApp',
+        }
+        help_texts = {
+            'whatsapp': 'Digite no formato +5511987654321',
+        }
 
 
 

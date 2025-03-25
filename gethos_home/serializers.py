@@ -1,6 +1,6 @@
 # gethos_home/serializers.py
 from rest_framework import serializers
-from .models import Contato, Veterinario, Campanha
+from .models import Contato, Campanha
 import re
 
 
@@ -29,4 +29,4 @@ class CampanhaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Campanha
-        fields = ['id', 'nome', 'mensagem', 'contatos', 'status']
+        fields = ['id', 'nome', 'mensagem', 'contatos']

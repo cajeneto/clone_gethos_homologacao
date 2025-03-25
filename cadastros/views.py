@@ -10,6 +10,7 @@ from gethos_home.forms import ContatoForm
 
 
 def adicionar_contato(request):
+    
     if request.method == 'POST':
         form = ContatoForm(request.POST)
         if form.is_valid():
@@ -31,7 +32,6 @@ def adicionar_contato(request):
 
 def visualizar_contato(request):
     return render(request, 'interface-contatos.html')
-
 
 def cadastro_mensagens(request):
     if request.method == 'POST':
