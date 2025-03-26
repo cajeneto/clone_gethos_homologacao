@@ -15,7 +15,7 @@ SECRET_KEY = "django-insecure-mv1tfce_$46b(po8ij_$69y4)!paib(3o-ato+)9oo-2(x9u)a
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #variáveis de ambientes
+DEBUG = True #variáveis de ambientes
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOST', '').split(',')
 
@@ -33,17 +33,18 @@ ALLOWED_HOSTS = ["*"]
 
 # inserido CSRF confiável data 26/11/2024
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'https://gethostecnologia.com.br',
-#     'http://gethostecnologia.com.br',
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://gethostecnologia.com.br',
+    "https://teste2-gethos-crm.mtnwf6.easypanel.host",
+]
 
 
 CORS_ALLOWED_ORIGINS = [
     "https://gethostecnologia.com.br",
-    # "http://127.0.0.1:3000",  # Outro possível domínio local
-    
+    "https://teste2-gethos-crm.mtnwf6.easypanel.host",
 ]
+    # "http://127.0.0.1:3000",  # Outro possível domínio local
+
 
 
 
@@ -120,7 +121,7 @@ DATABASES = {
         "NAME": "gethosapp_db",
 	"USER": "postgres",
 	"PASSWORD": "gethosappsenha",
-	"HOST": "127.0.0.1",
+	"HOST": "teste2_gethosapp_db",
 	"PORT": "5432",
     }
 }
@@ -225,6 +226,3 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
 SIMPLESVET_EMAIL= "netocajeh@gmail.com"
 SIMPLESVET_PASSWORD= "Neto03@@"
-
-
-
