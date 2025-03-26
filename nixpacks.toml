@@ -1,5 +1,5 @@
-x[phases.setup]
-nixPkgs = ["python3", "libstdcxx", "gcc", "postgresql", "openssl"]
+[phases.setup]
+nixPkgs = ["python3", "gcc", "libstdcxx", "postgresql"]
 
 [phases.install]
 cmds = [
@@ -10,4 +10,4 @@ cmds = [
 ]
 
 [start]
-cmd = "/opt/venv/bin/gunicorn gethosapp.wsgi --bind 0.0.0.0:$PORT"
+cmd = "/opt/venv/bin/gunicorn gethosapp.wsgi --bind 0.0.0.0:${PORT}"
