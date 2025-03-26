@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.messages import get_messages
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
-import pandas as pd
+# import pandas as pd
 from .forms import UploadExcelForm, UsuarioEditForm
 from .models import Contato, MensagemWhatsApp
 from .forms import ContatoForm
