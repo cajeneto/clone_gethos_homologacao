@@ -1,21 +1,16 @@
-# Use uma imagem base com Python 3.12
-FROM python:3.12-slim
+# Use uma imagem base mais completa com Python 3.12
+FROM python:3.12
 
-# Instale dependências do sistema (incluindo libstdc++ para o numpy)
-RUN apt-get update && apt-get install -y \
-    libstdc++6 \
-    && rm -rf /var/lib/apt/lists/*
-
-# Defina o diretório de trabalho dentro do container
+# Defina o diretório de trabalho
 WORKDIR /app
 
-# Copie os arquivos do projeto para o container
+# Copie os arquivos do projeto
 COPY . .
 
-# Instale as dependências do Python listadas no requirements.txt
+# Instale as dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Exponha a porta 8000 (padrão para o Django)
+# Exponha a porta 8000
 EXPOSE 8000
 
 # Comando para rodar o servidor Django
