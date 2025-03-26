@@ -14,13 +14,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px;
+      padding: 5px;
       background-color: white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       font-family: "Rethink Sans", sans-serif;
       z-index: 99999;
       
     }
+
+
+
 
     .titulo-empresa { 
         font-size: 24px;
@@ -54,12 +57,12 @@
       cursor: pointer;
     }
     
-    .icon-btn {
+    /* .icon-btn {
       background: none;
       border: none;
       cursor: pointer;
       margin-left: 15px;
-    }
+    } */
     
     .profile-menu {
       display: flex;
@@ -135,6 +138,7 @@
       height: auto;
     }
 
+
     /* Dropdown container */
 .dropdown {
   position: relative;
@@ -152,7 +156,24 @@
   display: flex;
   align-items: center;
   z-index: 9999;
+  
 }
+
+.dropdown-btn:hover {
+  background-color: #4a90e2;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  border-radius: 10px;
+  color: #fff;
+  
+}
+
+
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
@@ -172,17 +193,25 @@
   display: block;
   font-size: 14px;
   color: #333;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #bababa;
   transition: background 0.3s ease;
 }
 
 /* Hover styles for dropdown content */
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #4a90e2;
   z-index: 9999;
 }
 
-/* Show the dropdown content when hovering */
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.icon-btn.dropdown-btn,
+.icon-btn.dropdown-btn * {
+  color: black !important;
+  text-decoration: none !important;
+  font-style: normal;
+}
+
+

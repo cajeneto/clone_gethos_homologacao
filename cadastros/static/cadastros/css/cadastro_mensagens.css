@@ -165,3 +165,14 @@ body {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+
+
+textarea#id_conteudo_mensagem {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-family: monospace; /* Para melhor leitura de HTML */
+}

@@ -5,12 +5,12 @@ import re
 
 
 class ContatoSerializer(serializers.ModelSerializer):
-    veterinario = serializers.StringRelatedField(read_only=True)
+
 
 
     class Meta:
         model = Contato
-        fields = ['id', 'nome', 'telefone','veterinario', 'nome_animal', 'status']  # Campos que estou expondo
+        fields = ['id', 'nome', 'telefone','status']  # Campos que estou expondo
 
         read_only_fields = ['id', 'data_criacao']
 

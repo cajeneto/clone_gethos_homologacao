@@ -1,0 +1,183 @@
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+
+.whatsapp-interface {
+  display: flex;
+  height: calc(100vh - 70px); /* altura da tela - altura do menu */
+  margin-top: 70px; /* ajuste para espaço do menu */
+}
+
+.nome_contato{
+    padding: 10px;
+    background-color: #f0f2f5;
+}
+
+.lista-contatos {
+  width: 300px;
+  border-right: 1px solid #ccc;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+}
+
+.chat-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  border-radius: 0% 0% 1% 1%;
+}
+
+
+
+.container-central {
+    display: flex;
+    height: 90dvh;
+  }
+  
+  .sidebar-contatos {
+    width: 300px;
+    background: #ffffff;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .sidebar-contatos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-contatos li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+
+  }
+
+  .sidebar-contatos li:hover {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f5f6f6;
+  }
+  
+  .sidebar-contatos li.ativo {
+    background: #f0f2f5;
+  }
+  
+  .sidebar-contatos a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .painel-chat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 10px;
+  }
+  
+  .chat-box {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #f5f5f5;
+  }
+  
+  .mensagem.enviada {
+    text-align: right;
+    background: #dcf8c7;
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .mensagem.recebida {
+    text-align: left;
+    background: #e2e2e2;
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+
+  
+  .form-envio {
+    margin-top: 10px;
+    display: flex;
+    border-radius: 1%;
+  }
+  
+  .form-envio input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid;          
+    outline: none;         
+    border-radius: 4px;    
+  }
+
+  .form-envio input:focus {
+    border: 2px solid #4A90E2;
+    background-color: #fff;
+  }
+  
+  .form-envio button {
+    border-radius: 1%;
+    padding: 10px 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 14px;
+  }
+  
+
+
+
+
+
+  .painel-funil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; /* verde claro */
+    padding: 10px;
+    border: 1px solid #c1c1c1;
+  }
+  
+  .select-funil {
+    padding: 8px 12px;
+    /* border: 1px solid #ccc; */
+    border-radius: 20px;
+    font-size: 12px;
+    outline: none;
+  }
+  
+  .icones-funil {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .icone-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #555;
+    transition: color 0.2s ease;
+  }
+  
+  .icone-btn:hover {
+    color: #2e7d32; /* verde escuro */
+  }
+  
+  .material-icons {
+    font-family: 'Material Icons';
+  }
+  

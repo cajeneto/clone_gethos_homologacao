@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Etapas do Fluxo - {{ fluxo.nome }}</title>
+    <link rel="stylesheet" href="{% static 'cadastros/css/adicionar_etapas_fluxo.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+
+    <div class="container">
+        <h1>Fluxo: {{ fluxo.nome }}</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn-adicionar">Adicionar Etapa</button>
+        </form>
+
+        <hr>
+
+        <h2>Etapas já adicionadas:</h2>
+        <ul class="lista-etapas">
+            {% for etapa in etapas %}
+                <li>
+                    <strong>Etapa {{ etapa.ordem }}</strong> – {{ etapa.get_canal_display }} após {{ etapa.delay_em_horas }}h:
+                    "{{ etapa.mensagem.nome_modelo }}"
+                </li>
+            {% empty %}
+                <li>Nenhuma etapa adicionada ainda.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

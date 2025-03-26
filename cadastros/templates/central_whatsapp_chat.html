@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Central WhatsApp</title>
+  <link rel="stylesheet" href="{% static 'cadastros/css/central_whatsapp_chat.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+</head>
+<body>
+<div class="container-central_menu">
+    {% include 'menu_header.html' %}
+    <div class="container-central">
+        
+      
+  <!-- Sidebar -->
+  <div class="sidebar-contatos">
+    <h3>Contatos</h3>
+    <ul>
+      {% for c in contatos %}
+      <li class="{% if contato and c.id == contato.id %}ativo{% endif %}">
+        <a href="{% url 'central_whatsapp_chat' c.id %}">
+          <strong>{{ c.nome }}</strong><br>
+          <span>{{ c.telefone }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Painel do Chat -->
+  <div class="painel-chat">
+    {% if contato %}
+    <h3 class="nome_contato">{{ contato.nome }} | {{ contato.telefone }}</h3>
+    <div class="painel-funil">
+      <select class="select-funil">
+        <option selected>Selecionar Etapa do Kanban</option>
+        <option>nome do funil kanban</option>
+        <option>nome do funil kanban</option>
+      </select>
+    
+      <div class="icones-funil">
+        <button class="icone-btn"><i class="material-icons">sell</i></button>
+        <button class="icone-btn"><i class="material-icons">account_balance_wallet</i></button>
+        <button class="icone-btn"><i class="material-icons">edit</i></button>
+        <button class="icone-btn"><i class="material-icons">notifications</i></button>
+      </div>
+    </div>
+    <div id="chat-box" class="chat-box">
+      {% for msg in mensagens %}
+        <div class="mensagem {{ msg.tipo }}">
+          {{ msg.mensagem }}
+          <div class="timestamp">{{ msg.data_criacao|date:"d/m H:i" }}</div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <form method="post" action="{% url 'enviar_mensagem_whatsapp' contato.id %}">
+      {% csrf_token %}
+      <div class="form-envio">
+        <input type="text" name="mensagem" placeholder="Digite sua mensagem..." required>
+        <button class="button_enviar" type="submit">Enviar</button>
+      </div>
+    </form>
+    {% else %}
+    <p>Selecione um contato para começar a conversa.</p>
+    {% endif %}
+  </div>
+</div>
+</div>
+<script>
+// Atualização automática (AJAX)
+{% if contato %}
+  const contatoId = {{ contato.id }};
+  const chatContainer = document.getElementById('chat-box');
+
+  function carregarMensagens() {
+    fetch(`/cadastros/whatsapp/central/${contatoId}/json/`)
+      .then(res => res.json())
+      .then(data => {
+        chatContainer.innerHTML = '';
+        data.mensagens.forEach(msg => {
+          const div = document.createElement('div');
+          div.className = "mensagem " + msg.tipo;
+          div.innerHTML = `${msg.mensagem}<br><small>${msg.data}</small>`;
+          chatContainer.appendChild(div);
+        });
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      });
+  }
+
+  setInterval(carregarMensagens, 5000);
+  carregarMensagens();
+{% endif %}
+</script>
+</body>
+</html>

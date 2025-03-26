@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de E-mail HTML</title>
+    <link rel="stylesheet" href="{% static 'cadastros/css/enviar_email_html.css' %}">
+</head>
+<body>
+    {% include 'menu_header.html' %}
+
+    <div class="container">
+        <h1>Enviar E-mails HTML</h1>
+
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST" class="formulario-email">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="assunto">Assunto do E-mail:</label>
+                <input type="text" id="assunto" name="assunto" placeholder="Assunto da campanha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="modelo">Modelo de E-mail HTML:</label>
+                <select id="modelo" name="modelo" required>
+                    <option value="">Selecione um modelo...</option>
+                    {% for modelo in modelos %}
+                        <option value="{{ modelo.id }}">{{ modelo.nome_modelo }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contatos">Selecionar Contatos:</label>
+                <select id="contatos" name="contatos" multiple size="10" required>
+                    {% for contato in contatos %}
+                        <option value="{{ contato.id }}">{{ contato.nome }} - {{ contato.email }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-enviar">Enviar E-mails</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

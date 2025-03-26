@@ -27,6 +27,7 @@ from processos.tasks import enviar_campanha
 from django.contrib.admin.views.decorators import staff_member_required
 
 
+
 # @login_required
 def home(request):
     if request.method == 'POST':
@@ -260,3 +261,6 @@ def excluir_contato(request, contato_id):
 def contatos_excluidos(request):
     contatos = Contato.objects.filter(is_deleted=True).order_by('-data_criacao')
     return render(request, 'contatos_excluidos.html', {'contatos': contatos})
+
+
+

@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxos de Automação - Gethos CRM</title>
+    <link rel="stylesheet" href="{% static 'cadastros/css/fluxo_automacao_gethos.css' %}">
+    
+</head>
+<body>
+    {% include 'menu_header.html' %}
+
+    <div class="container-fluxos">
+        <div class="cabecalho-fluxo">
+            <h2>Fluxos de Automações</h2>
+            <a href="{% url 'novo_fluxo_automacao' %}" class="botao-novo-fluxo">+ Novo Fluxo</a>
+        </div>
+
+        <table class="tabela-fluxos">
+            <thead>
+                <tr>
+                    <th>Fluxo de automação</th>
+                    <th>Status</th>
+                    <th>Descrição</th>
+                    <th>Última alteração</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fluxos in fluxos %}
+                <tr>
+                    <td>{{ fluxos.nome }}</td>
+                    <td>
+                        <span class="status {% if fluxos.ativo %}ativo{% else %}inativo{% endif %}">
+                            {% if fluxos.ativo %}Ativado{% else %}Desativado{% endif %}
+                        </span>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>{{ fluxos.descricao }}</li>
+                        </ul>
+                    </td>
+                    <td>{{ fluxos.criado_em|date:"d/m/Y H:i" }}</td>
+                    <td>
+                        <div class="acoes">
+                            <a href="{% url 'editar_fluxo_automacao' fluxo_id=fluxos.id %}" class="botao-editar">
+                                ✏️ Editar
+                            </a>
+                            <a href="{% url 'visualizar_fluxo_automacao' fluxo_id=fluxos.id %}" class="botao-ver">
+                                👁️ Ver
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+</table>
+</div>
+</body>
+</html>

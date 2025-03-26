@@ -1,5 +1,6 @@
 {% load static %}
 <head>
+
     <link rel="stylesheet" href="{% static 'gethos_home/css/menu_header.css' %}">
 </head>
 
@@ -16,12 +17,10 @@
       </form>
     </div>
     <div class="navbar-right">
-      {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Cadastros</i></button> {% endcomment %}
-      <button class="icon-btn dropdown-btn">
-        <i class="material-symbols-outlined">
-          <a href="{% url 'dashboard_auth' %}">Lista de Contatos</a>
-        </i>
-      </button>
+      {% comment %} PRIMEIROS LINKS DO MENU {% endcomment %}
+      <a href="{% url 'central_whatsapp' %}" class="icon-btn dropdown-btn">Central Whatsapp (beta)</a>
+      <a href="{% url 'dashboard_auth' %}" class="icon-btn dropdown-btn">Lista de Contatos</a>
+
       <div class="dropdown">
         <button class="icon-btn dropdown-btn">
           <i class="material-symbols-outlined">Cadastros</i>
@@ -29,11 +28,12 @@
         <div class="dropdown-content">
           <a href="{% url 'adicionar_contato' %}">Cadastrar Contatos</a>
           <a href="{% url 'lista_mensagens_cadastradas' %}">Cadastrar Mensagens</a>
+          <a href="{% url 'lista_fluxos_automacao' %}">Fluxo de Automações</a> 
           {% comment %} <a href="#">Mensagens SMS's</a> {% endcomment %}
           <a href="{% url 'listar_campanhas'%}">Campanhas de Captação Leads</a>
         </div>
       </div>
-      {% comment %} Cadastros/ [Cadastrar Contatos, Mensagem Whatsapp, Mensagens SMS's, Campanhas de Captação Leads  {% endcomment %}
+
 
       {% comment %} <button class="icon-btn"><i class="material-symbols-outlined">Processos</i></button> {% endcomment %}
       <div class="dropdown">
@@ -42,9 +42,9 @@
         </button>
         <div class="dropdown-content">
           <a href="{% url 'fluxo_captacao' %}">Fluxo de Captação</a>
-          <a href="{% url 'enviar_mensagem' %}">Enviar Mensagens</a>
-          <a href="#">Iniciar Campanha de Captação Leads</a>
-          <a href="#">Captação</a>
+          <a href="{% url 'enviar_mensagem' %}">Enviar Whatsapp</a>
+          <a href="{% url 'enviar_email_html' %}">Enviar E-mails</a>
+          
         </div>
       </div>
       {% comment %} Processos/ [Enviar Mensagem Whatsapp, Enviar Mensagens SMS's, Iniciar Campanha de Captação Leads  {% endcomment %}
@@ -83,6 +83,17 @@
           <a href="#">Configurações</a>
           <a href="{% url 'logout_view' %}">Encerrar Sessão</a>
         </div>
+      </div>
+      <div class="dropdown">
+        <button class="icon-btn dropdown-btn">
+          <i class="material-symbols-outlined">Configurações</i>
+        </button>
+        {% comment %} <div class="dropdown-content">
+          <a href="{% url 'editar_perfil' %}"></a>
+          <a href="{% url 'contatos_excluidos' %}">Lixeira</a>
+          <a href="#">Configurações</a>
+          <a href="{% url 'logout_view' %}">Encerrar Sessão</a>
+        </div> {% endcomment %}
       </div>
 
      {% comment %}  <div class="profile-menu">

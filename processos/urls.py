@@ -9,6 +9,7 @@ urlpatterns = [
     path('enviar_mensagem/', views.enviar_mensagem, name='enviar_mensagem'),
     path('move-task/', views.move_task, name='move_task'),  # Novo endpoint
     path('relatorios/', views.relatorios, name='relatorios'), #PENDENTE DE TESTES!
+    path('kanban/criar-etapa/', views.criar_etapa_ajax, name='criar_etapa_ajax'),
 ]
 
 

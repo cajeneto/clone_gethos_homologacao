@@ -10,7 +10,7 @@ app = Celery('gethosapp')
 
 # Lê as configurações do Celery do arquivo settings.py
 app.config_from_object('django.conf:settings', namespace='CELERY')
-app.autodiscover_tasks(['gethos_home', 'processos'])
+app.autodiscover_tasks(['gethos_home', 'cadastros', 'processos'])
 
 # Autodiscovery para localizar tarefas definidas em 'tasks.py'
 app.autodiscover_tasks()

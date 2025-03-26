@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modelo de Mensagem WhatsApp</title>
+    <title>Modelo de Mensagem</title>
     <link rel="stylesheet" href="{% static 'cadastros/css/cadastro_mensagens.css' %}">
 </head>
 <body>
@@ -25,25 +25,36 @@
                 <!-- Campo de nome do modelo -->
                 <div class="campo-formulario">
                     <label for="nome_modelo" class="label-requerido">Nome do Modelo</label>
-                    {{ form.nome_modelo }}  <!-- Renderiza o campo do formulário -->
+                    {{ form.nome_modelo }}
                     <div class="erro-nome">Campo obrigatório</div>
                 </div>
-
+            
                 <!-- Campo de tipo de mensagem -->
                 <div class="campo-formulario">
                     <label for="tipo_mensagem" class="label-requerido">Tipo de Mensagem</label>
-                    {{ form.tipo_mensagem }}  <!-- Renderiza o campo select do Django -->
+                    {{ form.tipo_mensagem }}
                 </div>
-
-                <!-- Campo de conteúdo da mensagem -->
-                <div class="editor-texto" id="editor-texto">
-                    {{ form.conteudo_mensagem }}  <!-- Renderiza o campo Textarea -->
+            
+                <div class="campo-formulario">
+                    <label for="conteudo_mensagem" class="label-requerido">Conteúdo da Mensagem</label>
+                    {{ form.conteudo_mensagem }}
                 </div>
-
+                        {% if mensagem %}
+                        <h2>Preview da Mensagem</h2>
+                        <iframe
+                            srcdoc="{{ mensagem.conteudo_mensagem|safe }}"
+                            style="width: 100%; height: 600px; border: 1px solid #ccc; border-radius: 8px; background: white;">
+                        </iframe>
+                        <br>
+                        <a href="{% url 'clonar_mensagem' mensagem.id %}">
+                            <button type="button" class="btn btn-warning">Clonar</button>
+                        </a>
+                        {% endif %}
+            
                 <div class="contador-caracteres">
                     <span id="contador">Caracteres: 0</span>
                 </div>
-
+            
                 <div class="informacao-caracteres">
                     <p>A contagem de caracteres não considera os valores preenchidos em uma variável após ser preenchida com os dados do contato ou registro.</p>
                 </div>
@@ -59,4 +70,7 @@
         </form>
     </div>
 </body>
+
+
+
 </html>

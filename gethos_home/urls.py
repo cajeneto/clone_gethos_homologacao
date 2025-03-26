@@ -23,6 +23,7 @@ from gethos_home.views import (
     editar_contato,
     excluir_contato,
     contatos_excluidos,
+    
    
     
     
@@ -46,5 +47,6 @@ urlpatterns = [
     path("editar-contato/<int:contato_id>/", editar_contato, name="editar_contato"),
     path("excluir-contato/<int:contato_id>/", excluir_contato, name="excluir_contato"),
     path("contatos-excluidos/", contatos_excluidos, name="contatos_excluidos"),
+    
     # path("webhooks/", views.webhook_receiver, name='webhook_receiver'),
 ]

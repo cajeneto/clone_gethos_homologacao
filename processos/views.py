@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone  # Import correto para timezone
 import gethos_home
-from .models import FluxoCaptacao
+from .models import FluxoCaptacao, StatusKanban
 from gethos_home.models import Contato, MensagemWhatsApp, Campanha
 from gethos_home.api import enviar_mensagem_api
 import json
@@ -12,28 +12,19 @@ from django.contrib import messages
 
 
 def fluxo_captacao(request):
-    # Filtra os contatos por status para exibir no Kanban
-    fluxo_a_fazer = FluxoCaptacao.objects.filter(status='A fazer')
-    fluxo_progresso = FluxoCaptacao.objects.filter(status='Em andamento')
-    fluxo_concluido = FluxoCaptacao.objects.filter(status='Concluído')
+    status_list = StatusKanban.objects.all()
+    contatos = Contato.objects.all()
 
-    """ # Para garantir que todos os contatos estejam no fluxo (opcional)
-    default_status = 'A fazer'
-    for contato in Contato.objects.filter(fluxocaptacao__isnull=True):
-        FluxoCaptacao.objects.create(
-            titulo=f"{contato.nome} - {contato.nome_animal}",
-            contato=contato,
-            status=default_status
-        ) """
-    # Log para debug
-    import logging
-    logger = logging.getLogger(__name__)
-    logger.info(f"A fazer: {fluxo_a_fazer.count()}, Em andamento: {fluxo_progresso.count()}, Concluído: {fluxo_concluido.count()}")
+    # Cria um dicionário com etapas agrupadas por status
+    etapas_por_status = {}
+    for status in status_list:
+        etapas = FluxoCaptacao.objects.filter(status=status.nome).select_related('contato')
+        etapas_por_status[status.nome] = etapas
 
     return render(request, 'fluxo_captacao.html', {
-        'fluxo_a_fazer': fluxo_a_fazer,
-        'fluxo_progresso': fluxo_progresso,
-        'fluxo_concluido': fluxo_concluido,
+        'status_list': status_list,
+        'etapas_por_status': etapas_por_status,
+        'contatos': contatos
     })
 
 @csrf_exempt
@@ -44,18 +35,17 @@ def move_task(request):
         new_status = data.get('new_status')
 
         task = get_object_or_404(FluxoCaptacao, id=task_id)
-        task.status = new_status
+        status_obj = StatusKanban.objects.get(nome=new_status)  # Busca o objeto StatusKanban
+        task.etapa = status_obj  # Atribui o objeto ao campo 'etapa'
         task.save()
 
-        # Automação básica com Celery
         if new_status == 'Em andamento' and task.contato:
             msg = gethos_home.models.MensagemWhatsApp.objects.create(
                 contato=task.contato,
                 mensagem="Movido para Em andamento",
                 data_envio=timezone.now()
             )
-            enviar_mensagem_api.delay(msg.id)  # Usa Celery assíncrono
-
+            enviar_mensagem_api.delay(msg.id)
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)
 
@@ -63,10 +53,11 @@ def add_etapa(request):
     if request.method == 'POST':
         titulo = request.POST.get('titulo')
         descricao = request.POST.get('descricao')
-        status = request.POST.get('status', 'A fazer')
+        status_nome = request.POST.get('status', 'A fazer')
         contato_id = request.POST.get('contato')
         contato = Contato.objects.get(id=contato_id) if contato_id else None
-        FluxoCaptacao.objects.create(titulo=titulo, descricao=descricao, status=status, contato=contato)
+        status_obj = StatusKanban.objects.get(nome=status_nome)  # Busca o objeto StatusKanban pelo nome
+        FluxoCaptacao.objects.create(titulo=titulo, etapa=status_obj, contato=contato)  # Usa 'etapa' e passa o objeto
         return redirect('fluxo_captacao')
     contatos = Contato.objects.all()
     return render(request, 'add_etapa.html', {'contatos': contatos})
@@ -136,6 +127,24 @@ def relatorios(request):
     return render(request, 'relatorios.html', {'relatorio': relatorio})
        
        
+@csrf_exempt
+def criar_etapa_ajax(request):
+    if request.method == 'POST':
+        titulo = request.POST.get('titulo')
+        contato_id = request.POST.get('contato_id')
+        status_nome = request.POST.get('status')
+
+        try:
+            contato = Contato.objects.get(id=contato_id)
+            status_obj = StatusKanban.objects.get(nome=status_nome)
+            FluxoCaptacao.objects.create(
+                titulo=titulo,
+                contato=contato,
+                etapa=status_obj  # Corrigido: usa 'etapa' e passa o objeto
+            )
+            return JsonResponse({'sucesso': True})
+        except Exception as e:
+            return JsonResponse({'erro': str(e)})
        
        
        

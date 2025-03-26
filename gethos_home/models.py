@@ -33,7 +33,7 @@ class Contato(models.Model):
 
     nome = models.CharField(max_length=100)
     telefone = models.CharField(max_length=15)
-    email = models.EmailField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
     empresa = models.CharField(max_length=100, blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Lead')
     observacoes = models.TextField(blank=True, null=True)
@@ -86,7 +86,7 @@ class MensagemWhatsApp(models.Model):
     ]
 
     campanha = models.ForeignKey(Campanha, on_delete=models.CASCADE, null=True, blank=True)
-    contato = models.ForeignKey(Contato, on_delete=models.CASCADE)
+    contato = models.ForeignKey(Contato, on_delete=models.CASCADE, related_name="mensagem_whatsapp_gethos_home")
     tipo = models.CharField(max_length=20, choices=TIPO_CHOICES, default='WhatsApp')  # Novo campo
     mensagem = models.TextField()
     data_envio = models.DateTimeField(null=True, blank=True)

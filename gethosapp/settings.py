@@ -1,55 +1,29 @@
 from pathlib import Path
-import os
-
-
+from decouple import config  # Importa o python-decouple
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-mv1tfce_$46b(po8ij_$69y4)!paib(3o-ato+)9oo-2(x9u)a"
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)  # Converte para booleano
 
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #variáveis de ambientes
-
-# ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOST', '').split(',')
-
-ALLOWED_HOSTS = ["*"]
-
-
-
-
-
-
-
-
-#ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'localhost', '127.0.0.1']
-
-
-# inserido CSRF confiável data 26/11/2024
-
+# CSRF e CORS
 CSRF_TRUSTED_ORIGINS = [
     'https://gethostecnologia.com.br',
     "https://teste2-gethos-crm.mtnwf6.easypanel.host",
 ]
 
-
 CORS_ALLOWED_ORIGINS = [
     "https://gethostecnologia.com.br",
     "https://teste2-gethos-crm.mtnwf6.easypanel.host",
 ]
-    # "http://127.0.0.1:3000",  # Outro possível domínio local
-
-
-
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -57,9 +31,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "corsheaders",
+    "gethos_home.apps.GethosHomeConfig",
     "rest_framework",
-    "gethos_home",
     "cadastros",
     "processos",
     "notificacoes",
@@ -67,7 +40,6 @@ INSTALLED_APPS = [
     "relatorios",
     "integration_api_zwa",
     "landing_page_gethos",
-
 ]
 
 MIDDLEWARE = [
@@ -79,12 +51,19 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
+# Configurações de e-mail
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
 
-TOKEN_GITHUB = "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"
+# Token do GitHub (removido do código, agora no .env)
+TOKEN_GITHUB = config('TOKEN_GITHUB')
 
 AUTH_USER_MODEL = 'gethos_home.Usuario'
 
@@ -97,7 +76,7 @@ TEMPLATES = [
             BASE_DIR / "gethos_home" / "templates",
             BASE_DIR / "templates",
         ],
-        "APP_DIRS": True,  
+        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -111,21 +90,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "gethosapp.wsgi.application"
 
-
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "gethosapp_db",
-	"USER": "postgres",
-	"PASSWORD": "gethosappsenha",
-	"HOST": "teste2_gethosapp_db",
-	"PORT": "5432",
+        "NAME": config('DB_NAME'),
+        "USER": config('DB_USER'),
+        "PASSWORD": config('DB_PASSWORD'),
+        "HOST": config('DB_HOST'),
+        "PORT": config('DB_PORT'),
     }
 }
-
 
 CACHES = {
     "default": {
@@ -137,11 +112,7 @@ CACHES = {
     }
 }
 
-
-
 # Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -157,72 +128,34 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
-
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "America/Sao_Paulo"
-
 USE_I18N = True
-
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+# Static files
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
     BASE_DIR / "static",
     BASE_DIR / "processos" / "static",
-    
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles"  # adicionado para ir pra produção
-#  lembrar de rodar o collectstatic
-
-
-
-#MEDIA_URL = '/staticfiles/'
-#MEDIA_ROOT = '/webapps/gethosapp/projetoGethos/media/'
-#MEDIA_ROOT = 'staticfiles/'
-
-
-
-
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# # URL para redirecionar após o login
-# LOGIN_REDIRECT_URL = 'dashboard.auth'
-
-# # URL para redirecionar ao fazer logout
-# LOGOUT_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'home'
 LOGIN_REDIRECT_URL = 'dashboard_auth'
 LOGOUT_REDIRECT_URL = 'home'
 
-
-# Timezone
+# Celery
 CELERY_TIMEZONE = 'UTC'
-
-# Aceitar apenas formatos JSON
-CELERY_BROKER_URL = "redis://localhost:6379/0"  # Redis precisa estar rodando
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
 
-
-# Backend opcional para armazenar os resultados das tarefas
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
-
-
-
-
-SIMPLESVET_EMAIL= "netocajeh@gmail.com"
-SIMPLESVET_PASSWORD= "Neto03@@"
+# Simplesvet
+SIMPLESVET_EMAIL = config('SIMPLESVET_EMAIL')
+SIMPLESVET_PASSWORD = config('SIMPLESVET_PASSWORD')

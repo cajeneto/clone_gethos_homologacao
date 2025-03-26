@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Novo Fluxo de Automação</title>
+  <link rel="stylesheet" href="{% static 'cadastros/css/novo_fluxo_automacao.css' %}">
+</head>
+<body>
+  {% include 'menu_header.html' %}
+  <div class="container">
+    <h1>Criar Novo Fluxo de Automação</h1>
+    
+    <form method="POST" id="form-fluxo">
+      {% csrf_token %}
+      
+      <div class="form-bloco">
+        <label>Nome do Fluxo:</label>
+        {{ form.nome }}
+            
+        <label>Descrição:</label>
+        {{ form.descricao }}
+            
+        <label>Ativo?</label>
+        {{ form.ativo }}
+      </div>
+
+      <hr>
+
+      <h2>Etapas do Fluxo</h2>
+      <div id="etapas-container"></div>
+      
+      <button type="button" class="btn-adicionar" onclick="adicionarEtapa()">+ Adicionar Etapa</button>
+
+      <hr>
+
+      <button type="submit" class="btn-salvar">Salvar Fluxo e Etapas</button>
+    </form>
+  </div>
+
+  <script>
+    let contadorEtapas = 0;
+    
+    {% if etapas %}
+      const etapasExistentes = [
+        {% for etapa in etapas %}
+          {
+            ordem: {{ etapa.ordem }},
+            canal: "{{ etapa.canal }}",
+            mensagem_id: "{{ etapa.mensagem.id }}",
+            delay: {{ etapa.delay_intervalo }},
+            intervalo_tipo: "{{ etapa.intervalo_tipo }}"
+          },
+        {% endfor %}
+      ];
+    {% else %}
+      const etapasExistentes = [];
+    {% endif %}
+    
+    window.onload = function () {
+      if (etapasExistentes.length > 0) {
+        etapasExistentes.forEach(e => adicionarEtapa(e));
+      } else {
+        adicionarEtapa(); // Criação de novo fluxo, insere 1 etapa automaticamente
+      }
+    };
+    
+    function adicionarEtapa(etapa = null) {
+      const container = document.getElementById("etapas-container");
+      const card = document.createElement("div");
+      card.className = "card-etapa";
+    
+      const ordem = etapa ? etapa.ordem : contadorEtapas + 1;
+      const canal = etapa ? etapa.canal : "email";
+      const mensagemId = etapa ? etapa.mensagem_id : "";
+      const delay = etapa ? etapa.delay : 0;
+      const intervalo_tipo = etapa ? etapa.intervalo_tipo : "horas";
+    
+      let opcoesMensagem = "";
+      {% for msg in mensagens %}
+        opcoesMensagem += `<option value="{{ msg.id }}" ${mensagemId == "{{ msg.id }}" ? "selected" : ""}>{{ msg.nome_modelo }}</option>`;
+      {% endfor %}
+    
+      card.innerHTML = `
+        <h3>Etapa ${contadorEtapas + 1}</h3>
+        <label>Ordem:</label>
+        <input type="number" name="etapas-${contadorEtapas}-ordem" value="${ordem}" required>
+    
+        <label>Canal:</label>
+        <select name="etapas-${contadorEtapas}-canal" required>
+          <option value="email" ${canal === "email" ? "selected" : ""}>E-mail</option>
+          <option value="whatsapp" ${canal === "whatsapp" ? "selected" : ""}>WhatsApp</option>
+        </select>
+    
+        <label>Mensagem:</label>
+        <select name="etapas-${contadorEtapas}-mensagem" required>
+          ${opcoesMensagem}
+        </select>
+    
+        <label>Delay:</label>
+        <input type="number" name="etapas-${contadorEtapas}-delay_intervalo" value="${delay}" required min="0">
+    
+        <label>Tipo do intervalo:</label>
+        <select name="etapas-${contadorEtapas}-intervalo_tipo" required>
+          <option value="minutos" ${intervalo_tipo === "minutos" ? "selected" : ""}>Minutos</option>
+          <option value="horas" ${intervalo_tipo === "horas" ? "selected" : ""}>Horas</option>
+        </select>
+    
+        <button type="button" class="btn-remover" onclick="this.parentElement.remove()">Remover</button>
+      `;
+    
+      container.appendChild(card);
+      contadorEtapas++;
+    }
+    </script>
+  
+</body>
+</html>

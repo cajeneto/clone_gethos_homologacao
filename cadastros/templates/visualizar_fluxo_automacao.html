@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Visualizar Fluxo: {{ fluxo.nome }}</title>
+  <link rel="stylesheet" href="{% static 'cadastros/css/visualizar_fluxo_automacao.css' %}">
+</head>
+<body>
+  {% include 'menu_header.html' %}
+
+  <div class="container">
+    <h1>{{ fluxo.nome }}</h1>
+    <p class="descricao">{{ fluxo.descricao }}</p>
+
+    <div class="fluxo-container">
+      {% for etapa in etapas %}
+        <div class="etapa-card">
+          <div class="icone">
+            {% if etapa.canal == 'email' %}
+              📧
+            {% else %}
+              💬
+            {% endif %}
+          </div>
+          <div class="info">
+            <h3>{{ etapa.mensagem.nome_modelo }}</h3>
+            <p><strong>Canal:</strong> {{ etapa.get_canal_display }}</p>
+            <p><strong>Delay:</strong> {{ etapa.delay_em_horas }}h</p>
+            <p><strong>Etapa:</strong> {{ etapa.ordem }}</p>
+          </div>
+        </div>
+
+        {% if not forloop.last %}
+          <div class="seta">⬇️</div>
+        {% endif %}
+      {% empty %}
+        <p>Nenhuma etapa configurada neste fluxo.</p>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

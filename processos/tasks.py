@@ -1,7 +1,9 @@
+# Em processos/tasks.py
+
 from celery import shared_task
 from django.utils import timezone
 from gethos_home.models import Campanha, MensagemWhatsApp
-from gethos_home.api import enviar_mensagem_api
+from gethos_home.api import enviar_mensagem_api, enviar_mensagem_api_livre
 import time
 
 @shared_task
@@ -11,18 +13,18 @@ def enviar_campanha(campanha_id, intervalo=10):
     campanha.save()
 
     for i, contato in enumerate(campanha.contatos.all()):
-        if i > 0:  # Espera antes de enviar, exceto na primeira mensagem
+        if i > 0:
             time.sleep(intervalo)
         
-        # Criar a mensagem
         mensagem = MensagemWhatsApp.objects.create(
             campanha=campanha,
             contato=contato,
             mensagem=campanha.mensagem,
             data_envio=timezone.now()
         )
-        # Enviar a mensagem
-        enviar_mensagem_api(mensagem.id)
+
+        # esse parametro é para utilizar somente em processos/enviar whatsapp
+        enviar_mensagem_api_livre(contato.id, campanha.mensagem, canal='whatsapp')
 
     campanha.status = 'Concluída'
     campanha.save()
