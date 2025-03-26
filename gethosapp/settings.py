@@ -33,14 +33,16 @@ ALLOWED_HOSTS = ["*"]
 
 # inserido CSRF confiável data 26/11/2024
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'https://gethostecnologia.com.br',
-#     'http://gethostecnologia.com.br',
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://gethostecnologia.com.br',
+    "https://teste2-gethos-crm.mtnwf6.easypanel.host",
+]
 
 
 CORS_ALLOWED_ORIGINS = [
     "https://gethostecnologia.com.br",
+    "https://teste2-gethos-crm.mtnwf6.easypanel.host",
+]
     # "http://127.0.0.1:3000",  # Outro possível domínio local
     
 ]
