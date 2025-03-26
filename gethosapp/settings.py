@@ -44,8 +44,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://teste2-gethos-crm.mtnwf6.easypanel.host",
 ]
     # "http://127.0.0.1:3000",  # Outro possível domínio local
-    
-]
+
 
 
 
