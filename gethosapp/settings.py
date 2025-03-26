@@ -121,7 +121,7 @@ DATABASES = {
         "NAME": "gethosapp_db",
 	"USER": "postgres",
 	"PASSWORD": "gethosappsenha",
-	"HOST": "127.0.0.1",
+	"HOST": "teste2_gethosapp_db",
 	"PORT": "5432",
     }
 }
