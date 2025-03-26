@@ -19,7 +19,7 @@ DEBUG = True #variáveis de ambientes
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOST', '').split(',')
 
-ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'www.gethostecnologia.com.br', 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'www.gethostecnologia.com.br', 'localhost', '127.0.0.1']
 
 
 
@@ -33,11 +33,17 @@ ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'www.gethostecnol
 
 # inserido CSRF confiável data 26/11/2024
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://gethostecnologia.com.br',
-    'http://gethostecnologia.com.br',
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://gethostecnologia.com.br',
+#     'http://gethostecnologia.com.br',
+# ]
 
+
+CORS_ALLOWED_ORIGINS = [
+    "https://gethostecnologia.com.br",
+    # "http://127.0.0.1:3000",  # Outro possível domínio local
+    
+]
 
 
 
@@ -50,6 +56,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "rest_framework",
     "gethos_home",
     "cadastros",
@@ -58,6 +65,7 @@ INSTALLED_APPS = [
     "perfil",
     "relatorios",
     "integration_api_zwa",
+    "landing_page_gethos",
 
 ]
 
@@ -69,7 +77,12 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+
+TOKEN_GITHUB = "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"
 
 AUTH_USER_MODEL = 'gethos_home.Usuario'
 
