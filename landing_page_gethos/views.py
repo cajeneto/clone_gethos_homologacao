@@ -7,8 +7,8 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 import json
 
-@csrf_exempt
-@require_POST
+# @csrf_exempt
+# @require_POST
 def receber_dados_landing(request):
     try:
         data = json.loads(request.body)
