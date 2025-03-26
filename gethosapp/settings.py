@@ -19,7 +19,7 @@ DEBUG = False #variáveis de ambientes
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOST', '').split(',')
 
-# ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'www.gethostecnologia.com.br', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["*"]
 
 
 
