@@ -1,0 +1,167 @@
+/* Estilos Gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+.container-principal {
+    margin: 50px auto;
+    width: 70%;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    margin-bottom: 20px;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.subtitulo {
+    font-size: 16px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.link-saiba-mais {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link-saiba-mais:hover {
+    text-decoration: underline;
+}
+
+/* Formulário */
+.formulario-modelo-mensagem {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Campos do Formulário */
+.campo-formulario {
+    margin-bottom: 20px;
+}
+
+.label-requerido {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-texto, .select-opcao {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-texto:focus, .select-opcao:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.erro-nome {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Botão de Variáveis */
+.botao-variaveis {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botao-variaveis:hover {
+    background-color: #0056b3;
+}
+
+.menu-variaveis ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.menu-variaveis ul li {
+    padding: 10px;
+    background-color: #f4f4f9;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Editor de Texto */
+.editor-texto textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Contador de Caracteres */
+.contador-caracteres {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Informação sobre Caracteres */
+.informacao-caracteres {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Botões do Formulário */
+.botoes-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.botao-cancelar, .botao-salvar {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.botao-cancelar {
+    background-color: #ccc;
+    color: #333;
+}
+
+.botao-cancelar:hover {
+    background-color: #bbb;
+}
+
+.botao-salvar {
+    background-color: #28a745;
+    color: white;
+}
+
+.botao-salvar:hover {
+    background-color: #218838;
+}
+
+.botao-salvar:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

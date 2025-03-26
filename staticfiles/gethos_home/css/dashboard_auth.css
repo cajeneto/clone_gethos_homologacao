@@ -1,0 +1,538 @@
+
+  *{
+    margin: 0;
+    padding: 0;
+    
+    
+  }
+
+
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      
+    }
+    
+    .navbar-left,
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    
+    .search-box input {
+      border: none;
+      outline: none;
+    }
+    
+    .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+    
+    .profile-menu {
+      display: flex;
+      align-items: center;
+    }
+    
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    /* Card container */
+    .cards-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      padding-top: 40px;
+      justify-content: space-between;
+      
+    }
+    
+    .card {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+      background-color: #ecf0ff
+    }
+    
+    .card-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      font-size: 14px;
+      color: #888;
+    }
+    
+    .card-amount {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+    
+    .card-change {
+      font-size: 14px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    
+    .positive {
+      color: #4caf50;
+      background-color: #e8f5e9;
+    }
+    
+    .negative {
+      color: #f44336;
+      background-color: #ffebee;
+    }
+    
+    .timeframe {
+      font-size: 12px;
+      color: #888;
+    }
+    
+    .card-chart img {
+      width: 80px;
+      height: auto;
+    }
+
+    /* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown button */
+.dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 1;
+}
+
+/* Dropdown content links */
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s ease;
+}
+
+/* Hover styles for dropdown content */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown content when hovering */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+   /*  {% comment %} estilização da tabela contatos {% endcomment %} */
+
+    /* Table container */
+.table-container {
+  position: relative;
+  padding: 20px;
+  margin: 5px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 2px rgb(106, 106, 106);
+  overflow-y: auto;
+  height: 70vh;
+}
+
+/* Table styles */
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Table header */
+.contacts-table th {
+  background-color: #ecf0ff;
+  padding: 12px;
+  text-align: center;
+  border-bottom: 3px solid #ddd;
+}
+
+/* Table rows */
+.contacts-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+/* Hover effect on rows */
+.contacts-table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Action buttons */
+.action-btn {
+  background-color: #e0e0e0;
+  border: none;
+  color: #333;
+  padding: 6px 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container-div {
+  display: flex;
+  position: relative;
+  height: auto; /* Pode ajustar conforme necessário */
+  width: 100%; /* Faz a div ocupar a largura completa */
+  justify-content: flex-end; /* Alinha o botão à direita */
+  align-items: center; /* Centraliza verticalmente */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 2px rgb(106, 106, 106);
+  margin-bottom: 1%;
+  
+ 
+  
+  }
+
+.list-contacts-title{
+  font-size: 20px;
+  right: 35%;
+  display: flex;
+  position: relative;
+  padding: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.adc-contato {
+  background-color: #605dff;
+  border: none;
+  color: #ffffff;
+  padding: 8px 14px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.botao-importar, .btn-upload {
+  background-color: #605dff;
+  border: none;
+  color: #ffffff;
+  padding: 8px 14px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: 0.3s ease;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.action-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.adc-contato:hover {
+  background-color: #3e3cc0;
+  color: #fff;
+  
+}
+
+.view-btn {
+  background-color: #4d5ac0;
+  color: #fff;
+}
+
+.edit-btn {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Adjust button sizes */
+.contacts-table td button {
+  min-width: 60px;
+  text-align: center;
+}
+
+/* estilização do modal */
+
+
+
+/* Estilos gerais do modal */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fixa o modal na tela */
+    z-index: 9999; /* Garante que o modal esteja acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura completa da tela */
+    height: auto; /* Altura completa da tela */
+    overflow: auto; /* Permite rolagem se o conteúdo for grande */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro e transparente */
+
+}
+
+/* Conteúdo do modal */
+.modal-content {
+    background-color: #dce8ef; /* Fundo branco para o conteúdo */
+    margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
+    padding: 25px;
+    border: 1px solid #888;
+    width: 30%; /* Largura do modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
+    border-radius: 5px; /* Cantos arredondados */
+    top: -16rem;
+    position: relative;
+    z-index: 999;
+}
+
+/* Estilos do botão de fechar */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(243, 55, 55);
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilos para o formulário */
+form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: #333;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 2px;
+    box-sizing: border-box;
+    border: 1px solid #9a9a9a;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+form input:focus, form select:focus {
+    border: 2px solid #007bff;
+    outline: none;
+}
+
+.contacts-table td a {
+  /* color: #d50c85; */
+  text-decoration: none;
+}
+
+.contacts-table td a:hover {
+  text-decoration: underline;
+}
+
+/* Estilo do botão Criar */
+.create-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 60%;
+    margin-top: 10px;
+}
+
+.create-btn:hover {
+    background-color: #0056b3;
+}
+
+  
+
+
+
+
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+/* ------------------------------------------------ ESTILIZAÇÃO DO SIDEBAR ------------------------------------------------------ */
+
+/* Estrutura geral da página */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    text-align: center;
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex-grow: 1;
+
+}
+
+/* Tabela de contatos */
+.contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.contacts-table th, .contacts-table td {
+    padding: 5px;
+    border: 2px solid #ccc;
+    text-align: center;
+}
+
+.contacts-table th {
+    background-color: #f0f0f0;
+}
+
+/* Estilo da sidebar retrátil */
+.sidebox {
+    width: 400px;
+    background-color: #ecf0ff;
+    padding: 20px;
+    box-shadow: -4px 0px 5px rgba(0, 0, 0, 0.1);
+    display: none;
+    position: absolute;
+    right: -400px;
+    top: 0;
+    height: 100%;
+    transition: right 0.3s ease-in-out; /* Suavidade na abertura */
+    z-index: 1000;
+    
+}
+
+
+/* Estilo dos botões da sidebar */
+.sidebox-btn {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5%;
+}
+
+.sidebox-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Exibe a sidebar quando ativa */
+.sidebox-active {
+    right: 0;
+    height: 120vh;
+}
+  
+/* Botão de envio na tabela */
+.submit-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .contacts-table {
+    font-size: 12px;
+  }
+  
+  .action-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+
+
+
+
+
+
+
+
+}

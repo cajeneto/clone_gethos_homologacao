@@ -1,0 +1,115 @@
+/* processos/static/processos/css/enviar_mensagem.css */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #F5F7FA; /* Fundo da página: branco acinzentado */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px; /* Limita a largura do contêiner */
+    margin: 40px auto; /* Centraliza na página */
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #2D3748; /* Texto escuro */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-container {
+    background-color: #FFFFFF; /* Fundo branco */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    font-weight: 600; /* Negrito */
+    color: #2D3748; /* Texto escuro */
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D1DCE5; /* Borda cinza-azulada */
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #4A90E2; /* Borda azul ao focar */
+    outline: none;
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+}
+
+.form-group .contatos-select {
+    height: 150px; /* Altura fixa para o select multiple */
+    overflow-y: auto; /* Adiciona rolagem */
+    background-color: #F5F7FA; /* Fundo claro */
+}
+
+.form-group select option {
+    padding: 5px;
+}
+
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4A90E2; /* Azul suave */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #357ABD; /* Azul mais escuro ao passar o mouse */
+}
+
+.btn-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3); /* Foco visível */
+}
+
+.alert {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+}
+
+.alert-error {
+    background-color: #F8D7DA;
+    color: #721C24;
+    border: 1px solid #F5C6CB;
+}

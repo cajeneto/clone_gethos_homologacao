@@ -19,7 +19,7 @@ DEBUG = False #variáveis de ambientes
 
 # ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOST', '').split(',')
 
-# ALLOWED_HOSTS = ['167.172.206.194', 'gethostecnologia.com.br', 'www.gethostecnologia.com.br', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -71,6 +71,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -178,7 +179,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "processos" / "static",
     
 ]
-#STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles"  # adicionado para ir pra produção
+#  lembrar de rodar o collectstatic
 
 
 

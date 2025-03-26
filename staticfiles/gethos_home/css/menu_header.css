@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Rethink Sans", sans-serif;
+    
+  }
+
+
+    /* Navbar styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-family: "Rethink Sans", sans-serif;
+      z-index: 99999;
+      
+    }
+
+    .titulo-empresa { 
+        font-size: 24px;
+        left: 10px;
+    }
+    
+    .navbar-left,
+    .navbar-right {
+      display: flex;
+      align-items: center;
+    }
+
+    
+    .search-box {
+      display: none;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      margin: 0 20px;
+    }
+    
+    .search-box input {
+      border: none;
+      outline: none;
+    }
+    
+    .search-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 15px;
+    }
+    
+    .profile-menu {
+      display: flex;
+      align-items: center;
+    }
+    
+    .profile-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    
+    /* Card container */
+    .cards-container {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      padding-top: 40px;
+      justify-content: space-between;
+      
+    }
+    
+    .card {
+      background-color: #e2e4e6;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 250px;
+    }
+    
+    .card-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card-title {
+      font-size: 14px;
+      color: #888;
+    }
+    
+    .card-amount {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+    
+    .card-change {
+      font-size: 14px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    
+    .positive {
+      color: #4caf50;
+      background-color: #e8f5e9;
+    }
+    
+    .negative {
+      color: #f44336;
+      background-color: #ffebee;
+    }
+    
+    .timeframe {
+      font-size: 12px;
+      color: #888;
+    }
+    
+    .card-chart img {
+      width: 80px;
+      height: auto;
+    }
+
+    /* Dropdown container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 9999;
+}
+
+/* Dropdown button */
+.dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  min-width: 200px;
+  z-index: 1;
+}
+
+/* Dropdown content links */
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.3s ease;
+}
+
+/* Hover styles for dropdown content */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  z-index: 9999;
+}
+
+/* Show the dropdown content when hovering */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
