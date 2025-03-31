@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python3", "gcc", "libstdcxx5", "postgresql"]
+aptPkgs = ["build-essential", "libpq-dev"]
 
 [phases.install]
 cmds = [
