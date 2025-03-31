@@ -16,6 +16,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 CSRF_TRUSTED_ORIGINS = [
     'https://gethostecnologia.com.br',
     "https://teste2-gethos-crm.mtnwf6.easypanel.host",
+    "https://teste2-hologacao-gethos-teste.mtnwf6.easypanel.host",
 ]
 
 CORS_ALLOWED_ORIGINS = [
