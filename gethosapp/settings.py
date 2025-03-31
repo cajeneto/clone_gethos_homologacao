@@ -151,10 +151,10 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Celery
 CELERY_TIMEZONE = 'UTC'
-CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_BROKER_URL = "redis://default:gethosappsenha@teste2_homologacao_gethos_redis:6379/0"
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
+CELERY_RESULT_BACKEND = "redis://default:gethosappsenha@teste2_homologacao_gethos_redis:6379/0"
 
 # Simplesvet
 SIMPLESVET_EMAIL = config('SIMPLESVET_EMAIL')
