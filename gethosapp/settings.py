@@ -94,11 +94,11 @@ WSGI_APPLICATION = "gethosapp.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config('DB_NAME'),
-        "USER": config('DB_USER'),
-        "PASSWORD": config('DB_PASSWORD'),
-        "HOST": config('DB_HOST'),
-        "PORT": config('DB_PORT'),
+        "NAME": "teste_gethos_db",
+        "USER": "gethosapp_db_teste",
+        "PASSWORD": "gethosappsenha",
+        "HOST": "teste2_teste_gethos_db",
+        "PORT": "5432",
     }
 }
 
