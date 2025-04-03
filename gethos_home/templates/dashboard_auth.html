@@ -71,61 +71,78 @@
 
       
 
-        <!-- The Modal -->
-      <div id="myModal" class="modal">
+       <!-- The Modal -->
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Adicionar Novo Contato</h2>
+    
+    <!-- Formulário configurado para usar ContatoForm -->
+    <form method="POST" action="{% url 'dashboard_auth' %}">
+      {% csrf_token %}
+      <input type="hidden" name="adicionar_contato" value="1">
+      
+      {% if form.errors %}
+          <div class="errors">
+              {% for field, errors in form.errors.items %}
+                  <p style="color: red;">{{ field }}: {{ errors }}</p>
+              {% endfor %}
+          </div>
+      {% endif %}
+      
+      <div class="form-group">
+          <label for="id_nome">Nome</label>
+          {{ form.nome }}
+      </div>
+      
+      <div class="form-group">
+          <label for="id_telefone">Telefone</label>
+          {{ form.telefone }}
+      </div>
+      
+      <div class="form-group">
+          <label for="id_email">E-mail</label>
+          {{ form.email }}
+      </div>
+      
+      <div class="form-group">
+          <label for="id_status">Status</label>
+          {{ form.status }}
+      </div>
 
-          <!-- Modal content -->
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Adicionar Novo Contato</h2>
-          
-          <!-- Formulário configurado para usar ContatoForm -->
-        <form method="POST" action="{% url 'dashboard_auth' %}">
-          {% csrf_token %}
-          <input type="hidden" name="adicionar_contato" value="1">
-          
-          {% if form.errors %}
-              <div class="errors">
-                  {% for field, errors in form.errors.items %}
-                      <p style="color: red;">{{ field }}: {{ errors }}</p>
-                  {% endfor %}
-              </div>
-          {% endif %}
-          
-          <div class="form-group">
-              <label for="id_nome">Nome</label>
-              {{ form.nome }}
+      <!-- Checkbox WhatsApp -->
+      <div class="form-group">
+        <div class="opcoes_mensagens">
+          <div class="custom-checkbox">
+            <input type="checkbox" id="id_checkbox_enviar_whatsapp" name="enviar_whatsapp">
+            <label class="custom-control-label" for="id_checkbox_enviar_whatsapp">Deseja enviar Whatsapp de boas vindas?
+              <i class="fas fa-info-circle text-info ml-1" data-toggle="tooltip" data-placement="right" 
+                 title="Ao selecionar esta opção, uma mensagem automática de boas-vindas será enviada para o WhatsApp do cliente."></i>
+            </label>
           </div>
-          
-          <div class="form-group">
-              <label for="id_telefone">Telefone</label>
-              {{ form.telefone }}
-          </div>
-          
-          <div class="form-group">
-              <label for="id_email">E-mail</label>
-              {{ form.email }}
-          </div>
-          
-          <div class="form-group">
-              <label for="id_empresa">Empresa</label>
-              {{ form.empresa }}
-          </div>
-          
-          <div class="form-group">
-              <label for="id_status">Status</label>
-              {{ form.status }}
-          </div>
-          
-          <div class="form-group">
-              <label for="id_observacoes">Observações</label>
-              {{ form.observacoes }}
-          </div>
-              
-              <button type="submit" class="create-btn">Criar</button>
-          </form>
         </div>
       </div>
+      
+      <!-- Checkbox E-mail -->
+      <div class="form-group">
+        <div class="opcoes_mensagens">
+          <div class="custom-checkbox">
+            <input type="checkbox" id="id_checkbox_enviar_email" name="enviar_email">
+            <label class="custom-control-label" for="id_checkbox_enviar_email">Deseja enviar E-mail de boas vindas?</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+          <label for="id_observacoes">Observações</label>
+          {{ form.observacoes }}
+      </div>
+          
+      <button type="submit" class="create-btn">Criar</button>
+    </form>
+  </div>
+</div>
 
 
 

@@ -1,0 +1,27 @@
+
+    <legend>Conexão WhatsApp</legend>
+    <label for="whatsapp_nome">Nome do WhatsApp</label>
+    {{ form.whatsapp_nome }}
+    <label for="whatsapp_numero">Número do WhatsApp</label>
+    {{ form.whatsapp_numero }}
+    <fieldset id="whatsappFieldset">
+        <legend>Status WhatsApp Conectado</legend>
+        {% if instancia %}
+            <div class="status-box">
+                <h2>Instância: {{ instancia.instance_name }}</h2>
+                <p><strong>Data de Criação:</strong> {{ instancia.data_criacao }}</p>
+                <p><strong>Estado:</strong> {{ instancia.state }}</p>
+                <p><strong>Chave API:</strong> {{ instancia.api_key }}</p>
+                {% if status_data %}
+                    {% comment %} <h3>Dados da API</h3> {% endcomment %}
+                    <pre>{{ status_data | json_script:"status_data" | safe }}</pre>
+                {% else %}
+                    <p class="error">Não foi possível obter os dados da API. {{ error }}</p>
+                {% endif %}
+                <button type="button" class="btn-excluir" id="excluirInstancia">Excluir Instância</button>
+            </div>
+        {% else %}
+            <p>Nenhuma instância encontrada.</p>
+        {% endif %}
+        <button type="button" class="btn_atualizar_whatsapp" id="atualizarWhatsapp">Atualizar</button>
+    </fieldset>

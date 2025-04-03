@@ -1,20 +1,42 @@
 import requests
 import logging
 from celery import shared_task
-from .models import Contato
+from .models import Contato, Usuario
 from cadastros.models import ModeloMensagem
 from django.core.mail import EmailMultiAlternatives
+from configuracoes.models import APIEvoGetInstance, EmailSMTPUsuario
+
 
 logger = logging.getLogger(__name__)
 
-EVOLUTION_API_URL = "https://gethosdev.gethostecnologia.com.br/message/sendText/gethosnotifica"
-TOKEN = "zy64iz5z2x8betsuk2rp4r"
-
 @shared_task
-def enviar_mensagem_api(contato_id, modelo_id, canal):
+def enviar_mensagem_api(contato_id, modelo_id, canal, user_id=None):
+    """
+    Envio de mensagem usando um modelo salvo no banco de dados.
+    Pode ser chamado de forma assíncrona com .delay() do Celery
+    """
+    from django.contrib.auth.models import User
     contato = Contato.objects.get(id=contato_id)
     modelo = ModeloMensagem.objects.get(id=modelo_id)
+    
+    # User pode ser opcional
+    user = User.objects.get(id=user_id) if user_id else None
+    
     texto = modelo.conteudo_mensagem.replace("@nome", contato.nome)
+
+    # Procura instância pela chave user se fornecido, ou pega a primeira
+    if user:
+        instancia = APIEvoGetInstance.objects.filter(user=user).first()
+        smtp_config = EmailSMTPUsuario.objects.filter(user=user).first()
+    else:
+        instancia = APIEvoGetInstance.objects.first()
+        smtp_config = EmailSMTPUsuario.objects.first()
+
+    if not instancia:
+        logger.error(f"❌ Nenhuma instância encontrada")
+        return
+
+    EVOLUTION_API_URL = f"https://gethosdev.gethostecnologia.com.br/message/sendText/{instancia.instance_name}"
 
     if canal == 'whatsapp':
         payload = {
@@ -23,32 +45,57 @@ def enviar_mensagem_api(contato_id, modelo_id, canal):
         }
         headers = {
             'Content-Type': 'application/json',
-            'apikey': TOKEN,
+            'apikey': instancia.api_key,
         }
         response = requests.post(EVOLUTION_API_URL, json=payload, headers=headers)
         if response.status_code == 200:
             logger.info(f"✅ WhatsApp enviado com sucesso para {contato.nome}")
+            return True
         else:
             logger.error(f"❌ Falha ao enviar WhatsApp: {response.text}")
-
-    elif canal == 'email':
+            return False
+    
+    elif canal == 'email' and smtp_config:
         email = EmailMultiAlternatives(
             subject="Mensagem do Gethos CRM",
             body=texto,
-            from_email="seuemail@dominio.com",
+            from_email=smtp_config.remetente_email_usuario,
             to=[contato.email]
         )
         email.attach_alternative(texto, "text/html")
         email.send()
         logger.info(f"✅ E-mail enviado com sucesso para {contato.email}")
+        return True
+    
+    return False
 
-
-
-
-def enviar_mensagem_api_livre(contato_id, texto, canal):
+@shared_task
+def enviar_mensagem_texto(contato_id, texto, canal, user_id=None):
+    """
+    Envio de mensagem usando texto livre.
+    Pode ser chamado de forma assíncrona com .delay() do Celery
+    
+    Esta função substitui 'enviar_mensagem_api_livre'
+    """
     contato = Contato.objects.get(id=contato_id)
     texto = texto.replace("@nome", contato.nome)
 
+    # Procura instância pela chave user se fornecido, ou pega a primeira
+    if user_id:
+        from django.contrib.auth.models import User
+        user = Usuario.objects.get(id=user_id)
+        instancia = APIEvoGetInstance.objects.filter(user=user).first()
+        smtp_config = EmailSMTPUsuario.objects.filter(user=user).first()
+    else:
+        instancia = APIEvoGetInstance.objects.first()
+        smtp_config = EmailSMTPUsuario.objects.first()
+
+    if not instancia:
+        logger.error("❌ Nenhuma instância encontrada em APIEvoGetInstance")
+        return False
+
+    EVOLUTION_API_URL = f"https://gethosdev.gethostecnologia.com.br/message/sendText/{instancia.instance_name}"
+
     if canal == 'whatsapp':
         payload = {
             "number": contato.telefone,
@@ -56,24 +103,160 @@ def enviar_mensagem_api_livre(contato_id, texto, canal):
         }
         headers = {
             'Content-Type': 'application/json',
-            'apikey': TOKEN,
+            'apikey': instancia.api_key,
         }
         response = requests.post(EVOLUTION_API_URL, json=payload, headers=headers)
         if response.status_code == 200:
             logger.info(f"✅ WhatsApp enviado com sucesso para {contato.nome}")
+            return True
         else:
             logger.error(f"❌ Falha ao enviar WhatsApp: {response.text}")
+            return False
 
-    elif canal == 'email':
+    elif canal == 'email' and smtp_config:
         email = EmailMultiAlternatives(
             subject="Mensagem do Gethos CRM",
             body=texto,
-            from_email="seuemail@dominio.com",
+            from_email=smtp_config.remetente_email_usuario,
             to=[contato.email]
         )
         email.attach_alternative(texto, "text/html")
         email.send()
         logger.info(f"✅ E-mail enviado com sucesso para {contato.email}")
+        return True
+    
+    return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import requests
+# import logging
+# from celery import shared_task
+# from .models import Contato
+# from cadastros.models import ModeloMensagem
+# from django.core.mail import EmailMultiAlternatives
+# from configuracoes.models import APIEvoGetInstance, EmailSMTPUsuario
+
+# logger = logging.getLogger(__name__)
+
+
+
+
+# @shared_task
+# def enviar_mensagem_api(contato_id, modelo_id, canal, user_id):
+#     from django.contrib.auth.models import User
+#     contato = Contato.objects.get(id=contato_id)
+#     modelo = ModeloMensagem.objects.get(id=modelo_id)
+#     user = User.objects.get(id=user_id)
+    
+#     texto = modelo.conteudo_mensagem.replace("@nome", contato.nome)
+
+#     instancia = APIEvoGetInstance.objects.filter(user=user).first()
+#     smtp_config = EmailSMTPUsuario.objects.filter(user=user).first()
+
+#     if not instancia:
+#         logger.error(f"❌ Nenhuma instância encontrada para o usuário {user.username}")
+#         return
+
+#     EVOLUTION_API_URL = f"https://gethosdev.gethostecnologia.com.br/message/sendText/{instancia.instance_name}"
+
+#     if canal == 'whatsapp':
+#         payload = {
+#             "number": contato.telefone,
+#             "text": texto
+#         }
+#         headers = {
+#             'Content-Type': 'application/json',
+#             'apikey': instancia.api_key,
+#         }
+#         response = requests.post(EVOLUTION_API_URL, json=payload, headers=headers)
+#         if response.status_code == 200:
+#             logger.info(f"✅ WhatsApp enviado com sucesso para {contato.nome}")
+#         else:
+#             logger.error(f"❌ Falha ao enviar WhatsApp: {response.text}")
+
+    
+
+    
+#     elif canal == 'email' and smtp_config:
+#         email = EmailMultiAlternatives(
+#             subject="Mensagem do Gethos CRM",
+#             body=texto,
+#             from_email=smtp_config.remetente_email_usuario,
+#             to=[contato.email]
+#         )
+#         email.attach_alternative(texto, "text/html")
+#         email.send()
+#         logger.info(f"✅ E-mail enviado com sucesso para {contato.email}")
+
+
+
+
+# def enviar_mensagem_api_livre(contato_id, texto, canal, user_id):
+#     from django.contrib.auth.models import User
+#     contato = Contato.objects.get(id=contato_id)
+#     user = User.objects.get(id=user_id)
+#     texto = texto.replace("@nome", contato.nome)
+
+#     instancia = APIEvoGetInstance.objects.filter(user=user).first()
+#     smtp_config = EmailSMTPUsuario.objects.filter(user=user).first()
+
+
+#     if not instancia:
+#         logger.error(f"❌ Nenhuma instância encontrada para o usuário {user.username}")
+#         return
+
+#     EVOLUTION_API_URL = f"https://gethosdev.gethostecnologia.com.br/message/sendText/{instancia.instance_name}"
+
+
+
+#     if canal == 'whatsapp':
+#         payload = {
+#             "number": contato.telefone,
+#             "text": texto
+#         }
+#         headers = {
+#             'Content-Type': 'application/json',
+#             'apikey': instancia.api_key,
+#         }
+#         response = requests.post(EVOLUTION_API_URL, json=payload, headers=headers)
+#         if response.status_code == 200:
+#             logger.info(f"✅ WhatsApp enviado com sucesso para {contato.nome}")
+#         else:
+#             logger.error(f"❌ Falha ao enviar WhatsApp: {response.text}")
+
+
+#     elif canal == 'email' and smtp_config:
+#         email = EmailMultiAlternatives(
+#             subject="Mensagem do Gethos CRM",
+#             body=texto,
+#             from_email=smtp_config.remetente_email_usuario,
+#             to=[contato.email]
+#         )
+#         email.attach_alternative(texto, "text/html")
+#         email.send()
+#         logger.info(f"✅ E-mail enviado com sucesso para {contato.email}")
 
 
 

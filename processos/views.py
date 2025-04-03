@@ -35,17 +35,24 @@ def move_task(request):
         new_status = data.get('new_status')
 
         task = get_object_or_404(FluxoCaptacao, id=task_id)
-        status_obj = StatusKanban.objects.get(nome=new_status)  # Busca o objeto StatusKanban
-        task.etapa = status_obj  # Atribui o objeto ao campo 'etapa'
+        status_obj = StatusKanban.objects.get(nome=new_status)
+        task.etapa = status_obj  # Usando campo correto 'etapa'
         task.save()
 
+        # Se movido para "Em andamento", envia uma mensagem para o cliente
         if new_status == 'Em andamento' and task.contato:
-            msg = gethos_home.models.MensagemWhatsApp.objects.create(
+            msg = MensagemWhatsApp.objects.create(
                 contato=task.contato,
-                mensagem="Movido para Em andamento",
+                mensagem=f"Olá @nome! Seu atendimento foi atualizado para 'Em andamento'.",
                 data_envio=timezone.now()
             )
-            enviar_mensagem_api.delay(msg.id)
+            # Usa a task Celery correta
+            from gethos_home.api import enviar_mensagem_texto
+            enviar_mensagem_texto.delay(
+                task.contato.id,
+                msg.mensagem,
+                canal='whatsapp'
+            )
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)
 

@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="{% static 'gethos_home/css/menu_header.css' %}">
 </head>
 
+
+
 <div class="navbar">
     <div class="navbar-left">
       <div class="menu-btn">
@@ -80,13 +82,14 @@
         <div class="dropdown-content">
           <a href="{% url 'editar_perfil' %}">Dados Usuário</a>
           <a href="{% url 'contatos_excluidos' %}">Lixeira</a>
-          <a href="#">Configurações</a>
           <a href="{% url 'logout_view' %}">Encerrar Sessão</a>
         </div>
       </div>
       <div class="dropdown">
         <button class="icon-btn dropdown-btn">
-          <i class="material-symbols-outlined">Configurações</i>
+         <a href="{% url 'configuracoes' %}">
+           <i class="material-symbols-outlined">Configurações</i>
+         </a> 
         </button>
         {% comment %} <div class="dropdown-content">
           <a href="{% url 'editar_perfil' %}"></a>

@@ -2,8 +2,9 @@
   *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     
-    
+
   }
 
 
@@ -318,31 +319,44 @@
 
 
 /* Estilos gerais do modal */
+/* Estilos gerais do modal */
+
+
+/* Estilos gerais do modal */
 .modal {
-    display: none; /* Escondido por padrão */
-    position: fixed; /* Fixa o modal na tela */
-    z-index: 9999; /* Garante que o modal esteja acima de outros elementos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Largura completa da tela */
-    height: auto; /* Altura completa da tela */
-    overflow: auto; /* Permite rolagem se o conteúdo for grande */
-    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro e transparente */
+  display: none; /* Escondido por padrão */
+  position: fixed; /* Fixa o modal na tela */
+  z-index: 9999; /* Garante que o modal esteja acima de outros elementos */
+  left: 0;
+  top: -200px;
+  width: 100%; /* Largura completa da tela */
+  height: auto; /* Altura completa da tela */
+  overflow: auto; /* Permite rolagem se o conteúdo for grande */
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro e transparente */
+  backdrop-filter: blur(10px); /* Adiciona um efeito de blur ao fundo */
+  transition: opacity 0.3s; /* Adiciona uma transição suave para a opacidade */
 
 }
 
+
+
+/* Conteúdo do modal */
 /* Conteúdo do modal */
 .modal-content {
-    background-color: #dce8ef; /* Fundo branco para o conteúdo */
-    margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
-    padding: 25px;
-    border: 1px solid #888;
-    width: 30%; /* Largura do modal */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adiciona sombra */
-    border-radius: 5px; /* Cantos arredondados */
-    top: -16rem;
-    position: relative;
-    z-index: 999;
+  background-color: #f9f9f9; /* Fundo branco para o conteúdo */
+  margin: 15% auto; /* Centraliza verticalmente e horizontalmente */
+  padding: 30px; /* Aumenta o padding para melhorar a legibilidade */
+  border: 1px solid #ddd; /* Borda mais suave */
+  width: 35%; /* Largura do modal */
+  height: 80dvh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona sombra mais suave */
+  border-radius: 10px; /* Cantos arredondados mais suaves */
+
+  z-index: 999;
+  overflow-x: auto;
+  font-family: Arial, sans-serif; /* Adiciona uma fonte mais legível */
+  font-size: 16px; /* Aumenta o tamanho da fonte */
+  line-height: 1.5; /* Melhora a legibilidade */
 }
 
 /* Estilos do botão de fechar */
@@ -411,6 +425,68 @@ form input:focus, form select:focus {
 .create-btn:hover {
     background-color: #0056b3;
 }
+
+
+
+.opcoes_mensagens {
+  display: flex;
+
+  border: 1px solid #ccc; /* adiciona uma borda para dar um pouco de profundidade */
+  border-radius: 3px; /* arredonda as bordas para dar um toque mais suave */
+  background-color: #f9f9f9; /* muda a cor de fundo para um tom mais claro */
+  align-items: center;
+  margin: 5px 0;
+  align-items: center;
+  justify-content: flex-start;
+
+
+}
+
+
+.opcoes_mensagens:hover {
+  background-color: #f2f2f2; /* muda a cor de fundo quando o usuário passa o mouse sobre o checkbox */
+}
+
+.custom-checkbox label {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  /* border: 1px solid #ccc; /* adiciona uma borda para dar um pouco de profundidade */
+  border-radius: 3px; /* arredonda as bordas para dar um toque mais suave */
+  /* background-color: #f9f9f9; /* muda a cor de fundo para um tom mais claro  */
+
+  line-height: 20px; /* ajusta a altura da linha do texto */
+  height: 20px; /* ajusta a altura do label */
+}
+
+
+.custom-checkbox input[type="checkbox"] {
+
+  width: 20px; /* ajuste o tamanho do checkbox */
+  height: 20px; /* ajuste o tamanho do checkbox */
+  margin: 10px;
+
+  
+}
+
+
+
+.form-group textarea {
+  display: block;
+  width: 90%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.form-group textarea:focus {
+  border-color: #aaa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 
   
 

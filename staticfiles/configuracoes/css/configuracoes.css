@@ -1,0 +1,174 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 0px;
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    border: 1px solid #0c7dd7;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 5px;
+}
+
+label {
+    display: block;
+    margin-top: 5px;
+    font-weight: 500;
+    margin: 5px;
+}
+
+input, select, textarea {
+    width: 90%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.teste-conexao .btn {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn.verde {
+    background-color: #28a745;
+}
+
+.btn.verde:hover {
+    background-color: #169434;
+}
+
+.btn.azul {
+    background-color: #0c7dd7;
+   
+}
+
+.btn.azul:hover {
+    background-color: #0b6dbd;
+   
+}
+
+.salvar {
+    text-align: right;
+}
+
+
+.salvar-btn {
+    background-color: #343a40;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.btn_voltar {
+    background-color: #0c7dd7;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.btn-excluir {
+    background-color: #d74c0c;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+.btn_atualizar_whatsapp {
+
+        background-color: #facc15;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+}
+
+.btn_voltar:hover {
+    background-color: #0b6dbd;
+
+
+    
+}
+
+.salvar-btn:hover {
+    background-color: #23272b;
+}
+
+.alert-success{
+    display: grid;
+    background-color: #249a40;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    
+}
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    text-align: center;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}

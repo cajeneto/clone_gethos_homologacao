@@ -7,7 +7,8 @@ urlpatterns = [
     # path('accounts/', include('django.contrib.auth.urls')),  # URLs de login/logout
     path("", include("gethos_home.urls")), 
     path('cadastros/', include('cadastros.urls')),  # Inclui as URLs do app 'cadastros'
-    path('processos/', include('processos.urls')),  # Inclui as URLs do app 'processos' 
+    path('processos/', include('processos.urls')),  # Inclui as URLs do app 'processos'
+    path('configuracoes/', include('configuracoes.urls')), 
     # path('api/', include('gethos_home.urls')),  
             
     ]

@@ -12,7 +12,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import UploadExcelForm, UsuarioEditForm
 from .models import Contato, MensagemWhatsApp
 from .forms import ContatoForm
-from .webScrapingVet import buscar_dados, salvar_dados_no_banco
 from .api import enviar_mensagem_api
 import asyncio
 from .services import salvar_contato
@@ -25,6 +24,7 @@ from .models import Campanha
 from .serializers import ContatoSerializer, CampanhaSerializer
 from processos.tasks import enviar_campanha
 from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models.signals import post_save
 
 
 
@@ -57,22 +57,74 @@ def create_account(request):
 
 #  TRATA DE ADICIONAR O LEAD NA LISTA DE CONTATOS
 # Função para tratar a adição de novos contatos e exibir a lista de contatos
+
+@login_required
 def dashboard_auth(request):
     form = ContatoForm()
 
     if request.method == 'POST':
-        # Verifica se o formulário é para adicionar um contato
         if 'adicionar_contato' in request.POST:
             form = ContatoForm(request.POST)
             if form.is_valid():
                 print("Formulário válido, salvando contato...")
-                form.save()
+                
+                # Captura os valores dos checkboxes
+                enviar_email = request.POST.get("enviar_email") == "on"
+                enviar_whatsapp = request.POST.get("enviar_whatsapp") == "on"
+
+                # Salva o contato e obtém a instância
+                contato = form.save()
+
+                # Dispara o signal manualmente com os argumentos extras
+                post_save.send(
+                    sender=Contato,
+                    instance=contato,
+                    created=True,
+                    enviar_email=enviar_email,
+                    enviar_whatsapp=enviar_whatsapp
+                )
+
                 messages.success(request, 'Contato adicionado com sucesso!')
                 return redirect('dashboard_auth')
             else:
                 print("Formulário inválido!")
                 print(form.errors)
                 messages.error(request, 'Erro ao adicionar contato. Verifique os dados.')
+
+            # Nova ação para configurar o webhook
+        elif 'configurar_webhook' in request.POST:
+            from configuracoes.models import APIEvoGetInstance
+            instancia = APIEvoGetInstance.objects.first()
+            if not instancia:
+                messages.error(request, "Nenhuma instância de WhatsApp configurada!")
+                return redirect('dashboard_auth')
+
+            url = "https://gethosdev.gethostecnologia.com.br/instance/setWebhook"
+            payload = {
+                "instanceName": instancia.instance_name,
+                "webhook": {
+                    "url": "https://app.gethostecnologia.com.br/webhook/",  # Substitua pelo seu URL público
+                    "webhook_by_events": False,
+                    "events": ["MESSAGES_UPSERT"]
+                }
+            }
+            headers = {
+                "Content-Type": "application/json",
+                "apikey": "94fc6ec0af7a6564824bc8df4be618c4246d36f2"  # API Key da Evolution
+            }
+            response = requests.post(url, json=payload, headers=headers)
+            if response.status_code == 200:
+                messages.success(request, "Webhook configurado com sucesso!")
+            else:
+                messages.error(request, f"Erro ao configurar webhook: {response.text}")
+            return redirect('dashboard_auth')
+
+
+
+
+
+
+
 
         # Verifica se o formulário é para selecionar contatos
         elif 'selecionar_contatos' in request.POST:
@@ -93,6 +145,77 @@ def dashboard_auth(request):
         'listContacts': contatos,
     })
 
+# Endpoint para receber webhooks
+@csrf_exempt
+def whatsapp_webhook(request):
+    if request.method == 'POST':
+        try:
+            body = json.loads(request.body)
+            event = body.get('event')
+            data = body.get('data', {})
+
+            if event == 'MESSAGES_UPSERT':
+                message_data = data.get('message', {})
+                sender = data.get('key', {}).get('remoteJid')  # Número do cliente (ex.: 5511999999999@s.whatsapp.net)
+                is_from_me = data.get('key', {}).get('fromMe', False)
+
+                # Extrair mensagem recebida
+                message_text = None
+                if 'conversation' in message_data:
+                    message_text = message_data['conversation']
+                elif 'extendedTextMessage' in message_data:
+                    message_text = message_data['extendedTextMessage'].get('text')
+
+                if message_text and not is_from_me:
+                    print(f"📩 Mensagem recebida de {sender}: {message_text}")
+                    
+                    # Resposta automática
+                    resposta = f"Olá! Recebemos sua mensagem: '{message_text}'. Como posso ajudar você hoje?"
+                    from configuracoes.models import APIEvoGetInstance
+                    instancia = APIEvoGetInstance.objects.first()
+                    if not instancia:
+                        return JsonResponse({'status': 'error', 'message': 'Nenhuma instância configurada'}, status=500)
+
+                    url = f"https://gethosdev.gethostecnologia.com.br/message/sendText/{instancia.instance_name}"
+                    payload = {
+                        "number": sender.split('@')[0],  # Remove @s.whatsapp.net
+                        "text": resposta
+                    }
+                    headers = {
+                        "Content-Type": "application/json",
+                        "apikey": instancia.api_key
+                    }
+                    response = requests.post(url, json=payload, headers=headers)
+                    if response.status_code == 200:
+                        print(f"✅ Resposta enviada para {sender}: {resposta}")
+                    else:
+                        print(f"❌ Erro ao enviar resposta: {response.text}")
+
+            return JsonResponse({'status': 'success'}, status=200)
+        except Exception as e:
+            print(f"❌ Erro no webhook: {str(e)}")
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    return JsonResponse({'status': 'error', 'message': 'Método não permitido'}, status=405)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # configuração de view para logout de usuário
 def logout_view(request):
@@ -105,31 +228,6 @@ def login_admin(request):
     return HttpResponse('teste login administrador')
  
 
-
-def importar_contatos(request):
-    if request.method == "POST":
-        try:
-            # Chama a função do web scraping
-            resultado = executar_webscraping(request)
-            return JsonResponse({"status": "sucesso", "mensagem": "Importação concluída com sucesso!", "dados": resultado})
-        except Exception as e:
-            return JsonResponse({"status": "erro", "mensagem": f"Erro ao importar: {str(e)}"})
-    return JsonResponse({"status": "falha", "mensagem": "Método inválido."})
-
-
-
-# FUNÇÃO PARA REALIZAR LOGIN NO SIMPLES VET
-
-def executar_webscraping(request):
-    if request.method == "POST":
-        agendamentos = buscar_dados()
-
-        # Salva cada agendamento no banco de dados
-        for agendamento in agendamentos:
-            salvar_dados_no_banco(agendamento)  # Função já implementada no webScraping.py
-
-        return JsonResponse({"agendamentos": agendamentos})
-    return JsonResponse({"erro": "Método não permitido."}, status=405)
 
 
 
@@ -201,7 +299,7 @@ class ContatoDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 
-# @login_required
+@login_required
 def editar_perfil(request):
     if request.method == 'POST':
         form = UsuarioEditForm(request.POST, instance=request.user)
@@ -219,7 +317,7 @@ def editar_perfil(request):
 
 
 
-# @login_required
+@login_required
 def editar_contato(request, contato_id):
     contato = get_object_or_404(Contato, id=contato_id, is_deleted=False)
     
@@ -241,7 +339,7 @@ def editar_contato(request, contato_id):
 
 
 
-# @login_required
+@login_required
 def excluir_contato(request, contato_id):
     contato = get_object_or_404(Contato, id=contato_id, is_deleted=False)
     if request.method == 'POST':
@@ -256,7 +354,7 @@ def excluir_contato(request, contato_id):
 
 
 
-# @login_required
+@login_required
 @staff_member_required
 def contatos_excluidos(request):
     contatos = Contato.objects.filter(is_deleted=True).order_by('-data_criacao')

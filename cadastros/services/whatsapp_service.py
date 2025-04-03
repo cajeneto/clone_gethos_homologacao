@@ -2,10 +2,13 @@
 
 import requests
 from django.conf import settings
-from gethos_home.api import TOKEN
+from configuracoes.models import APIEvoGetInstance
+
+TOKEN = APIEvoGetInstance.objects.first().api_key
+INSTANCIA = APIEvoGetInstance.objects.first().instance_name
 
 def enviar_mensagem_evolution_service(telefone, mensagem):
-    url = "https://gethosdev.gethostecnologia.com.br/message/sendText/gethosnotifica"
+    url = f"https://gethosdev.gethostecnologia.com.br/message/sendText/{INSTANCIA}"
     headers = {
         "Apikey": TOKEN,
         "Content-Type": "application/json"

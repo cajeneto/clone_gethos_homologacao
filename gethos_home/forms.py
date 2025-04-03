@@ -8,7 +8,10 @@ from django.core.exceptions import ValidationError
 telefone_validator = RegexValidator(r'^\d{10,11}$', 'Digite um número válido com DDD.')
 
 class ContatoForm(forms.ModelForm):
-    telefone = forms.CharField(validators=[telefone_validator])  # Validação de números
+    telefone = forms.CharField(
+        validators=[telefone_validator],
+        help_text="Digite o número com DDD (ex.: 82991326715). Se incluir +55, será ajustado automaticamente."
+    )
 
     class Meta:
         model = Contato
@@ -17,18 +20,21 @@ class ContatoForm(forms.ModelForm):
     def clean_telefone(self):
         telefone = self.cleaned_data.get('telefone', '')
 
-        # Remove todos os caracteres que não são números
+        # Remove todos os caracteres que não são números (incluindo +)
         telefone = re.sub(r'\D', '', telefone)
+
+        # Remove o código do país (55) se estiver presente
+        if telefone.startswith('55') and len(telefone) > 11:
+            telefone = telefone[2:]
 
         # Verifica se o telefone tem 10 ou 11 dígitos (com DDD)
         if not re.match(r'^\d{10,11}$', telefone):
-            raise ValidationError("Digite um telefone válido com DDD.")
+            raise ValidationError("Digite um telefone válido com DDD (10 ou 11 dígitos). Ex.: 82991326715")
 
-        # Adiciona automaticamente o código do Brasil (55) se ainda não tiver
-        if not telefone.startswith('55'):
-            telefone = '55' + telefone  # Adiciona 55 apenas se não tiver
+        # Adiciona o código do Brasil (55) para salvar no banco
+        telefone = '55' + telefone
 
-        return telefone  # Retorna o telefone formatado com +55
+        return telefone
 
 class UploadExcelForm(forms.Form):
     arquivo_excel = forms.FileField(label='Selecione um arquivo Excel')

@@ -7,11 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Gethos CRM</title>
     <link rel="stylesheet" href="{% static 'gethos_home/css/home.css' %}">
+    <link rel="icon" href="{% static 'gethos_home/img/icon_gethos.png' %}" type="image/png">
 </head>
 <body>
     <div class="login-container">
         <div class="image-container">
-            <img class="img-gethos-home" src="{% static 'gethos_home/img/gethosImg-login.png' %}" alt="Background Image">
+            <img id="carousel-image"  class="img-gethos-home" src="{% static 'gethos_home/img/gethosImg-login.png' %}" alt="Background Image">
+            <img id="carousel-image"  class="img-gethos-home" src="{% static 'gethos_home/img/1.png' %}" alt="Background Image">
         </div>
         <div class="login-form-container">
             <h2>Bem-vindo ao Gethos CRM</h2>
@@ -25,7 +27,7 @@
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" placeholder="senha de acesso" required>
                 </div>
-                <a href="#" class="forgot-password">Esqueceu a senha? Solicite uma nova senha</a>
+                <a href="https://wa.me/5582991326715" class="forgot-password">Esqueceu a senha? Solicite uma nova senha</a>
                 <button type="submit" class="btn-signin">Acessar</button>
             </form>
             <!-- Exibe mensagens de erro ou sucesso -->
@@ -41,5 +43,23 @@
             </p>
         </div>
     </div>
+<script>
+        const imageElement = document.getElementById("carousel-image");
+        const imageList = [
+            "{% static 'gethos_home/img/gethosImg-login.png' %}",
+            "{% static 'gethos_home/img/1.png' %}",
+
+        ];
+        let currentIndex = 0;
+    
+        setInterval(() => {
+            imageElement.classList.add("fade");
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % imageList.length;
+                imageElement.src = imageList[currentIndex];
+                imageElement.classList.remove("fade");
+            }, 300);
+        }, 3000);
+</script>
 </body>
 </html>

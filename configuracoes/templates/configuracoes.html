@@ -1,0 +1,207 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurações</title>
+    <link rel="stylesheet" href="{% static 'configuracoes/css/configuracoes.css' %}">
+</head>
+<body>
+    {% include "menu_header.html" %}
+    <div class="container">
+        <h1>Configurações do Sistema</h1>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="post" id="configForm">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <fieldset>
+                <legend>Dados do Negócio</legend>
+                <label for="nome_empresa">Nome da Empresa</label>
+                {{ form.nome_empresa }}
+                <label for="cnpj">CNPJ da Empresa</label>
+                {{ form.cnpj_empresa }}
+                <label for="contato">Contato</label>
+                {{ form.telefone_empresa }}
+                <label for="email">Email</label>
+                {{ form.email_contato_empresa }}
+            </fieldset>
+
+            <fieldset>
+                <legend>Endereço</legend>
+                <label for="rua">Rua</label>
+                {{ form.rua_empresa }}
+                <label for="bairro">Bairro</label>
+                {{ form.bairro_empresa }}
+                <label for="cidade">Cidade</label>
+                {{ form.cidade_empresa }}
+                <label for="estado">Estado</label>
+                {{ form.estado_empresa }}
+            </fieldset>
+
+            <fieldset>
+                <legend>Configurações de E-mail</legend>
+                <label for="email_usuario">Email do Usuário</label>
+                {{ form.email_usuario }}
+                <label for="api_key">Chave API Google</label>
+                {{ form.api_key }}
+                <label for="remetente">Remetente do Email</label>
+                {{ form.remetente }}
+            </fieldset>
+            <fieldset>
+                {% include "whatsapp_fieldset.html" %}
+            </fieldset>
+
+
+            {% comment %} <fieldset>
+                <legend>Conexão WhatsApp</legend>
+                <label for="whatsapp_nome">Nome do WhatsApp</label>
+                {{ form.whatsapp_nome }}
+                <label for="whatsapp_numero">Número do WhatsApp</label>
+                {{ form.whatsapp_numero }}
+                <fieldset>
+                    <legend>Status WhatsApp Conectado</legend>
+                    {% if instancia %}
+                        <div class="status-box">
+                            <h2>Instância: {{ instancia.instance_name }}</h2>
+                            <p><strong>Data de Criação:</strong> {{ instancia.data_criacao }}</p>
+                            <p><strong>Estado:</strong> {{ instancia.state }}</p>
+                            <p><strong>Chave API:</strong> {{ instancia.api_key }}</p>
+                            {% if status_data %}
+                                <h3>Dados da API</h3>
+                                <p><strong>Status:</strong> {{ status_data.status | default:"Desconhecido" }}</p>
+                                <p><strong>Detalhes:</strong> {{ status_data | json_script:"status_data" }}</p>
+                                <pre>{{ status_data | json_script:"status_data" | safe }}</pre>
+                            {% else %}
+                                <p class="error">Não foi possível obter os dados da API. {{ error }}</p>
+                            {% endif %}
+                            <button type="button" class="btn-excluir" id="excluirInstancia">Excluir Instância</button>
+                        </div>
+                    {% else %}
+                        <p>Nenhuma instância encontrada.</p>
+                    {% endif %}
+                </fieldset>
+            </fieldset> {% endcomment %}
+
+            {% comment %} <fieldset class="teste-conexao">
+                <legend>Teste de Conexão</legend>
+                <button type="button" class="btn verde" id="gerarQrCode">Gerar QR Code</button>
+                <button class="btn azul">Testar Conexão 2</button>
+            </fieldset>
+
+            <div class="salvar">
+                <button type="submit" class="btn salvar-btn">Salvar Configurações</button>
+            </div> {% endcomment %}
+        </form>
+    </div>
+
+    <!-- Modal para o QR Code -->
+    <div id="qrCodeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">×</span>
+            <h3>Leia o QR Code</h3>
+            <img id="qrCodeImage" src="" alt="QR Code" style="max-width: 100%;">
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("qrCodeModal");
+        const btnGerar = document.getElementById("gerarQrCode");
+        const btnExcluir = document.getElementById("excluirInstancia");
+        const btnAtualizar = document.getElementById("atualizarWhatsapp");
+        const span = document.getElementsByClassName("close")[0];
+        const qrCodeImage = document.getElementById("qrCodeImage");
+        const form = document.getElementById("configForm");
+        const whatsappFieldset = document.getElementById("whatsappFieldset");
+
+        // Gerar QR Code
+        btnGerar.onclick = function() {
+            const formData = new FormData(form);
+            formData.append("gerar_qr_code", "true");
+
+            fetch("{% url 'configuracoes' %}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": "{{ csrf_token }}",
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                qrCodeImage.src = data.qr_code;
+                modal.style.display = "block";
+            })
+            .catch(error => console.error('Erro:', error));
+        }
+
+        // Excluir Instância
+        if (btnExcluir) {
+            btnExcluir.onclick = function() {
+                if (confirm("Tem certeza que deseja excluir a instância?")) {
+                    const formData = new FormData();
+                    formData.append("excluir_instancia", "true");
+
+                    fetch("{% url 'configuracoes' %}", {
+                        method: "POST",
+                        headers: {
+                            "X-CSRFToken": "{{ csrf_token }}",
+                        },
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.success);
+                            location.reload();
+                        } else {
+                            alert(data.error);
+                        }
+                    })
+                    .catch(error => console.error('Erro:', error));
+                }
+            }
+        }
+
+        // Atualizar WhatsApp
+        if (btnAtualizar) {
+            btnAtualizar.onclick = function() {
+                fetch("{% url 'atualizar_whatsapp' %}", {
+                    method: "GET",
+                })
+                .then(response => response.text())
+                .then(html => {
+                    whatsappFieldset.innerHTML = html;
+                    // Reassocia eventos após atualização
+                    const newBtnExcluir = document.getElementById("excluirInstancia");
+                    const newBtnAtualizar = document.getElementById("atualizarWhatsapp");
+                    if (newBtnExcluir) {
+                        newBtnExcluir.onclick = btnExcluir.onclick;
+                    }
+                    if (newBtnAtualizar) {
+                        newBtnAtualizar.onclick = btnAtualizar.onclick;
+                    }
+                })
+                .catch(error => console.error('Erro ao atualizar WhatsApp:', error));
+            }
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        setInterval(function() {
+            btnAtualizar.click();
+            console.log('funcionando...')
+        }, 10000);
+    </script>
+</body>
+</html>

@@ -149,3 +149,29 @@ p {
     border-radius: 5px;
 }
 
+
+
+
+
+.img-gethos-home {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.img-gethos-home.fade {
+    opacity: 0;
+}
+
+.img-gethos-home {
+    width: 100%;
+    object-fit: cover; /* Ou "contain", veja abaixo */
+
+}
+
+.image-container {
+    width: 100%;
+    max-width: 400px; /* ou o tamanho desejado */
+    height: auto;     /* ajuste conforme necessário */
+    overflow: hidden;
+    margin: auto;
+    border-radius: 12px;
+}

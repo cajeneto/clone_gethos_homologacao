@@ -335,6 +335,14 @@ def cadastro_landing_page(request):
 
 
 
+
+
+
+
+
+
+# TRATA DE RECEBER MENSAGENS DO WHATSAPP VIA WEBHOOK.
+
 @csrf_exempt
 def webhook_receber_mensagem(request):
     if request.method != "POST":
@@ -342,7 +350,7 @@ def webhook_receber_mensagem(request):
 
     try:
         data = json.loads(request.body)
-        telefone = data.get("phone")  # ou "number", conforme a Evolution
+        telefone = data.get("phone")  # ou "numbr", conforme a Evolution
         mensagem = data.get("message")
 
         if not telefone or not mensagem:
@@ -371,6 +379,7 @@ def webhook_receber_mensagem(request):
         return JsonResponse({"erro": str(e)}, status=500)
     
 
+# TRATA DA CENTRAL DO WHATSAPP COM AS MENSAGENS DO WHATSAPP.
 
 @csrf_exempt
 def central_whatsapp_chat(request, contato_id=None):

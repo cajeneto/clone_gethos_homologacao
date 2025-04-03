@@ -1,5 +1,6 @@
 from pathlib import Path
-from decouple import config  # Importa o python-decouple
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,6 +23,7 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ALLOWED_ORIGINS = [
     "https://gethostecnologia.com.br",
     "https://teste2-gethos-crm.mtnwf6.easypanel.host",
+    "https://teste2-hologacao-gethos-teste.mtnwf6.easypanel.host",
 ]
 
 # Application definition
@@ -33,6 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "gethos_home.apps.GethosHomeConfig",
+    "channels",
     "rest_framework",
     "cadastros",
     "processos",
@@ -41,6 +44,7 @@ INSTALLED_APPS = [
     "relatorios",
     "integration_api_zwa",
     "landing_page_gethos",
+    "configuracoes",
 ]
 
 MIDDLEWARE = [
@@ -90,15 +94,31 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "gethosapp.wsgi.application"
+ASGI_APPLICATION = "gethosapp.asgi.application"
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
+
+
+
 
 # Database
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "teste_gethos_db",
-        "USER": "gethosapp_db_teste",
+        # "NAME": "gethosapp_db",
+        "USER": "postgres",
         "PASSWORD": "gethosappsenha",
         "HOST": "teste2_teste_gethos_db",
+        # "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
@@ -152,11 +172,13 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Celery
 CELERY_TIMEZONE = 'UTC'
-CELERY_BROKER_URL = "redis://default:gethosappsenha@teste2_homologacao_gethos_redis:6379/0"
+CELERY_BROKER_URL = "redis://default:redis://127.0.0.1:6379/1:6379/0"
+# CELERY_BROKER_URL = "redis://localhost:6379/0"
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_BACKEND = "redis://default:gethosappsenha@teste2_homologacao_gethos_redis:6379/0"
+CELERY_RESULT_BACKEND = "redis://default:redis://127.0.0.1:6379/1:6379/0"
+# CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 
 # Simplesvet
-SIMPLESVET_EMAIL = config('SIMPLESVET_EMAIL')
-SIMPLESVET_PASSWORD = config('SIMPLESVET_PASSWORD')
+# SIMPLESVET_EMAIL = config('SIMPLESVET_EMAIL')
+# SIMPLESVET_PASSWORD = config('SIMPLESVET_PASSWORD')

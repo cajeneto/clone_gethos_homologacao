@@ -10,4 +10,4 @@ cmds = [
 ]
 
 [start]
-cmd = "/opt/venv/bin/gunicorn gethosapp.wsgi --bind 0.0.0.0:${PORT}"
+cmd = "/opt/venv/bin/daphne -b 0.0.0.0 -p ${PORT} gethosapp.asgi:application"

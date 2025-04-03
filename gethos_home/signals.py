@@ -5,6 +5,9 @@ from django.core.mail import send_mail
 from django.utils.html import strip_tags
 import requests
 import time
+from configuracoes.models import APIEvoGetInstance, EmailSMTPUsuario
+
+
 
 @receiver(post_save, sender=Contato)
 def enviar_boas_vindas_contato(sender, instance, created, **kwargs):
@@ -17,8 +20,12 @@ def enviar_boas_vindas_contato(sender, instance, created, **kwargs):
 
     print(f"📣 Novo contato: {nome} - {email_destino} - {numero_whatsapp}")
 
+    # Pegar as escolhas dos checkboxes (default é False se não forem passadas)
+    enviar_email = kwargs.get("enviar_email", False)
+    enviar_whatsapp = kwargs.get("enviar_whatsapp", False)
+
     # === Enviar E-MAIL ===
-    if email_destino:
+    if enviar_email and email_destino:  # Só envia se o checkbox estiver marcado e houver email
         html_content = f"""
             <h2>Olá, {nome}!</h2>
             <p>Bem-vindo ao <strong>GETHOS CRM</strong>!</p>
@@ -26,11 +33,15 @@ def enviar_boas_vindas_contato(sender, instance, created, **kwargs):
         """
         text_content = strip_tags(html_content)
 
+        # Configuração SMTP (se disponível)
+        smtp_config = EmailSMTPUsuario.objects.first()
+        from_email = smtp_config.remetente_email_usuario if smtp_config else "Gethos CRM <netocajeh@gmail.com>"
+
         try:
             send_mail(
                 subject="Boas-vindas ao Gethos CRM!",
                 message=text_content,
-                from_email="Gethos CRM <netocajeh@gmail.com>",
+                from_email=from_email,
                 recipient_list=[email_destino],
                 html_message=html_content,
                 fail_silently=False
@@ -39,10 +50,20 @@ def enviar_boas_vindas_contato(sender, instance, created, **kwargs):
         except Exception as e:
             print(f"❌ Erro ao enviar e-mail: {e}")
 
+
+
+
     # === Enviar WHATSAPP com retry ===
-    if numero_whatsapp:
-        mensagem = f"Olá {nome}, seja bem-vindo ao GETHOS CRM! 🚀 Conte conosco no que precisar."
-    
+    if enviar_whatsapp and numero_whatsapp:  # Só envia se o checkbox estiver marcado e houver telefone
+        mensagem = f"Olá {nome}, seja bem-vindo ao GETHOS CRM!🚀\nConte conosco no que precisar."
+    # Pega a instância do WhatsApp configurada
+        instancia = APIEvoGetInstance.objects.first()
+        if not instancia:
+            print("❌ Nenhuma instância de WhatsApp configurada em APIEvoGetInstance")
+            return
+
+        EVOLUTION_API_URL = f"https://gethosdev.gethostecnologia.com.br/message/sendText/{instancia.instance_name}"
+        
         payload = {
             "number": numero_whatsapp,
             "text": mensagem
@@ -50,18 +71,18 @@ def enviar_boas_vindas_contato(sender, instance, created, **kwargs):
     
         headers = {
             "Content-Type": "application/json",
-            "apikey": "zy64iz5z2x8betsuk2rp4r"
+            "apikey": instancia.api_key
         }
     
         for tentativa in range(1, 3):  # Tenta até 2 vezes
             try:
                 print(f"💬 Tentando envio do WhatsApp (tentativa {tentativa})...")
                 response = requests.post(
-                    "https://gethosdev.gethostecnologia.com.br/message/sendText/gethosnotifica",
+                    EVOLUTION_API_URL,
                     json=payload,
                     headers=headers,
                     timeout=10,
-                    verify=False  # ⚠️ IGNORA o erro de SSL (só use se você confiar na API)
+                    verify=False
                 )
                 if response.status_code in range(200, 300):
                     print("✅ WhatsApp enviado com sucesso!")
@@ -73,7 +94,7 @@ def enviar_boas_vindas_contato(sender, instance, created, **kwargs):
             except Exception as e:
                 print(f"❌ Exceção ao enviar WhatsApp: {e}")
     
-            time.sleep(3)  # Espera 3 segundos antes de tentar novamente
+            time.sleep(2)  # Espera 2 segundos antes de tentar novamente
 
 
 
