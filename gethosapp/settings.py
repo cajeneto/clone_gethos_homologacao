@@ -11,7 +11,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)  # Converte para booleano
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 # CSRF e CORS
 CSRF_TRUSTED_ORIGINS = [
@@ -113,13 +113,13 @@ CHANNEL_LAYERS = {
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "teste_gethos_db",
-        # "NAME": "gethosapp_db",
-        # "USER": "postgres",
-        "USER": "gethosapp_db_teste",
+        # "NAME": "teste_gethos_db",
+        "NAME": "gethosapp_db",
+        "USER": "postgres",
+        # "USER": "gethosapp_db_teste",
         "PASSWORD": "gethosappsenha",
-        "HOST": "teste2_teste_gethos_db",
-        # "HOST": "127.0.0.1",
+        # "HOST": "teste2_teste_gethos_db",
+        "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
@@ -173,12 +173,12 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Celery
 CELERY_TIMEZONE = 'UTC'
-CELERY_BROKER_URL = "redis://default:redis://127.0.0.1:6379/1:6379/0"
-# CELERY_BROKER_URL = "redis://localhost:6379/0"
+# CELERY_BROKER_URL = "redis://default:redis://127.0.0.1:6379/1:6379/0"
+CELERY_BROKER_URL = "redis://localhost:6379/0"
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_BACKEND = "redis://default:redis://127.0.0.1:6379/1:6379/0"
-# CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+# CELERY_RESULT_BACKEND = "redis://default:redis://127.0.0.1:6379/1:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 
 # Simplesvet
 # SIMPLESVET_EMAIL = config('SIMPLESVET_EMAIL')
