@@ -115,11 +115,12 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         # "NAME": "teste_gethos_db",
         "NAME": "gethosapp_db",
-        "USER": "postgres",
+        # "USER": "postgres",
+        "USER": "gethosapp_db_teste",
         # "USER": "gethosapp_db_teste",
         "PASSWORD": "gethosappsenha",
-        # "HOST": "teste2_teste_gethos_db",
-        "HOST": "127.0.0.1",
+        "HOST": "teste2_teste_gethos_db",
+        # "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
